@@ -38,7 +38,7 @@ void telaSobre(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = Sistema de GControle de Clientes = = = = =         ///\n");
+    printf("///            = = = = = Sistema de Controle de Clientes = = = = =          ///\n");
     printf("///                                                                         ///\n");
     printf("///  Programa exemplo utilizado na disciplina DCT1106 - Programação, para   ///\n");
     printf("///  fins didáticos de ilustração. O programa contém os principais módulos  ///\n");
