@@ -3,7 +3,7 @@
 <h5>Centro de Ensino Superior do Seridó.</h5>
 <h5>Departamento de Computação e Tecnologia.</h5>
 <h5>Disciplina DCT1106 -- Programação.</h5>
-<h5>Projeto Sistema Controle de Clientes.</p>
+<h5>Projeto Sistema Controle de Clientes.</h5>
 
 Este projeto tem como objetivo a avaliação do desempenho dos alunos na disciplina DCT1106-Programação, mediado pelo Prof. Dr. Flavius da Luz e Gorgônio, de modo a mostrar o conhecimento adiquirido ao longo da disciplina.
 
