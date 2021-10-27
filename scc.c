@@ -20,6 +20,12 @@ int main(void) {
     telaSobre();
     telaPrincipal();
     telaEquipe();
+    telaMenuclientes();
+    telaCadastro();
+    telaEditar();
+    telaPesquisar();
+    telaAtiv_Dest();
+    
     return 0;
 }
 
@@ -70,7 +76,7 @@ void telaPrincipal(void) {
     printf("///            2. Editar(Atualizar) usuários                                ///\n");
     printf("///            3. Ativar/Desativar usuários                                 ///\n");
     printf("///            4. Pesquisar clientes                                        ///\n");
-    printf("///            5. Módulo Relatórios                                         ///\n");
+    printf("///            5.                                                           ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -102,5 +108,35 @@ void telaEquipe(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("oi");
+
+}
+
+void telaMenuclientes(void) {
+    //system("clear||cls"); tirar dúvida!
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///          ===================================================          ///\n");
+    printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///          = = = =    Sistema de controle de clientes  = = = =          ///\n");
+    printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///          ===================================================          ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = = =  Menu Clientes  = = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1.                                   ///\n");
+    printf("///           2.                            ///\n");
+    printf("///           3.                          ///\n");
+    printf("///           4.                               ///\n");
+    printf("///           0.                                  ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           Escolha a opção desejada:                                   ///\n");
+    printf("///                                                                       ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
 }
