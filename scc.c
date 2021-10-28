@@ -14,6 +14,7 @@ void telaSobre(void);
 void telaEquipe(void);
 void telaMenuPrincipal(void);
 void telaCadastro(void);
+void telaEditar(void);  
 
 /////
 // Programa principal
@@ -23,7 +24,7 @@ int main(void) {
     telaEquipe();
     telaMenuPrincipal();
     telaCadastro();
-    // telaEditar();    
+    telaEditar();    
     // telaAtiv_Dest();
     // telaPesquisar();
     return 0;
@@ -138,4 +139,27 @@ void telaCadastro(void) {
     // TIRAR DÚVIDAS SOBRE ISSO ---> gercahr();
 
     printf("\n");
+}
+
+void telaEditar(void) {
+    //system("clear||cls"); tirar dúvida!
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Editar clientes    = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o -------- que deseja alterar os dados:                |\n");
+    printf("|                                                                       |\n");
+    printf("|           * Nome Completo:                                            |\n");
+    printf("|           * CPF (Apenas números):                                     |\n");
+    printf("|           * Data de Nascimento:                                       |\n");
+    printf("|           * Celular (Apenas números):                                 |\n");
+    printf("|           * E-mail:                                                   |\n");
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
+
 }
