@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
+#include <stdlib.h>
 
 /////
 // Assinatura das funções
@@ -39,6 +40,7 @@ int main(void) {
 // Funções
 
 void telaSobre(void) {
+    system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
@@ -59,12 +61,15 @@ void telaSobre(void) {
     printf("///  de consulta e referência para o desenvolvidos dos demais projetos.     ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
 
 
 void telaEquipe(void) {
+    system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
@@ -86,11 +91,13 @@ void telaEquipe(void) {
     printf("///     Link: https://github.com/Brunowcst/Sistema-de-controle-de-clientes- ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
 void telaMenuPrincipal(void) {
-    //system("clear||cls"); tirar dúvida!
+    system("clear||cls"); //tirar dúvida!
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -111,15 +118,18 @@ void telaMenuPrincipal(void) {
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
     printf("///           5. Listar clientes                                          ///\n");
+    //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
 void telaCadastro(void) {
-    //system("clear||cls"); tirar dúvida!
+    system("clear||cls"); //tirar dúvida!
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -137,8 +147,8 @@ void telaCadastro(void) {
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
-    //printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    //getchar();
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
 
     // TIRAR DÚVIDAS SOBRE ISSO ---> gercahr();
 
@@ -146,7 +156,7 @@ void telaCadastro(void) {
 }
 
 void telaEditar(void) {
-    //system("clear||cls"); tirar dúvida!
+    system("clear||cls"); //tirar dúvida!
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -154,21 +164,23 @@ void telaEditar(void) {
     printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o -------- que deseja alterar os dados:                |\n");
+    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");
     printf("|                                                                       |\n");
-    printf("|           * Nome Completo:                                            |\n");
-    printf("|           * CPF (Apenas números):                                     |\n");
-    printf("|           * Data de Nascimento:                                       |\n");
-    printf("|           * Celular (Apenas números):                                 |\n");
-    printf("|           * E-mail:                                                   |\n");
+    // printf("|           * Nome Completo:                                            |\n");
+    // printf("|           * CPF (Apenas números):                                     |\n");
+    // printf("|           * Data de Nascimento:                                       |\n");
+    // printf("|           * Celular (Apenas números):                                 |\n");
+    // printf("|           * E-mail:                                                   |\n");
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
 void telaPesquisar(void) {
-    //system("clear||cls"); tirar dúvida!
+    system("clear||cls"); //tirar dúvida!
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -176,15 +188,17 @@ void telaPesquisar(void) {
     printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o nome do cliente que deseja encontrar:                |\n");
+    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
 void telaExcluir(void) {
-    //system("clear||cls"); tirar dúvida!
+    system("clear||cls"); //tirar dúvida!
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -192,10 +206,12 @@ void telaExcluir(void) {
     printf("|          = = = = = = =    Excluir  clientes  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o nome do cliente que deseja excluir:                  |\n");
+    printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
     printf("\n");
 }
 
