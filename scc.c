@@ -192,9 +192,10 @@ void telaExcluir(void) {
     printf("|          = = = = = = =    Excluir  clientes  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o nome do cliente que deseja encontrar:                |\n");
+    printf("|        Informe o nome do cliente que deseja excluir:                  |\n");
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\n");
 }
+
