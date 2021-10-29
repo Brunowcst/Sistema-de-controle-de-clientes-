@@ -14,7 +14,10 @@ void telaSobre(void);
 void telaEquipe(void);
 void telaMenuPrincipal(void);
 void telaCadastro(void);
-void telaEditar(void);  
+void telaEditar(void);
+void telaPesquisar(void);
+void telaExcluir(void);
+void telaListar(void);
 
 /////
 // Programa principal
@@ -25,8 +28,10 @@ int main(void) {
     telaMenuPrincipal();
     telaCadastro();
     telaEditar();    
-    // telaAtiv_Dest();
-    // telaPesquisar();
+    telaPesquisar();
+    telaExcluir();
+    telaListar();   
+    
     return 0;
 }
 
@@ -91,7 +96,7 @@ void telaMenuPrincipal(void) {
     printf("///                                                                       ///\n");
     printf("///          ===================================================          ///\n");
     printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///          = = = =    Sistema de controle de clientes  = = = =          ///\n");
+    printf("///          = = = =  Sistema de controle de clientes  = = = = =          ///\n");
     printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///          ===================================================          ///\n");
     printf("///                                                                       ///\n");
@@ -103,12 +108,11 @@ void telaMenuPrincipal(void) {
     printf("///                                                                       ///\n");
     printf("///           1. Cadastrar Clientes                                       ///\n");
     printf("///           2. Editar Clientes                                          ///\n");
-    printf("///           3. Ativar/Desativar Clientes                                ///\n");
-    printf("///           4. Pesquisar Clientes                                       ///\n");
-    printf("///           5.                                                          ///\n");
+    printf("///           3. Pesquisar Clientes                                       ///\n");
+    printf("///           4. Excluir clientes                                         ///\n");
+    printf("///           5. Listar clientes                                          ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
-    printf("///                                                                       ///\n");
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -147,7 +151,7 @@ void telaEditar(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Editar clientes    = = = = = = =              |\n");
+    printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o -------- que deseja alterar os dados:                |\n");
@@ -161,5 +165,36 @@ void telaEditar(void) {
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\n");
+}
 
+void telaPesquisar(void) {
+    //system("clear||cls"); tirar dúvida!
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o nome do cliente que deseja encontrar:                |\n");
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
+}
+
+void telaExcluir(void) {
+    //system("clear||cls"); tirar dúvida!
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =    Excluir  clientes  = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o nome do cliente que deseja encontrar:                |\n");
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
 }
