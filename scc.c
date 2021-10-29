@@ -17,7 +17,7 @@ void telaCadastro(void);
 void telaEditar(void);
 void telaPesquisar(void);
 void telaExcluir(void);
-void telaListar(void);
+//void telaListar(void);
 
 /////
 // Programa principal
@@ -30,7 +30,7 @@ int main(void) {
     telaEditar();    
     telaPesquisar();
     telaExcluir();
-    telaListar();   
+    //telaListar();   
     
     return 0;
 }
