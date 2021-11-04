@@ -103,6 +103,7 @@ void telaEquipe(void) {
 
 void telaMenuPrincipal(void) {
     system("clear||cls");
+    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -123,6 +124,7 @@ void telaMenuPrincipal(void) {
     printf("///           3. Módulo Clientes Associados                               ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op);
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
