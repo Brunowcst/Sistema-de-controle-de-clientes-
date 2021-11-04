@@ -15,11 +15,12 @@ void telaSobre(void);
 void telaEquipe(void);
 void telaMenuPrincipal(void);
 void telaMenuFuncionarios(void);
+void telaMenuClientes(void); 
+void telaMenuClientesVip(void); ////////
 void telaCadastro(void);
 void telaEditar(void);
 void telaPesquisar(void);
 void telaExcluir(void);
-//void telaListar(void);
 
 /////
 // Programa principal
@@ -29,11 +30,13 @@ int main(void) {
     telaEquipe();
     telaMenuPrincipal();
     telaMenuFuncionarios();
+    telaMenuClientes();
+    telaMenuClientesVip();
     telaCadastro();
     telaEditar();    
     telaPesquisar();
     telaExcluir();
-    //telaListar();   
+      
     
     return 0;
 }
@@ -99,7 +102,7 @@ void telaEquipe(void) {
 }
 
 void telaMenuPrincipal(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -115,12 +118,9 @@ void telaMenuPrincipal(void) {
     printf("///           = = = = = = = =  Menu Principal = = = = = = = =             ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
-    printf("///           1. Cadastrar Clientes                                       ///\n");
-    printf("///           2. Editar Clientes                                          ///\n");
-    printf("///           3. Pesquisar Clientes                                       ///\n");
-    printf("///           4. Excluir clientes                                         ///\n");
-    printf("///           5. Listar clientes                                          ///\n");
-    //printf("///           6. Sair                                                     ///\n");
+    printf("///           1. Módulo Funcionários                                      ///\n");
+    printf("///           2. Módulo Clientes                                          ///\n");
+    printf("///           3. Módulo Clientes Associados                               ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     printf("///                                                                       ///\n");
@@ -130,9 +130,8 @@ void telaMenuPrincipal(void) {
     printf("\n");
 }
 
-
 void telaMenuFuncionarios(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -144,7 +143,6 @@ void telaMenuFuncionarios(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
-    printf("///           5. Listar clientes                                          ///\n");
     //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
@@ -155,8 +153,58 @@ void telaMenuFuncionarios(void) {
     printf("\n");
 }
 
+void telaMenuClientes(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = = =   Menu Clientes   = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Cadastrar Clientes                                       ///\n");
+    printf("///           2. Editar Clientes                                          ///\n");
+    printf("///           3. Pesquisar Clientes                                       ///\n");
+    printf("///           4. Excluir clientes                                         ///\n");
+    //printf("///           6. Sair                                                     ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           Escolha a opção desejada:                                   ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+
+void telaMenuClientesVip(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = Menu Clientes Associados  = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Cadastrar Clientes                                       ///\n");
+    printf("///           2. Editar Clientes                                          ///\n");
+    printf("///           3. Pesquisar Clientes                                       ///\n");
+    printf("///           4. Excluir clientes                                         ///\n");
+    //printf("///           6. Sair                                                     ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           Escolha a opção desejada:                                   ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+
+
+
 void telaCadastro(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -176,14 +224,11 @@ void telaCadastro(void) {
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-
-    // TIRAR DÚVIDAS SOBRE ISSO ---> gercahr();
-
     printf("\n");
 }
 
 void telaEditar(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -201,7 +246,7 @@ void telaEditar(void) {
 }
 
 void telaPesquisar(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -219,12 +264,12 @@ void telaPesquisar(void) {
 }
 
 void telaExcluir(void) {
-    system("clear||cls"); //tirar dúvida!
+    system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =    Excluir  clientes  = = = = = =              |\n");
+    printf("|          = = = = = = =  Excluir  clientes  = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
