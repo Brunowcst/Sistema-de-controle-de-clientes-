@@ -134,6 +134,7 @@ void telaMenuPrincipal(void) {
 
 void telaMenuFuncionarios(void) {
     system("clear||cls");
+    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -148,6 +149,7 @@ void telaMenuFuncionarios(void) {
     //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op);
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -157,6 +159,7 @@ void telaMenuFuncionarios(void) {
 
 void telaMenuClientes(void) {
     system("clear||cls");
+    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -171,6 +174,7 @@ void telaMenuClientes(void) {
     //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op);   
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
