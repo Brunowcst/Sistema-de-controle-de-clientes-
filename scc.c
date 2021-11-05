@@ -54,7 +54,8 @@ void telaSobre(void) {
     printf("///               Departamento de Computação e Tecnologia                   ///\n");
     printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
     printf("///                  Projeto Sistema de Controle de Clientes                ///\n");
-    printf("///                                                                         ///\n");
+    printf("///                   Adapted from @flgorgonio - 2021.2                     ///\n");
+    printf("///                     https://github.com/flgorgonio                       ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = Sistema de Controle de Clientes = = = = =          ///\n");
@@ -125,6 +126,7 @@ void telaMenuPrincipal(void) {
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
+    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -150,6 +152,7 @@ void telaMenuFuncionarios(void) {
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
+    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -174,7 +177,8 @@ void telaMenuClientes(void) {
     //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op);   
+    scanf("%d", &op);
+    getchar();   
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -185,6 +189,7 @@ void telaMenuClientes(void) {
 
 void telaMenuClientesVip(void) {
     system("clear||cls");
+    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -199,6 +204,8 @@ void telaMenuClientesVip(void) {
     //printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op); 
+    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -211,6 +218,12 @@ void telaMenuClientesVip(void) {
 
 void telaCadastro(void) {
     system("clear||cls");
+    char nome[51];
+    char cpf[12];
+    char nasc[11];
+    char cell[12];
+    char email[51];
+
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -221,10 +234,20 @@ void telaCadastro(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Nome Completo:                                            |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    getchar();
     printf("|           * CPF (Apenas números):                                     |\n");
-    printf("|           * Data de Nascimento:                                       |\n");
-    printf("|           * Celular (Apenas números):                                 |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
+    scanf("%[0-9]/", nasc);
+    getchar();
+    printf("|           * Celular ((DDD)número):                                    |\n");
+    scanf("%[0-9]()", cell);
+    getchar();
     printf("|           * E-mail:                                                   |\n");
+    scanf("%[A-Za-z@._0-9]", email);
+    getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
