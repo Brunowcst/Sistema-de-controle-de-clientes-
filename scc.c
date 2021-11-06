@@ -257,6 +257,7 @@ void telaCadastro(void) {
 }
 
 void telaEditar(void) {
+    char cpf[12];
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -266,6 +267,8 @@ void telaEditar(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -275,6 +278,7 @@ void telaEditar(void) {
 }
 
 void telaPesquisar(void) {
+    char cpf[12];
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -284,6 +288,8 @@ void telaPesquisar(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -293,6 +299,7 @@ void telaPesquisar(void) {
 }
 
 void telaExcluir(void) {
+    char cpf[12];
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -302,6 +309,8 @@ void telaExcluir(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -315,3 +324,4 @@ void telaExcluir(void) {
 
 //Criar função com estrutura de decisão(para editar dados)
 //Menu principal - jogar para dentro de outros módulos.
+//Ideia Módulo de pagamentos.
