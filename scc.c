@@ -16,11 +16,14 @@ void telaEquipe(void);
 void telaMenuPrincipal(void);
 void telaMenuFuncionarios(void);
 void telaMenuClientes(void); 
-void telaMenuClientesVip(void); ////////
+//void telaMenuClientesVip(void);
+void telaFinancas(void);
 void telaCadastro(void);
+void cadastro_financas(void);
 void telaEditar(void);
 void telaPesquisar(void);
 void telaExcluir(void);
+
 
 /////
 // Programa principal
@@ -31,7 +34,8 @@ int main(void) {
     telaMenuPrincipal();
     telaMenuFuncionarios();
     telaMenuClientes();
-    telaMenuClientesVip();
+    //telaMenuClientesVip();
+    cadastro_financas();
     telaCadastro();
     telaEditar();    
     telaPesquisar();
@@ -122,7 +126,8 @@ void telaMenuPrincipal(void) {
     printf("///                                                                       ///\n");
     printf("///           1. Módulo Funcionários                                      ///\n");
     printf("///           2. Módulo Clientes                                          ///\n");
-    printf("///           3. Módulo Clientes Associados                               ///\n");
+    printf("///           3. Módulo Finanças                                          ///\n");
+    // printf("///           3. Módulo Clientes Associados                               ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -148,7 +153,7 @@ void telaMenuFuncionarios(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
-    //printf("///           6. Sair                                                     ///\n");
+    printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -174,7 +179,7 @@ void telaMenuClientes(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
-    //printf("///           6. Sair                                                     ///\n");
+    printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -183,10 +188,10 @@ void telaMenuClientes(void) {
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-    printf("\n");
+    printf("\n");    
 }
 
-
+/*
 void telaMenuClientesVip(void) {
     system("clear||cls");
     int op;
@@ -212,8 +217,72 @@ void telaMenuClientesVip(void) {
     getchar();
     printf("\n");
 }
+*/
 
+void telaFinancas(void) {
+    system("clear||cls");
+    int op;
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Pesquisar Planos                                         ///\n");
+    printf("///           2. Cadastrar PLanos                                         ///\n");
+    printf("///           3. Editar Planos                                            ///\n");
+    printf("///           4. Excluir Planos                                           ///\n");
+    printf("///           5. Sair                                                     ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op); 
+    getchar();
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
 
+void cadastro_financas(void) {
+    system("clear||cls");
+    char nome[51];
+    char cpf[12];
+    char nasc[11];
+    int isVip;
+    
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Cadastrar Plano  = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|                     * Insira os dados abaixo *                        |\n");
+    printf("|                                                                       |\n");
+    printf("|           * Nome Completo:                                            |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    getchar();
+    printf("|           * CPF (Apenas números):                                     |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
+    scanf("%[0-9]/", nasc);
+    getchar();
+    printf("|           * Escolha o tipo do plano:                                  |\n");
+    printf("|           1. Plano Família                                            |\n");
+    printf("|           2. Plano Individual                                         |\n");
+    printf("|           3. Plano Amigos                                             |\n");
+    scanf("%d", &isVip);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
 
 
 void telaCadastro(void) {
@@ -256,6 +325,7 @@ void telaCadastro(void) {
     printf("\n");
 }
 
+
 void telaEditar(void) {
     char cpf[12];
     system("clear||cls");
@@ -276,6 +346,7 @@ void telaEditar(void) {
     getchar();
     printf("\n");
 }
+
 
 void telaPesquisar(void) {
     char cpf[12];
@@ -298,6 +369,7 @@ void telaPesquisar(void) {
     printf("\n");
 }
 
+
 void telaExcluir(void) {
     char cpf[12];
     system("clear||cls");
@@ -318,10 +390,3 @@ void telaExcluir(void) {
     getchar();
     printf("\n");
 }
-
-
-
-
-//Criar função com estrutura de decisão(para editar dados)
-//Menu principal - jogar para dentro de outros módulos.
-//Ideia Módulo de pagamentos.
