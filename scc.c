@@ -23,6 +23,9 @@ void cadastro_financas(void);
 void telaEditar(void);
 void telaPesquisar(void);
 void telaExcluir(void);
+void editarPlanos(void);
+void excluirPlanos(void);
+void pesquisarPlanos(void);
 
 
 /////
@@ -40,6 +43,10 @@ int main(void) {
     telaEditar();    
     telaPesquisar();
     telaExcluir();
+    editarPlanos();
+    excluirPlanos();
+    pesquisarPlanos();
+
       
     
     return 0;
@@ -256,7 +263,7 @@ void cadastro_financas(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Cadastrar Plano  = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Cadastrar Planos = = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|                     * Insira os dados abaixo *                        |\n");
@@ -283,7 +290,68 @@ void cadastro_financas(void) {
     getchar();
     printf("\n");
 }
+void editarPlanos(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja alterar seu plano:         |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
 
+void excluirPlanos(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja alterar seu plano:         |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+void pesquisarPlanos(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Pesquise por Planos  = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
 
 void telaCadastro(void) {
     system("clear||cls");
