@@ -11,41 +11,55 @@
 
 /////
 // Assinatura das funções
-void telaSobre(void);
-void telaEquipe(void);
-void telaMenuPrincipal(void);
-void telaMenuFuncionarios(void);
-void telaMenuClientes(void); 
-//void telaMenuClientesVip(void);
-void telaFinancas(void);
-void telaCadastro(void);
-void cadastro_financas(void);
-void telaEditar(void);
-void telaPesquisar(void);
-void telaExcluir(void);
-void editarPlanos(void);
-void excluirPlanos(void);
-void pesquisarPlanos(void);
+void sobre(void);
+void equipe(void);
+void menuPrincipal(void);
+
+//Módulo Funcionarios
+
+void mod_MenuFuncionarios(void);
+
+//Criar as funções de CRUD do módulo funcionários...
+
+//Módulo clientes
+
+void mod_MenuClientes(void); 
+
+void pesquisar_clientes(void);
+void cadastro_clientes(void);
+void edit_clientes(void);
+void excluir_clientes(void);
+
+//Módulo Finanças
+
+void mod_MenuFinancas(void);
+
+void cadastro_planos(void);
+void editar_planos(void);
+void excluir_planos(void);
+void pesquisar_planos(void);
 
 
 /////
 // Programa principal
 
 int main(void) {
-    telaSobre();
-    telaEquipe();
-    telaMenuPrincipal();
-    telaMenuFuncionarios();
-    telaMenuClientes();
-    //telaMenuClientesVip();
-    cadastro_financas();
-    telaCadastro();
-    telaEditar();    
-    telaPesquisar();
-    telaExcluir();
-    editarPlanos();
-    excluirPlanos();
-    pesquisarPlanos();
+    sobre();
+    equipe();
+    menuPrincipal();
+    mod_MenuFuncionarios();
+    mod_MenuClientes();
+    pesquisar_clientes();
+    cadastro_clientes();
+    edit_clientes();
+    excluir_clientes();  
+    
+    mod_MenuFinancas();
+    pesquisar_planos();
+    cadastro_planos();
+    editar_planos();
+    excluir_planos();
+    
 
       
     
@@ -55,7 +69,7 @@ int main(void) {
 /////
 // Funções
 
-void telaSobre(void) {
+void sobre(void) {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -85,7 +99,7 @@ void telaSobre(void) {
 
 
 
-void telaEquipe(void) {
+void equipe(void) {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -113,7 +127,7 @@ void telaEquipe(void) {
     printf("\n");
 }
 
-void telaMenuPrincipal(void) {
+void menuPrincipal(void) {
     system("clear||cls");
     int op;
     printf("\n");
@@ -134,7 +148,6 @@ void telaMenuPrincipal(void) {
     printf("///           1. Módulo Funcionários                                      ///\n");
     printf("///           2. Módulo Clientes                                          ///\n");
     printf("///           3. Módulo Finanças                                          ///\n");
-    // printf("///           3. Módulo Clientes Associados                               ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -146,7 +159,7 @@ void telaMenuPrincipal(void) {
     printf("\n");
 }
 
-void telaMenuFuncionarios(void) {
+void mod_MenuFuncionarios(void) {
     system("clear||cls");
     int op;
     printf("\n");
@@ -156,10 +169,10 @@ void telaMenuFuncionarios(void) {
     printf("///           = = = = = = = = Menu Funcionários = = = = = = =             ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
-    printf("///           1. Cadastrar Clientes                                       ///\n");
-    printf("///           2. Editar Clientes                                          ///\n");
-    printf("///           3. Pesquisar Clientes                                       ///\n");
-    printf("///           4. Excluir clientes                                         ///\n");
+    printf("///           1. Cadastrar Funcionarios                                   ///\n");
+    printf("///           2. Editar Funcionarios                                      ///\n");
+    printf("///           3. Pesquisar Funcionarios                                   ///\n");
+    printf("///           4. Excluir Funcionarios                                     ///\n");
     printf("///           6. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
@@ -172,7 +185,7 @@ void telaMenuFuncionarios(void) {
     printf("\n");
 }
 
-void telaMenuClientes(void) {
+void mod_MenuClientes(void) {
     system("clear||cls");
     int op;
     printf("\n");
@@ -198,35 +211,8 @@ void telaMenuClientes(void) {
     printf("\n");    
 }
 
-/*
-void telaMenuClientesVip(void) {
-    system("clear||cls");
-    int op;
-    printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                       ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = Menu Clientes Associados  = = = = = =             ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           1. Cadastrar Clientes                                       ///\n");
-    printf("///           2. Editar Clientes                                          ///\n");
-    printf("///           3. Pesquisar Clientes                                       ///\n");
-    printf("///           4. Excluir clientes                                         ///\n");
-    //printf("///           6. Sair                                                     ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op); 
-    getchar();
-    printf("///                                                                       ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-*/
 
-void telaFinancas(void) {
+void mod_MenuFinancas(void) {
     system("clear||cls");
     int op;
     printf("\n");
@@ -252,7 +238,24 @@ void telaFinancas(void) {
     printf("\n");
 }
 
-void cadastro_financas(void) {
+
+/*
+
+Essa função de cadastro de planos está estranho.
+Deveríamos cadastrar um tipo de plano e, no módulo de funcionários vip, chamaria
+esse plano como função...
+Cadastrar planos seria algo em relação aos benefícios e informações.
+O cadastro com informações pessoais(atual) não faz sentido com o cadastro de um plano...
+
+Oque faria sentido é associar, em outro módulo, um plano X a um cliente X...
+
+As outras funções abaixo, Como editar e excluir, também se aplicam a essa lógica. 
+Ao invés de pesquisar planos por CPF (Coisa que não tem sentido), poderíamos pesquisar
+utilizando outra coisa...
+
+*/
+
+void cadastro_planos(void) {
     system("clear||cls");
     char nome[51];
     char cpf[12];
@@ -290,7 +293,7 @@ void cadastro_financas(void) {
     getchar();
     printf("\n");
 }
-void editarPlanos(void) {
+void editar_planos(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
@@ -300,7 +303,7 @@ void editarPlanos(void) {
     printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja alterar seu plano:         |\n");
+    printf("|        Informe o CPF do cliente que deseja editar plano:              |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -311,7 +314,7 @@ void editarPlanos(void) {
     printf("\n");
 }
 
-void excluirPlanos(void) {
+void excluir_planos(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
@@ -321,7 +324,7 @@ void excluirPlanos(void) {
     printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja alterar seu plano:         |\n");
+    printf("|        Informe o CPF do cliente que deseja excluir plano:             |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -332,7 +335,16 @@ void excluirPlanos(void) {
     printf("\n");
 }
 
-void pesquisarPlanos(void) {
+/*
+
+Pensar melhor sobre essa opção de pesquisa de planos. 
+Há sentido em pesquisar planos? 
+Poderia ser só um "Listar planos" disponíveis...
+Visto que não há lógica pesquisar planos por CPF, por exemplo...
+
+*/
+
+void pesquisar_planos(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
@@ -353,13 +365,15 @@ void pesquisarPlanos(void) {
     printf("\n");
 }
 
-void telaCadastro(void) {
+void cadastro_clientes(void) {
     system("clear||cls");
     char nome[51];
     char cpf[12];
     char nasc[11];
     char cell[12];
     char email[51];
+    int category;
+
 
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -385,6 +399,11 @@ void telaCadastro(void) {
     printf("|           * E-mail:                                                   |\n");
     scanf("%[A-Za-z@._0-9]", email);
     getchar();
+    printf("|           * Informe a categoria desse cliente:                        |\n");
+    printf("|               1. Cliente comum.                                       |\n");
+    printf("|               2. Cliente Premium.                                     |\n");
+    scanf("%d", &category);
+    getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -394,7 +413,7 @@ void telaCadastro(void) {
 }
 
 
-void telaEditar(void) {
+void edit_clientes(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
@@ -416,7 +435,7 @@ void telaEditar(void) {
 }
 
 
-void telaPesquisar(void) {
+void pesquisar_clientes(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
@@ -438,7 +457,7 @@ void telaPesquisar(void) {
 }
 
 
-void telaExcluir(void) {
+void excluir_clientes(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
