@@ -35,13 +35,15 @@ void excluir_clientes(void);
 void mod_MenuFinancas(void);
 
 void cadastro_planos(void);
-void editar_planos(void);
+void edit_planos(void);
 void excluir_planos(void);
 void pesquisar_planos(void);
 
 //Módulo funcionários
 void cadastro_func(void);
 void pesquisar_func(void);
+void edit_func(void);
+void excluir_func(void);
 
 
 /////
@@ -51,10 +53,12 @@ int main(void) {
     sobre();
     equipe();
     menuPrincipal();
+    
     mod_MenuFuncionarios();
-    cadastro_func();
-    pesquisar_func();
-
+     cadastro_func();
+     pesquisar_func();
+     edit_func();
+     excluir_func();
 
     mod_MenuClientes();
      pesquisar_clientes();
@@ -181,7 +185,7 @@ void mod_MenuFuncionarios(void) {
     printf("///           2. Editar Funcionarios                                      ///\n");
     printf("///           3. Pesquisar Funcionarios                                   ///\n");
     printf("///           4. Excluir Funcionarios                                     ///\n");
-    printf("///           6. Sair                                                     ///\n");
+    printf("///           0. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -260,6 +264,47 @@ void pesquisar_func(void) {
     printf("\n");
 }
 
+void edit_func(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Editar funcionários  = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+void excluir_func(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  excluir funcionários = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do funcionário que deseja escluir:               |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
 void mod_MenuClientes(void) {
     system("clear||cls");
     int op;
@@ -274,7 +319,7 @@ void mod_MenuClientes(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
-    printf("///           6. Sair                                                     ///\n");
+    printf("///           0. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -301,7 +346,7 @@ void mod_MenuFinancas(void) {
     printf("///           2. Cadastrar PLanos                                         ///\n");
     printf("///           3. Editar Planos                                            ///\n");
     printf("///           4. Excluir Planos                                           ///\n");
-    printf("///           5. Sair                                                     ///\n");
+    printf("///           0. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op); 
@@ -370,6 +415,7 @@ void cadastro_planos(void) {
     getchar();
     printf("\n");
 }
+
 void editar_planos(void) {
     char cpf[12];
     system("clear||cls");
