@@ -39,6 +39,10 @@ void editar_planos(void);
 void excluir_planos(void);
 void pesquisar_planos(void);
 
+//Módulo funcionários
+void cadastro_func(void);
+void pesquisar_func(void);
+
 
 /////
 // Programa principal
@@ -48,17 +52,21 @@ int main(void) {
     equipe();
     menuPrincipal();
     mod_MenuFuncionarios();
+    cadastro_func();
+    pesquisar_func();
+
+
     mod_MenuClientes();
-    pesquisar_clientes();
-    cadastro_clientes();
-    edit_clientes();
-    excluir_clientes();  
+     pesquisar_clientes();
+     cadastro_clientes();
+     edit_clientes();
+     excluir_clientes();  
     
     mod_MenuFinancas();
-    pesquisar_planos();
-    cadastro_planos();
-    editar_planos();
-    excluir_planos();
+     pesquisar_planos();
+     cadastro_planos();
+     editar_planos();
+     excluir_planos();
     
 
       
@@ -184,6 +192,73 @@ void mod_MenuFuncionarios(void) {
     getchar();
     printf("\n");
 }
+void cadastro_func(void) {
+    system("clear||cls");
+    char nome[51];
+    char cpf[12];
+    char nasc[11];
+    char cell[12];
+    char email[51];
+    //int category;
+
+
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = =  Cadastrar Funcionário  = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|                     * Insira os dados abaixo *                        |\n");
+    printf("|                                                                       |\n");
+    printf("|           * Nome Completo:                                            |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    getchar();
+    printf("|           * CPF (Apenas números):                                     |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
+    scanf("%[0-9]/", nasc);
+    getchar();
+    printf("|           * Celular ((DDD)número):                                    |\n");
+    scanf("%[0-9]()", cell);
+    getchar();
+    printf("|           * E-mail:                                                   |\n");
+    scanf("%[A-Za-z@._0-9]", email);
+    getchar();
+   /*printf("|           * Informe o plano desejado:                                 |\n");
+    printf("|               1. Cliente comum.                                       |\n");
+    printf("|               2. Cliente Premium.                                     |\n");
+    scanf("%d", &category);                                      */
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+void pesquisar_func(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = =  Pesquise Funcionários  = = = = = =               |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
 
 void mod_MenuClientes(void) {
     system("clear||cls");
@@ -284,6 +359,8 @@ void cadastro_planos(void) {
     printf("|           1. Plano Família                                            |\n");
     printf("|           2. Plano Individual                                         |\n");
     printf("|           3. Plano Amigos                                             |\n");
+    printf("|           4. Plano Premium                                            |\n");
+    //printf("|           5. Plano Pré-Pago                                            |\n");
     scanf("%d", &isVip);
     getchar();
     printf("|                                                                       |\n");
@@ -303,7 +380,7 @@ void editar_planos(void) {
     printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja editar plano:              |\n");
+    printf("|              Informe o plano que deseja editar :                      |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -399,7 +476,7 @@ void cadastro_clientes(void) {
     printf("|           * E-mail:                                                   |\n");
     scanf("%[A-Za-z@._0-9]", email);
     getchar();
-    printf("|           * Informe a categoria desse cliente:                        |\n");
+    printf("|           * Informe o plano desejado:                                 |\n");
     printf("|               1. Cliente comum.                                       |\n");
     printf("|               2. Cliente Premium.                                     |\n");
     scanf("%d", &category);
