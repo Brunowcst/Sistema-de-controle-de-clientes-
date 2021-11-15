@@ -37,7 +37,7 @@ void mod_MenuFinancas(void);
 void cadastro_planos(void);
 void edit_planos(void);
 void excluir_planos(void);
-void pesquisar_planos(void);
+void listar_planos(void);
 
 //Módulo funcionários
 void cadastro_func(void);
@@ -67,9 +67,9 @@ int main(void) {
      excluir_clientes();  
     
     mod_MenuFinancas();
-     pesquisar_planos();
+     listar_planos();
      cadastro_planos();
-     editar_planos();
+     edit_planos();
      excluir_planos();
     
 
@@ -342,7 +342,7 @@ void mod_MenuFinancas(void) {
     printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
-    printf("///           1. Pesquisar Planos                                         ///\n");
+    printf("///           1. Listar Planos                                            ///\n");
     printf("///           2. Cadastrar PLanos                                         ///\n");
     printf("///           3. Editar Planos                                            ///\n");
     printf("///           4. Excluir Planos                                           ///\n");
@@ -377,10 +377,11 @@ utilizando outra coisa...
 
 void cadastro_planos(void) {
     system("clear||cls");
-    char nome[51];
-    char cpf[12];
-    char nasc[11];
-    int isVip;
+    char titulo[51];
+    float preco[12];
+    char beneficios[11];
+    //int vitalidade[11]; //tempo
+    
     
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -391,24 +392,18 @@ void cadastro_planos(void) {
     printf("|                                                                       |\n");
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
-    printf("|           * Nome Completo:                                            |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    printf("|           * Título do plano:                                          |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", titulo);
     getchar();
-    printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%[0-9]",cpf);
+    printf("|           * Preço: (Apenas números):                                     |\n");
+    scanf("%[0-9 .,]",&preco);
     getchar();
-    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
-    scanf("%[0-9]/", nasc);
+    printf("|           * Benefícios do plano:                                      |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", benecifios);
     getchar();
-    printf("|           * Escolha o tipo do plano:                                  |\n");
-    printf("|           1. Plano Família                                            |\n");
-    printf("|           2. Plano Individual                                         |\n");
-    printf("|           3. Plano Amigos                                             |\n");
-    printf("|           4. Plano Premium                                            |\n");
-    //printf("|           5. Plano Pré-Pago                                            |\n");
-    scanf("%d", &isVip);
-    getchar();
-    printf("|                                                                       |\n");
+    /*printf("|           * Informe o período:                                      |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", vitalidade);
+    */
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -416,8 +411,8 @@ void cadastro_planos(void) {
     printf("\n");
 }
 
-void editar_planos(void) {
-    char cpf[12];
+void edit_planos(void) {
+    int op;
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -427,7 +422,8 @@ void editar_planos(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|              Informe o plano que deseja editar :                      |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%[0-9]",&op);
+    //Aqui printaria os planos pra escolher qual deseja editar
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
@@ -438,7 +434,7 @@ void editar_planos(void) {
 }
 
 void excluir_planos(void) {
-    char cpf[12];
+    int op;
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -447,7 +443,7 @@ void excluir_planos(void) {
     printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja excluir plano:             |\n");
+    printf("|        Informe o plano que deseja excluir:                            |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -467,7 +463,7 @@ Visto que não há lógica pesquisar planos por CPF, por exemplo...
 
 */
 
-void pesquisar_planos(void) {
+void listar_planos(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
