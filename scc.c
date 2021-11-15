@@ -378,9 +378,9 @@ utilizando outra coisa...
 void cadastro_planos(void) {
     system("clear||cls");
     char titulo[51];
-    float preco[12];
-    char beneficios[11];
-    //int vitalidade[11]; //tempo
+    float preco;
+    char beneficios[51];
+    //int vitalidade[11]; //tempo de validade do plano;
     
     
     printf("\n");
@@ -396,10 +396,10 @@ void cadastro_planos(void) {
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", titulo);
     getchar();
     printf("|           * Preço: (Apenas números):                                     |\n");
-    scanf("%[0-9 .,]",&preco);
+    scanf("%f",&preco);
     getchar();
     printf("|           * Benefícios do plano:                                      |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", benecifios);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", beneficios);
     getchar();
     /*printf("|           * Informe o período:                                      |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", vitalidade);
@@ -413,6 +413,7 @@ void cadastro_planos(void) {
 
 void edit_planos(void) {
     int op;
+    
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -422,7 +423,7 @@ void edit_planos(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|              Informe o plano que deseja editar :                      |\n");
-    scanf("%[0-9]",&op);
+    scanf("%d",&op);
     //Aqui printaria os planos pra escolher qual deseja editar
     getchar();
     printf("|                                                                       |\n");
@@ -444,7 +445,7 @@ void excluir_planos(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o plano que deseja excluir:                            |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%d", &op);
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
@@ -464,18 +465,24 @@ Visto que não há lógica pesquisar planos por CPF, por exemplo...
 */
 
 void listar_planos(void) {
-    char cpf[12];
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Pesquise por Planos  = = = = = =              |\n");
+    printf("|          = = = = = = =  Listagem de Planos   = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
-    scanf("%[0-9]",cpf);
-    getchar();
+    printf("|           1. Plano Família                                            |\n");
+    // mostrar beneficios
+    printf("|           2. Plano Individual                                         |\n");
+    // mostrar beneficios
+    printf("|           3. Plano Amigos                                             |\n");
+    // mostrar beneficios
+    printf("|           4. Plano Premium                                            |\n");
+    // mostrar beneficios
+    printf("|           5. Plano Daily                                              |\n");
+    // mostrar beneficios
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
