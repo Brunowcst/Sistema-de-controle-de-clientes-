@@ -164,6 +164,7 @@ void menuPrincipal(void) {
     printf("///           3. Módulo Finanças                                          ///\n");
     printf("///           4. Sobre                                                    ///\n");
     printf("///           0. Sair                                                     ///\n");
+    printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
     getchar();
@@ -183,7 +184,7 @@ case 3 : mod_MenuFinancas();
 case 4 : sobre();
     break;
 case 0 : 
-    break;
+    continue;
 //Aqui deveria sair do sistema...
 default : menuPrincipal();
     break;
@@ -207,7 +208,7 @@ void mod_MenuFuncionarios(void) {
     printf("///           2. Editar Funcionarios                                      ///\n");
     printf("///           3. Pesquisar Funcionarios                                   ///\n");
     printf("///           4. Excluir Funcionarios                                     ///\n");
-    printf("///           0. Sair                                                     ///\n");
+    printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -278,6 +279,7 @@ void cadastro_func(void) {
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    mod_MenuFuncionarios();
     printf("\n");
 
 }
@@ -289,7 +291,7 @@ void pesquisar_func(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = =  Pesquise Funcionários  = = = = = =               |\n");
+    printf("|          = = = = = =  Pesquise Funcionários  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
@@ -360,7 +362,7 @@ void mod_MenuClientes(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
-    printf("///           0. Sair                                                     ///\n");
+    printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
@@ -531,7 +533,7 @@ void mod_MenuFinancas(void) {
     printf("///           2. Cadastrar PLanos                                         ///\n");
     printf("///           3. Editar Planos                                            ///\n");
     printf("///           4. Excluir Planos                                           ///\n");
-    printf("///           0. Sair                                                     ///\n");
+    printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op); 
