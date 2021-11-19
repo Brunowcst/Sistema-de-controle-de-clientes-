@@ -160,7 +160,7 @@ void menuPrincipal(void) {
     printf("///           1. Módulo Funcionários                                      ///\n");
     printf("///           2. Módulo Clientes                                          ///\n");
     printf("///           3. Módulo Finanças                                          ///\n");
-    printf("///                                                                       ///\n");
+    printf("///           0. Sair                                                     ///\n");
     printf("///           Escolha a opção desejada:                                   ///\n");
     scanf("%d", &op);
     getchar();
@@ -169,6 +169,20 @@ void menuPrincipal(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+
+switch(op){
+    case 1 : mod_MenuFuncionarios();
+        break;
+    case 2 : mod_MenuClientes();
+        break;
+    case 3 : mod_MenuFinancas();
+        break;
+    case 0 : sobre();
+        break;
+    default : menuPrincipal();
+        break;
+
+}
 }
 
 void mod_MenuFuncionarios(void) {
@@ -195,7 +209,24 @@ void mod_MenuFuncionarios(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+
+    switch(op){
+    case 1 : cadastro_func();
+        break;
+    case 2 : edit_func();
+        break;
+    case 3 : pesquisar_func();
+        break;
+    case 4 : excluir_func();
+        break;
+    case 0 : menuPrincipal();
+        break;
+    default : mod_MenuFuncionarios();
+        break;
+
 }
+}
+
 void cadastro_func(void) {
     system("clear||cls");
     char nome[51];
@@ -291,7 +322,7 @@ void excluir_func(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  excluir funcionários = = = = = =              |\n");
+    printf("|          = = = = = = =  Excluir funcionários = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do funcionário que deseja escluir:               |\n");
