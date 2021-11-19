@@ -183,7 +183,8 @@ case 3 : mod_MenuFinancas();
 case 4 : sobre();
     break;
 case 0 : 
-    return;
+    break;
+//Aqui deveria sair do sistema...
 default : menuPrincipal();
     break;
 }
@@ -445,7 +446,7 @@ void cadastro_planos(void) {
     char titulo[51];
     float preco;
     char beneficios[51];
-    //int vitalidade[11]; //tempo de validade do plano;
+    //int vitalidade; //tempo de validade do plano;
     
     
     printf("\n");
@@ -460,15 +461,17 @@ void cadastro_planos(void) {
     printf("|           * Título do plano:                                          |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", titulo);
     getchar();
-    printf("|           * Preço: (Apenas números):                                     |\n");
+    printf("|           * Preço em R$: (Apenas números):                            |\n");
     scanf("%f",&preco);
     getchar();
     printf("|           * Benefícios do plano:                                      |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", beneficios);
     getchar();
-    /*printf("|           * Informe o período:                                      |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", vitalidade);
-    */
+    // printf("|           * Informe o período:                                        |\n");
+    // printf("|               1. Anual                                                |\n");
+    // printf("|               2. Mensal                                               |\n");
+    // //Ver melhor isso
+    // scanf("%d", &vitalidade);
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -601,6 +604,19 @@ void cadastro_clientes(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+    /*
+    switch(category){
+
+        case 1:
+            break;
+        case 2:
+            printf("Escolha o plano referente:  ");
+            listar_planos();
+            break;
+        default:
+            return;
+        }
+    */
 }
 
 
