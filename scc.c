@@ -190,6 +190,9 @@ default : menuPrincipal();
     }
 }
 
+
+//////// Módulo Funcionarios  ///////
+
 void mod_MenuFuncionarios(void) {
     system("clear||cls");
     int op;
@@ -341,6 +344,8 @@ void excluir_func(void) {
     printf("\n");
 }
 
+/////// Módulo clientes  //////////
+
 void mod_MenuClientes(void) {
     system("clear||cls");
     int op;
@@ -380,183 +385,6 @@ void mod_MenuClientes(void) {
     default : mod_MenuClientes();
         break;
     }   
-}
-
-
-void mod_MenuFinancas(void) {
-    system("clear||cls");
-    int op;
-    printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                       ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           1. Listar Planos                                            ///\n");
-    printf("///           2. Cadastrar PLanos                                         ///\n");
-    printf("///           3. Editar Planos                                            ///\n");
-    printf("///           4. Excluir Planos                                           ///\n");
-    printf("///           0. Sair                                                     ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op); 
-    getchar();
-    printf("///                                                                       ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-    
-    switch(op){
-    case 1 : listar_planos();
-        break;
-    case 2 : cadastro_planos();
-        break;
-    case 3 : edit_planos();
-        break;
-    case 4 : excluir_planos();
-        break;
-    case 0 : menuPrincipal();
-        break;
-    default : mod_MenuFinancas();
-        break;
-    }
-}
-
-
-/*
-
-Essa função de cadastro de planos está estranho.
-Deveríamos cadastrar um tipo de plano e, no módulo de funcionários vip, chamaria
-esse plano como função...
-Cadastrar planos seria algo em relação aos benefícios e informações.
-O cadastro com informações pessoais(atual) não faz sentido com o cadastro de um plano...
-
-Oque faria sentido é associar, em outro módulo, um plano X a um cliente X...
-
-As outras funções abaixo, Como editar e excluir, também se aplicam a essa lógica. 
-Ao invés de pesquisar planos por CPF (Coisa que não tem sentido), poderíamos pesquisar
-utilizando outra coisa...
-
-*/
-
-void cadastro_planos(void) {
-    system("clear||cls");
-    char titulo[51];
-    float preco;
-    char beneficios[51];
-    //int vitalidade; //tempo de validade do plano;
-    
-    
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Cadastrar Planos = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|                     * Insira os dados abaixo *                        |\n");
-    printf("|                                                                       |\n");
-    printf("|           * Título do plano:                                          |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", titulo);
-    getchar();
-    printf("|           * Preço em R$: (Apenas números):                            |\n");
-    scanf("%f",&preco);
-    getchar();
-    printf("|           * Benefícios do plano:                                      |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", beneficios);
-    getchar();
-    // printf("|           * Informe o período:                                        |\n");
-    // printf("|               1. Anual                                                |\n");
-    // printf("|               2. Mensal                                               |\n");
-    // //Ver melhor isso
-    // scanf("%d", &vitalidade);
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
-void edit_planos(void) {
-    int op;
-    
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|              Informe o plano que deseja editar :                      |\n");
-    scanf("%d",&op);
-    //Aqui printaria os planos pra escolher qual deseja editar
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
-void excluir_planos(void) {
-    int op;
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|        Informe o plano que deseja excluir:                            |\n");
-    scanf("%d", &op);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
-/*
-
-Pensar melhor sobre essa opção de pesquisa de planos. 
-Há sentido em pesquisar planos? 
-Poderia ser só um "Listar planos" disponíveis...
-Visto que não há lógica pesquisar planos por CPF, por exemplo...
-
-*/
-
-void listar_planos(void) {
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Listagem de Planos   = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|           1. Plano Família                                            |\n");
-    // mostrar beneficios
-    printf("|           2. Plano Individual                                         |\n");
-    // mostrar beneficios
-    printf("|           3. Plano Amigos                                             |\n");
-    // mostrar beneficios
-    printf("|           4. Plano Premium                                            |\n");
-    // mostrar beneficios
-    printf("|           5. Plano Daily                                              |\n");
-    // mostrar beneficios
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
 }
 
 void cadastro_clientes(void) {
@@ -677,6 +505,172 @@ void excluir_clientes(void) {
     printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
     scanf("%[0-9]",cpf);
     getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+
+//////// Módulo Financas  ////////
+
+
+void mod_MenuFinancas(void) {
+    system("clear||cls");
+    int op;
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Listar Planos                                            ///\n");
+    printf("///           2. Cadastrar PLanos                                         ///\n");
+    printf("///           3. Editar Planos                                            ///\n");
+    printf("///           4. Excluir Planos                                           ///\n");
+    printf("///           0. Sair                                                     ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           Escolha a opção desejada:                                   ///\n");
+    scanf("%d", &op); 
+    getchar();
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+    
+    switch(op){
+    case 1 : listar_planos();
+        break;
+    case 2 : cadastro_planos();
+        break;
+    case 3 : edit_planos();
+        break;
+    case 4 : excluir_planos();
+        break;
+    case 0 : menuPrincipal();
+        break;
+    default : mod_MenuFinancas();
+        break;
+    }
+}
+
+
+/*
+
+//////Essa função de cadastro de planos está estranho.
+//////Deveríamos cadastrar um tipo de plano e, no módulo de funcionários vip, chamaria
+esse plano como função...
+Cadastrar planos seria algo em relação aos benefícios e informações.
+O cadastro com informações pessoais(atual) não faz sentido com o cadastro de um plano...
+
+Oque faria sentido é associar, em outro módulo, um plano X a um cliente X...
+
+/////As outras funções abaixo, Como editar e excluir, também se aplicam a essa lógica. 
+Ao invés de pesquisar planos por CPF (Coisa que não tem sentido), poderíamos pesquisar
+utilizando outra coisa...
+
+*/
+
+void cadastro_planos(void) {
+    system("clear||cls");
+    char titulo[51];
+    float preco;
+    char beneficios[51];
+    //int vitalidade; //tempo de validade do plano;
+    
+    
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Cadastrar Planos = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|                     * Insira os dados abaixo *                        |\n");
+    printf("|                                                                       |\n");
+    printf("|           * Título do plano:                                          |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", titulo);
+    getchar();
+    printf("|           * Preço em R$: (Apenas números):                            |\n");
+    scanf("%f",&preco);
+    getchar();
+    printf("|           * Benefícios do plano:                                      |\n");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", beneficios);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+void edit_planos(void) {
+    int op;
+    
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|              Informe o plano que deseja editar :                      |\n");
+    scanf("%d",&op);
+    //Aqui printaria os planos pra escolher qual deseja editar
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+void excluir_planos(void) {
+    int op;
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o plano que deseja excluir:                            |\n");
+    scanf("%d", &op);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+}
+
+void listar_planos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Listagem de Planos   = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|           1. Plano Família                                            |\n");
+    // mostrar beneficios
+    printf("|           2. Plano Individual                                         |\n");
+    // mostrar beneficios
+    printf("|           3. Plano Amigos                                             |\n");
+    // mostrar beneficios
+    printf("|           4. Plano Premium                                            |\n");
+    // mostrar beneficios
+    printf("|           5. Plano Daily                                              |\n");
+    // mostrar beneficios
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
