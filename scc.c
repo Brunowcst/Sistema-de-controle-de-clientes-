@@ -106,6 +106,7 @@ void sobre(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    equipe();
     printf("\n");
 }
 
@@ -136,6 +137,7 @@ void equipe(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    menuPrincipal();
     printf("\n");
 }
 
@@ -171,18 +173,17 @@ void menuPrincipal(void) {
     printf("\n");
 
 switch(op){
-    case 1 : mod_MenuFuncionarios();
+case 1 : mod_MenuFuncionarios();
+    break;
+case 2 : mod_MenuClientes();
+    break;
+case 3 : mod_MenuFinancas();
+    break;
+case 0 : sobre();
+    break;
+default : menuPrincipal();
         break;
-    case 2 : mod_MenuClientes();
-        break;
-    case 3 : mod_MenuFinancas();
-        break;
-    case 0 : sobre();
-        break;
-    default : menuPrincipal();
-        break;
-
-}
+    }
 }
 
 void mod_MenuFuncionarios(void) {
@@ -223,8 +224,7 @@ void mod_MenuFuncionarios(void) {
         break;
     default : mod_MenuFuncionarios();
         break;
-
-}
+        }
 }
 
 void cadastro_func(void) {
@@ -272,6 +272,7 @@ void cadastro_func(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+
 }
 
 void pesquisar_func(void) {
@@ -359,7 +360,22 @@ void mod_MenuClientes(void) {
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-    printf("\n");    
+    printf("\n"); 
+
+    switch(op){
+    case 1 : cadastro_clientes();
+        break;
+    case 2 : edit_clientes();
+        break;
+    case 3 : pesquisar_clientes();
+        break;
+    case 4 : excluir_clientes();
+        break;
+    case 0 : menuPrincipal();
+        break;
+    default : mod_MenuClientes();
+        break;
+    }   
 }
 
 
@@ -387,6 +403,21 @@ void mod_MenuFinancas(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+    
+    switch(op){
+    case 1 : listar_planos();
+        break;
+    case 2 : cadastro_planos();
+        break;
+    case 3 : edit_planos();
+        break;
+    case 4 : excluir_planos();
+        break;
+    case 0 : menuPrincipal();
+        break;
+    default : mod_MenuFinancas();
+        break;
+    }
 }
 
 
