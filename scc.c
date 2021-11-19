@@ -187,7 +187,7 @@ case 0 :
 //Aqui deveria sair do sistema...
 default : menuPrincipal();
     break;
-}
+    }
 }
 
 void mod_MenuFuncionarios(void) {
