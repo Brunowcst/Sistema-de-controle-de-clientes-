@@ -18,12 +18,13 @@ void menuPrincipal(void);
 //Módulo Funcionarios
 
 void mod_MenuFuncionarios(void);
-
-//Criar as funções de CRUD do módulo funcionários...
+void modulo_funcionario(void);
 
 //Módulo clientes
 
 void mod_MenuClientes(void); 
+void modulo_clientes(void);
+
 
 void pesquisar_clientes(void);
 void cadastro_clientes(void);
@@ -33,6 +34,7 @@ void excluir_clientes(void);
 //Módulo Finanças
 
 void mod_MenuFinancas(void);
+void modulo_financas(void);
 
 void cadastro_planos(void);
 void edit_planos(void);
@@ -45,33 +47,36 @@ void pesquisar_func(void);
 void edit_func(void);
 void excluir_func(void);
 
+// TODO: Telas
+///////////////////////////////////////// Fazer funções de telas.
 
 //////
 // Programa principal
 
 int main(void) {
-    sobre();
-    equipe();
-    menuPrincipal();
+    int op;
+    do {
+        menuPrincipal();
+        printf("Escolha a opção desejada:\n");
+        scanf("%d", &op);
+        getchar();
+        switch(op){
+            case 1 : 
+                modulo_funcionario();
+                break;
+            case 2 :
+                modulo_clientes();
+                break;
+            case 3 :
+                modulo_financas();
+                break;
+            case 4 :
+                sobre();
+                equipe();
+                break;
+            }
     
-    // mod_MenuFuncionarios();
-    //  cadastro_func();
-    //  pesquisar_func();
-    //  edit_func();
-    //  excluir_func();
-
-    // mod_MenuClientes();
-    //  pesquisar_clientes();
-    //  cadastro_clientes();
-    //  edit_clientes();
-    //  excluir_clientes();  
-    
-    // mod_MenuFinancas();
-    //  listar_planos();
-    //  cadastro_planos();
-    //  edit_planos();
-    //  excluir_planos();
-    
+    } while (op != 0);
 
       
     
@@ -106,7 +111,6 @@ void sobre(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-    equipe();
     printf("\n");
 }
 
@@ -137,7 +141,6 @@ void equipe(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-    menuPrincipal();
     printf("\n");
 }
 
@@ -165,30 +168,10 @@ void menuPrincipal(void) {
     printf("///           4. Sobre                                                    ///\n");
     printf("///           0. Sair                                                     ///\n");
     printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op);
-    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
     printf("\n");
 
-switch(op){
-case 1 : mod_MenuFuncionarios();
-    break;
-case 2 : mod_MenuClientes();
-    break;
-case 3 : mod_MenuFinancas();
-    break;
-case 4 : sobre();
-    break;
-case 0 : 
-    continue;
-//Aqui deveria sair do sistema...
-default : menuPrincipal();
-    break;
-    }
 }
 
 
@@ -196,7 +179,6 @@ default : menuPrincipal();
 
 void mod_MenuFuncionarios(void) {
     system("clear||cls");
-    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -210,29 +192,30 @@ void mod_MenuFuncionarios(void) {
     printf("///           4. Excluir Funcionarios                                     ///\n");
     printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op);
-    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
     printf("\n");
+}
 
-    switch(op){
-    case 1 : cadastro_func();
-        break;
-    case 2 : edit_func();
-        break;
-    case 3 : pesquisar_func();
-        break;
-    case 4 : excluir_func();
-        break;
-    case 0 : menuPrincipal();
-        break;
-    default : mod_MenuFuncionarios();
-        break;
-        }
+
+void modulo_funcionario(void) {
+    int op;
+    do {
+        mod_MenuFuncionarios();   
+        printf("Escolha a opção desejada:\n");
+        scanf("%d", &op);
+        getchar();
+        switch(op){
+            case 1 : cadastro_func();
+                break;
+            case 2 : edit_func();
+                break;
+            case 3 : pesquisar_func();
+                break;
+            case 4 : excluir_func();
+                break;
+            } 
+        } while (op!=0);
 }
 
 void cadastro_func(void) {
@@ -348,9 +331,10 @@ void excluir_func(void) {
 
 /////// Módulo clientes  //////////
 
+
+
 void mod_MenuClientes(void) {
     system("clear||cls");
-    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -364,29 +348,31 @@ void mod_MenuClientes(void) {
     printf("///           4. Excluir clientes                                         ///\n");
     printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op);
-    getchar();   
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
     printf("\n"); 
+}
 
-    switch(op){
-    case 1 : cadastro_clientes();
-        break;
-    case 2 : edit_clientes();
-        break;
-    case 3 : pesquisar_clientes();
-        break;
-    case 4 : excluir_clientes();
-        break;
-    case 0 : menuPrincipal();
-        break;
-    default : mod_MenuClientes();
-        break;
-    }   
+
+void modulo_clientes(void){
+    int op;
+    do {
+        mod_MenuClientes();   
+        printf("Escolha a opção desejada:\n");
+        scanf("%d", &op);
+        getchar();
+
+        switch(op){
+            case 1 : cadastro_clientes();
+                break;
+            case 2 : edit_clientes();
+                break;
+            case 3 : pesquisar_clientes();
+                break;
+            case 4 : excluir_clientes();
+                break;
+        }
+    } while (op !=0);
 }
 
 void cadastro_clientes(void) {
@@ -447,6 +433,7 @@ void cadastro_clientes(void) {
             return;
         }
     */
+    mod_MenuFuncionarios();
 }
 
 
@@ -518,10 +505,29 @@ void excluir_clientes(void) {
 
 //////// Módulo Financas  ////////
 
+void modulo_financas(void) {
+    int op;
+    do {
+        mod_MenuFinancas();   
+        printf("Escolha a opção desejada:\n");
+        scanf("%d", &op);
+        getchar();
+        switch(op){
+        case 1 : listar_planos();
+            break;
+        case 2 : cadastro_planos();
+            break;
+        case 3 : edit_planos();
+            break;
+        case 4 : excluir_planos();
+            break;
+            }
+             
+        } while (op!=0);
+}
 
 void mod_MenuFinancas(void) {
     system("clear||cls");
-    int op;
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -535,29 +541,9 @@ void mod_MenuFinancas(void) {
     printf("///           4. Excluir Planos                                           ///\n");
     printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
-    printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%d", &op); 
-    getchar();
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
     printf("\n");
-    
-    switch(op){
-    case 1 : listar_planos();
-        break;
-    case 2 : cadastro_planos();
-        break;
-    case 3 : edit_planos();
-        break;
-    case 4 : excluir_planos();
-        break;
-    case 0 : menuPrincipal();
-        break;
-    default : mod_MenuFinancas();
-        break;
-    }
 }
 
 
