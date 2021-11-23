@@ -47,9 +47,6 @@ void pesquisar_func(void);
 void edit_func(void);
 void excluir_func(void);
 
-// TODO: Telas
-///////////////////////////////////////// Fazer funções de telas.
-
 //////
 // Programa principal
 
