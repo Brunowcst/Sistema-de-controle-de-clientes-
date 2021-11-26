@@ -4,6 +4,46 @@
 #include "financas.h"
 
 
+void modulo_financas(void) {
+    int op;
+    do {
+        mod_MenuFinancas();   
+        printf("Escolha a opção desejada:\n");
+        scanf("%d", &op);
+        getchar();
+        switch(op){
+        case 1 : listar_planos();
+            break;
+        case 2 : cadastro_planos();
+            break;
+        case 3 : edit_planos();
+            break;
+        case 4 : excluir_planos();
+            break;
+            }
+             
+        } while (op!=0);
+}
+
+void mod_MenuFinancas(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Listar Planos                                            ///\n");
+    printf("///           2. Cadastrar PLanos                                         ///\n");
+    printf("///           3. Editar Planos                                            ///\n");
+    printf("///           4. Excluir Planos                                           ///\n");
+    printf("///           0. Voltar                                                   ///\n");
+    printf("///                                                                       ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+}
 
 
 void cadastro_planos(void) {
