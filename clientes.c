@@ -76,24 +76,21 @@ void cadastro_clientes(void) {
     printf("|           * CPF (Apenas números):                                     |\n");
     scanf("%[0-9]",cpf);
     getchar();
-    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
+    printf("|           * Data sua data de Nascimento:                              |\n");
     printf("| Informe o dia:                                                        |\n");
     scanf("%d[0-9]", &dia); 
     printf("| Informe o mês:                                                        |\n");
     scanf("%d[0-9]", &mes);
     printf("| Informe o ano:                                                        |\n");
     scanf("%d[0-9]", &ano);
-    dataValida = testeData(dia, mes, ano);
+    dataValida = validaData(dia, mes, ano);
     if (!dataValida) {
     printf("A data %02d/%02d/%d não é válida\n", dia, mes, ano);
     printf("Data fora dos padrões ou incorreta!!!\n\n");
          } else {
           printf("A data %02d/%02d/%d está certa!\n", dia, mes, ano);
   }
-  return 0;
-
-
-
+  
 
     getchar();
     printf("|           * Celular ((DDD)número):                                    |\n");

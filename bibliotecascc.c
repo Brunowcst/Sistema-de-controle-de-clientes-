@@ -1,4 +1,4 @@
-#include <stdio.h>;
+#include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #include "bibliotecascc.h"
@@ -14,7 +14,7 @@ int bissexto(int aa) {
 }
 
 
-int testaData(int dd, int mm, int aa) {
+int validaData(int dd, int mm, int aa) {
   int maiorDia;
   if (aa < 0 || mm < 1 || mm > 12)
     return 0;
