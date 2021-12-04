@@ -2,6 +2,11 @@
 #include <ctype.h>
 #include <string.h>
 #include "bibliotecascc.h"
+/*
+Baseado no código de:
+flgorgonio
+https://github.com/flgorgonio/linguasolta_2020.2
+*/
 
 int bissexto(int aa) {
   if ((aa % 4 == 0) && (aa % 100 != 0)) {
@@ -33,4 +38,34 @@ int validaData(int dd, int mm, int aa) {
     return 0;
 
   return 1;
+}
+
+//  Valida celular
+/*
+Baseado no código de:
+flgorgonio
+https://github.com/flgorgonio/linguasolta_2020.2
+*/
+
+int validacell(char* fone){
+  
+  int tam;
+  tam = strlen(fone);
+  if (tam != 11) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!ehDigito(fone[i])) {
+        return 0;
+    }
+  }
+  return 1;
+}
+
+int ehDigito(char c) {
+  if (c >= '0' && c <= '9') {
+    return 1;
+  } else {
+    return 0;
+  }
 }

@@ -58,6 +58,7 @@ void cadastro_clientes(void) {
     int mes;
     int ano;
     int dataValida;
+    int validafone;
 
 
 
@@ -96,6 +97,12 @@ void cadastro_clientes(void) {
     printf("|           * Celular ((DDD)número):                                    |\n");
     scanf("%[0-9]()", cell);
     getchar();
+    validafone = validacell(cell);
+    if (validafone){
+        printf("Número correto!\n");
+    } else{
+        printf("Informe um número correto...\n");
+    }
     printf("|           * E-mail:                                                   |\n");
     scanf("%[A-Za-z@._0-9]", email);
     getchar();
