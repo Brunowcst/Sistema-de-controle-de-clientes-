@@ -12,6 +12,7 @@
 #include "funcionario.h"
 #include "clientes.h"
 #include "financas.h"
+#include "bibliotecascc.h"
 
 
 /////
