@@ -69,3 +69,18 @@ int ehDigito(char c) {
     return 0;
   }
 }
+
+
+// Valida e-mail:
+
+int validEmail(char *email1){
+  int tam = strlen(email1);
+  char *em = email1;
+  for (int i=0; i < tam; i++){
+    if ( em == "[A-Za-z@._0-9^\n]"){
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}

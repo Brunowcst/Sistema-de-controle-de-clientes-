@@ -61,7 +61,7 @@ void cadastro_clientes(void) {
     int validafone;
 
 
-
+/*
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -103,9 +103,16 @@ void cadastro_clientes(void) {
     } else{
         printf("Informe um número correto...\n");
     }
+    */
     printf("|           * E-mail:                                                   |\n");
     scanf("%[A-Za-z@._0-9]", email);
     getchar();
+    validEmail(email);
+    if ((validEmail(email))==1){
+        printf("E-mail válido...\n");
+    } else {
+        printf("E-mail inválido...\n");
+    }
     printf("|           * Informe o plano desejado:                                 |\n");
     printf("|               1. Cliente comum.                                       |\n");
     printf("|               2. Cliente Premium.                                     |\n");
@@ -117,19 +124,6 @@ void cadastro_clientes(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
-    /*
-    switch(category){
-
-        case 1:
-            break;
-        case 2:
-            printf("Escolha o plano referente:  ");
-            listar_planos();
-            break;
-        default:
-            return;
-        }
-    */
 }
 
 
