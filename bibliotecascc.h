@@ -13,3 +13,7 @@ int ehDigito(char);
 
 int validEmail(char*);
 
+//Valida Nomes
+
+int validaNomes(char*);
+

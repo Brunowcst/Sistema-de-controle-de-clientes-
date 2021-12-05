@@ -2,6 +2,9 @@
 #include <ctype.h>
 #include <string.h>
 #include "bibliotecascc.h"
+
+
+
 /*
 Baseado no código de:
 flgorgonio
@@ -77,10 +80,31 @@ int validEmail(char *email1){
   int tam = strlen(email1);
   char *em = email1;
   for (int i=0; i < tam; i++){
-    if ( em == "[A-Za-z@._0-9^\n]"){
+    if ( em == "[a-zA-Z@._0-9^\n]"){
       return 1;
     } else {
       return 0;
     }
   }
+}
+
+
+//Valida nomes:
+
+int validaNomes(char *onome){
+int tam = strlen(onome);
+char nom;
+if (tam > 50){
+    return 0;
+}
+for (int i=0; i < tam; i++){
+
+  nom = onome[i];
+  if (nom == "[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ^\n]"){
+    return 1;
+  } else{
+    return 0;
+  }
+
+}
 }
