@@ -89,22 +89,25 @@ int validEmail(char *email1){
 }
 
 
-//Valida nomes:
+//Valida nomes:Baseado no código de:flgorgonio
 
-int validaNomes(char *onome){
-int tam = strlen(onome);
-char nom;
-if (tam > 50){
-    return 0;
-}
-for (int i=0; i < tam; i++){
 
-  nom = onome[i];
-  if (nom == "[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ^\n]"){
+int testeLetra(char c) {
+  if (c >= 'A' && c <= 'Z') {
     return 1;
-  } else{
+  } else if (c >= 'a' && c <= 'z') {
+    return 1;
+  } else {
     return 0;
   }
-
 }
+
+
+int validarNome(char* nome) {
+  for (int i=0; nome[i]!='\0'; i++) {
+    if (!testeLetra(nome[i])) {
+      return 0;
+    }
+  }
+	return 1;
 }

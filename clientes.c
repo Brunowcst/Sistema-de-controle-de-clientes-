@@ -59,7 +59,7 @@ void cadastro_clientes(void) {
     int ano;
     int dataValida;
     int validafone;
-    int valNome;
+    char valNome;
 
 
 
@@ -73,16 +73,16 @@ void cadastro_clientes(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    scanf("%s", nome);
     getchar();
-    /*
-    valNome = validaNomes(nome);
-    if (valNome){
+  
+   valNome = validarNome(nome);
+    if ((valNome) == 1){
         printf("Nome correto!");
     } else{
-        printf("Nome incorreto!");
+        printf("Nome fora dos padrões!");
     }
-*/
+
 
     printf("|           * CPF (Apenas números):                                     |\n");
     scanf("%[0-9]",cpf);

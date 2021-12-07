@@ -15,5 +15,5 @@ int validEmail(char*);
 
 //Valida Nomes
 
-int validaNomes(char*);
+int validarNome(char*);
 
