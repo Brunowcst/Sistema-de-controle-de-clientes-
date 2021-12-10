@@ -5,24 +5,27 @@
 
 
 void modulo_financas(void) {
-    int op;
+    char op;
     do {
         mod_MenuFinancas();   
         printf("Escolha a opção desejada:\n");
-        scanf("%d", &op);
+        scanf("%c", &op);
         getchar();
         switch(op){
-        case 1 : listar_planos();
+        case '1' : listar_planos();
             break;
-        case 2 : cadastro_planos();
+        case '2' : cadastro_planos();
             break;
-        case 3 : edit_planos();
+        case '3' : edit_planos();
             break;
-        case 4 : excluir_planos();
+        case '4' : excluir_planos();
+            break;
+        default:
+            printf("Escolha uma opção válida...\n");
             break;
             }
              
-        } while (op!=0);
+        } while (op!='0');
 }
 
 void mod_MenuFinancas(void) {

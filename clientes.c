@@ -27,24 +27,27 @@ void mod_MenuClientes(void) {
 
 
 void modulo_clientes(void){
-    int op;
+    char op;
     do {
         mod_MenuClientes();   
         printf("Escolha a opção desejada:\n");
-        scanf("%d", &op);
+        scanf("%c", &op);
         getchar();
 
         switch(op){
-            case 1 : cadastro_clientes();
+            case '1' : cadastro_clientes();
                 break;
-            case 2 : edit_clientes();
+            case '2' : edit_clientes();
                 break;
-            case 3 : pesquisar_clientes();
+            case '3' : pesquisar_clientes();
                 break;
-            case 4 : excluir_clientes();
+            case '4' : excluir_clientes();
+                break;
+            default:
+                printf("Escolha uma opção válida...\n");
                 break;
         }
-    } while (op !=0);
+    } while (op != '0');
 }
 
 void cadastro_clientes(void) {

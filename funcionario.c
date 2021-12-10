@@ -27,23 +27,26 @@ void mod_MenuFuncionarios(void) {
 
 
 void modulo_funcionario(void) {
-    int op;
+    char op;
     do {
         mod_MenuFuncionarios();   
         printf("Escolha a opção desejada:\n");
-        scanf("%d", &op);
+        scanf("%c", &op);
         getchar();
         switch(op){
-            case 1 : cadastro_func();
+            case '1' : cadastro_func();
                 break;
-            case 2 : edit_func();
+            case '2' : edit_func();
                 break;
-            case 3 : pesquisar_func();
+            case '3' : pesquisar_func();
                 break;
-            case 4 : excluir_func();
+            case '4' : excluir_func();
+                break;
+            default:
+                printf("Escolha uma opção válida...\n");
                 break;
             } 
-        } while (op!=0);
+        } while (op!='0');
 }
 
 void cadastro_func(void) {
