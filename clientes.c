@@ -63,6 +63,7 @@ void cadastro_clientes(void) {
     int dataValida;
     int validafone;
     char valNome;
+    int validacCpf;
 
 
 
@@ -76,7 +77,7 @@ void cadastro_clientes(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%s", nome);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]^\n", nome);
     getchar();
   
    valNome = validarNome(nome);
@@ -90,6 +91,12 @@ void cadastro_clientes(void) {
     printf("|           * CPF (Apenas números):                                     |\n");
     scanf("%[0-9]",cpf);
     getchar();
+    validacCpf = validarCPF(cpf);
+    if (validacCpf){
+        printf("CPF Correto!\n");
+    } else{
+        printf("Talvez seu CPF esteja errado. Informe um CPF válido...\n");
+    }
     printf("|           * Data sua data de Nascimento:                              |\n");
     printf("| Informe o dia:                                                        |\n");
     scanf("%d[0-9]", &dia); 
@@ -97,6 +104,7 @@ void cadastro_clientes(void) {
     scanf("%d[0-9]", &mes);
     printf("| Informe o ano:                                                        |\n");
     scanf("%d[0-9]", &ano);
+
     dataValida = validaData(dia, mes, ano);
     if (!dataValida) {
     printf("A data %02d/%02d/%d não é válida\n", dia, mes, ano);

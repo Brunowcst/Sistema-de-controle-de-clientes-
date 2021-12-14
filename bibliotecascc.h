@@ -11,9 +11,20 @@ int ehDigito(char);
 
 // Valida email
 
-int validEmail(char*);
+int validEmail(const char*);
 
 //Valida Nomes
 
 int validarNome(char*);
+
+//Valida cpf
+
+int validarCPF(char *);
+
+
+
+// valida navegação
+int validNaveg(char *);
+
+
 
