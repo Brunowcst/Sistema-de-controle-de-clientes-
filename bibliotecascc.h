@@ -26,5 +26,5 @@ int validarCPF(char *);
 // valida navegação
 int validNaveg(char *);
 
-
+int ehCharemail(char);
 

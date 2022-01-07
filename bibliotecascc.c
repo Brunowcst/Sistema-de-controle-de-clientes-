@@ -78,18 +78,30 @@ int ehDigito(char c) {
 
 // Valida e-mail:
 
+
+
+// int validEmail(const char *email1){
+//   int tam = strlen(email1);
+//   for (int i=0; i <tam; i++){
+//     if (email1[i] != "[azAz0-9]@[azAz0-9].[azAZ]"){
+//       return 0;
+//     }
+//   }
+//   return 1;
+// }
+//[A-Za-z0-9._@A-Za-z.] ou [azAz0-9]@[azAz0-9].[azAZ]
+
+
 int validEmail(const char *email1){
   int tam = strlen(email1);
   //char *em = email1;
   for (int i=0; i <tam ; i++){
-    if ( email1[i] != "[A-Za-z0-9._@]+[A-Za-z.]"){
-      return 0;
-    } else {
-      return 1;
+    if (ehCharemail(email1[i])){    
+    return 1;
     }
   }
+  return 0;
 }
-
 
 //Valida nomes:Baseado no código de:flgorgonio
 
@@ -98,24 +110,49 @@ int testeLetra(char c) {
   if (c >= 'A' && c <= 'Z') {
     return 1;
   } else if (c >= 'a' && c <= 'z') {
-    return 1;}
-    
-    else if (c == '\0'){
-      return 1;
-    }
-
-    else {
+    return 1;  
+  } else {
     return 0;
     }
 }
 
 
+
+int ehChar(char c){
+
+if (c >= 'A' && c <= 'Z') {
+    return 1;
+  } else if (c >= 'a' && c <= 'z') {
+    return 1;
+  } else if (c == ' '){
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+int ehCharemail(char c){
+
+if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')){
+    return 1;
+  // } else if (c == ' '){
+  //   return 1;
+  } else if (c > '0' && c < '9'){
+    return 1;
+  } else if ( c == '@' || c == '.' || c == '_'){
+    return 1; 
+  }
+  else {
+    return 0;
+  }
+}
+
 int validarNome(char* nome) {
   for (int i=0; nome[i]!='\0'; i++) {
-    if (!testeLetra(nome[i])) {
+    if (!ehChar(nome[i])) {
       return 0;
     }
-  }
+  } 
 	return 1;
 }
 
@@ -126,13 +163,13 @@ int validNaveg(char *op){
   if (tam!=2){
     return 0;
   }
-  for (int i=0 ; i<tam; i++){
-    if (ehDigito(op[i])){
-      return 1; }
-  }
+  if (ehDigito(op[0])){
+    return 1; 
+  }   
+  return 1;
 }
 
-//valida cpf : Baseado no código de:
+//valida cpf : Código de:
 //https://gist.github.com/eduardoedson/
 
 int validarCPF(char *cpf)
