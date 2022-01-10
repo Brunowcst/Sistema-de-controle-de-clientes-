@@ -3,9 +3,8 @@
 #include <unistd.h>
 #include "financas.h"
 
-typedef struct financas financa;
-struct financa{
-    char título[51];
+struct financa {
+    char titulo[51];
     char beneficios[51];
     float preco;
 };
@@ -57,7 +56,7 @@ void mod_MenuFinancas(void) {
 
 void cadastro_planos(void) {
     system("clear||cls");
-    struct financas financa;
+    struct financa financas;
     
     
     printf("\n");
@@ -70,13 +69,13 @@ void cadastro_planos(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Título do plano:                                          |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", financa.titulo);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", financas.titulo);
     getchar();
     printf("|           * Preço em R$: (Apenas números):                            |\n");
-    scanf("%f",&financa.preco);
+    scanf("%f",&financas.preco);
     getchar();
     printf("|           * Benefícios do plano:                                      |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", financa.beneficios);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", financas.beneficios);
     getchar();
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");

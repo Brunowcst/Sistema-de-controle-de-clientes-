@@ -4,7 +4,7 @@
 #include "clientes.h"
 #include "bibliotecascc.h"
 
-typedef struct clientes cliente;
+
 struct clientes{
     char nome[51];
     char cpf[12];
