@@ -3,6 +3,13 @@
 #include <unistd.h>
 #include "funcionario.h"
 
+struct func {
+    char nome[51];
+    char cpf[12];
+    char nasc[11];
+    char cell[12];
+    char email[51];
+};
 
 
 void mod_MenuFuncionarios(void) {
@@ -51,11 +58,7 @@ void modulo_funcionario(void) {
 
 void cadastro_func(void) {
     system("clear||cls");
-    char nome[51];
-    char cpf[12];
-    char nasc[11];
-    char cell[12];
-    char email[51];
+    struct func funcionario;
     //int category;
 
 
@@ -69,19 +72,19 @@ void cadastro_func(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcionario.nome);
     getchar();
     printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%[0-9]",funcionario.cpf);
     getchar();
     printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
-    scanf("%[0-9]/", nasc);
+    scanf("%[0-9]/", funcionario.nasc);
     getchar();
     printf("|           * Celular ((DDD)número):                                    |\n");
-    scanf("%[0-9]()", cell);
+    scanf("%[0-9]()", funcionario.cell);
     getchar();
     printf("|           * E-mail:                                                   |\n");
-    scanf("%[A-Za-z@._0-9]", email);
+    scanf("%[A-Za-z@._0-9]", funcionario.email);
     getchar();
    /*printf("|           * Informe o plano desejado:                                 |\n");
     printf("|               1. Cliente comum.                                       |\n");
