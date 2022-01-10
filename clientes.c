@@ -4,6 +4,17 @@
 #include "clientes.h"
 #include "bibliotecascc.h"
 
+typedef struct clientes cliente;
+struct clientes{
+char nome[51];
+    char cpf[12];
+    char cell[12];
+    char email[51];
+    int category;
+    int dia;
+    int mes;
+    int ano;
+};
 
 void mod_MenuClientes(void) {
     system("clear||cls");
@@ -52,14 +63,7 @@ void modulo_clientes(void){
 
 void cadastro_clientes(void) {
     system("clear||cls");
-    char nome[51];
-    char cpf[12];
-    char cell[12];
-    char email[51];
-    int category;
-    int dia;
-    int mes;
-    int ano;
+    struct clientes cliente;
     int dataValida;
     int validafone;
     char valNome;
@@ -77,10 +81,10 @@ void cadastro_clientes(void) {
     printf("|                     * Insira os dados abaixo *                        |\n");
     printf("|                                                                       |\n");
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]^\n", nome);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]^\n", cliente.nome);
     getchar();
   
-   valNome = validarNome(nome);
+   valNome = validarNome(cliente.nome);
     if ((valNome) == 1){
         printf("Nome correto!");
     } else{
@@ -89,9 +93,9 @@ void cadastro_clientes(void) {
 
 
     printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%[0-9]",cliente.cpf);
     getchar();
-    validacCpf = validarCPF(cpf);
+    validacCpf = validarCPF(cliente.cpf);
     if (validacCpf){
         printf("CPF Correto!\n");
     } else{
@@ -99,26 +103,26 @@ void cadastro_clientes(void) {
     }
     printf("|           * Data sua data de Nascimento:                              |\n");
     printf("| Informe o dia:                                                        |\n");
-    scanf("%d[0-9]", &dia); 
+    scanf("%d[0-9]", &cliente.dia); 
     printf("| Informe o mês:                                                        |\n");
-    scanf("%d[0-9]", &mes);
+    scanf("%d[0-9]", &cliente.mes);
     printf("| Informe o ano:                                                        |\n");
-    scanf("%d[0-9]", &ano);
+    scanf("%d[0-9]", &cliente.ano);
 
-    dataValida = validaData(dia, mes, ano);
+    dataValida = validaData(cliente.dia, cliente.mes, cliente.ano);
     if (!dataValida) {
-    printf("A data %02d/%02d/%d não é válida\n", dia, mes, ano);
+    printf("A data %02d/%02d/%d não é válida\n", cliente.dia, cliente.mes, cliente.ano);
     printf("Data fora dos padrões ou incorreta!!!\n\n");
          } else {
-          printf("A data %02d/%02d/%d está certa!\n", dia, mes, ano);
+          printf("A data %02d/%02d/%d está certa!\n", cliente.dia, cliente.mes, cliente.ano);
   }
   
 
     getchar();
     printf("|           * Celular ((DDD)número):                                    |\n");
-    scanf("%[0-9]()", cell);
+    scanf("%[0-9]()", cliente.cell);
     getchar();
-    validafone = validacell(cell);
+    validafone = validacell(cliente.cell);
     if (validafone){
         printf("Número correto!\n");
     } else{
@@ -126,10 +130,10 @@ void cadastro_clientes(void) {
     }
     
     printf("|           * E-mail:                                                   |\n");
-    scanf("%[A-Za-z@._0-9]", email);
+    scanf("%[A-Za-z@._0-9]", cliente.email);
     getchar();
-    validEmail(email);
-    if ((validEmail(email))==1){
+    validEmail(cliente.email);
+    if ((validEmail(cliente.email))==1){
         printf("E-mail válido...\n");
     } else {
         printf("E-mail inválido...\n");
@@ -137,7 +141,7 @@ void cadastro_clientes(void) {
     printf("|           * Informe o plano desejado:                                 |\n");
     printf("|               1. Cliente comum.                                       |\n");
     printf("|               2. Cliente Premium.                                     |\n");
-    scanf("%d", &category);
+    scanf("%d", &cliente.category);
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
@@ -149,7 +153,7 @@ void cadastro_clientes(void) {
 
 
 void edit_clientes(void) {
-    char cpf[12];
+    struct clientes cliente;
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -158,8 +162,8 @@ void edit_clientes(void) {
     printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");
-    scanf("%[0-9]",cpf);
+    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");    
+    scanf("%[0-9]",cliente.cpf);
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
@@ -171,7 +175,7 @@ void edit_clientes(void) {
 
 
 void pesquisar_clientes(void) {
-    char cpf[12];
+    struct clientes cliente;
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -181,7 +185,7 @@ void pesquisar_clientes(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%[0-9]",cliente.cpf);
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
@@ -193,7 +197,7 @@ void pesquisar_clientes(void) {
 
 
 void excluir_clientes(void) {
-    char cpf[12];
+    struct clientes cliente;
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -203,7 +207,7 @@ void excluir_clientes(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
-    scanf("%[0-9]",cpf);
+    scanf("%[0-9]",cliente.cpf);
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
