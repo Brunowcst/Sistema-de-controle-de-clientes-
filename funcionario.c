@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "funcionario.h"
 
-struct func {
+typedef struct func {
     char nome[51];
     char cpf[12];
     char nasc[11];

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "financas.h"
 
-struct financa {
+typedef struct financa {
     char titulo[51];
     char beneficios[51];
     float preco;

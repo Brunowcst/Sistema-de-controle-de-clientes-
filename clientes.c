@@ -5,7 +5,7 @@
 #include "bibliotecascc.h"
 
 
-struct clientes{
+typedef struct clientes{
     char nome[51];
     char cpf[12];
     char cell[12];
