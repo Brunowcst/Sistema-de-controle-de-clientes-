@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "financas.h"
+#include "bibliotecascc.h"
 
-typedef struct financa {
+typedef struct financa financ;
+struct financa{
     char titulo[51];
     char beneficios[51];
     float preco;
@@ -72,11 +74,11 @@ void cadastro_planos(void) {
     printf("|           * Título do plano:                                          |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", financas.titulo);
     getchar();
-    valNome = ehChar(financas.titulo);
+    valNome = validarNome(financas.titulo);
     if ((valNome) == 1){
-        printf("Nome correto!");
+        printf("Nome correto!\n");
     } else{
-        printf("Nome fora dos padrões!");
+        printf("Nome fora dos padrões!\n");
     }
     printf("|           * Preço em R$: (Apenas números):                            |\n");
     scanf("%f",&financas.preco);

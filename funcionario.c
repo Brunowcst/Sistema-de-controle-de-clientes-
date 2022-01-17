@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "funcionario.h"
+#include "bibliotecascc.h"
 
-typedef struct func {
+typedef struct func funcionario;
+struct func {
     char nome[51];
     char cpf[12];
     char nasc[11];
@@ -82,9 +84,9 @@ void cadastro_func(void) {
     getchar();
     valNome = validarNome(funcionario.nome);
     if ((valNome) == 1){
-        printf("Nome correto!");
+        printf("Nome correto!\n");
     } else{
-        printf("Nome fora dos padrões!");
+        printf("Nome fora dos padrões!\n");
     }
     
     printf("|           * CPF (Apenas números):                                     |\n");

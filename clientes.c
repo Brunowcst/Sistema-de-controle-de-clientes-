@@ -5,7 +5,8 @@
 #include "bibliotecascc.h"
 
 
-typedef struct clientes{
+typedef struct clientes cliente;
+struct clientes{
     char nome[51];
     char cpf[12];
     char cell[12];
@@ -86,9 +87,9 @@ void cadastro_clientes(void) {
   
    valNome = validarNome(cliente.nome);
     if ((valNome) == 1){
-        printf("Nome correto!");
+        printf("Nome correto!\n");
     } else{
-        printf("Nome fora dos padrões!");
+        printf("Nome fora dos padrões!\n");
     }
 
 
