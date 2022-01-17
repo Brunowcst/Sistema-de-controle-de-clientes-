@@ -9,6 +9,9 @@ typedef struct func {
     char nasc[11];
     char cell[12];
     char email[51];
+    int dia;
+    int mes;
+    int ano;
 };
 
 
@@ -59,8 +62,11 @@ void modulo_funcionario(void) {
 void cadastro_func(void) {
     system("clear||cls");
     struct func funcionario;
-    //int category;
-
+    int dataValida;
+    int validafone;
+    char valNome;
+    int validacCpf;
+    
 
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -74,23 +80,58 @@ void cadastro_func(void) {
     printf("|           * Nome Completo:                                            |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcionario.nome);
     getchar();
+    valNome = validarNome(funcionario.nome);
+    if ((valNome) == 1){
+        printf("Nome correto!");
+    } else{
+        printf("Nome fora dos padrões!");
+    }
+    
     printf("|           * CPF (Apenas números):                                     |\n");
     scanf("%[0-9]",funcionario.cpf);
     getchar();
-    printf("|           * Data de Nascimento (dd/mm/aa):                            |\n");
-    scanf("%[0-9]/", funcionario.nasc);
-    getchar();
+    validacCpf = validarCPF(funcionario.cpf);
+    if (validacCpf){
+        printf("CPF Correto!\n");
+    } else{
+        printf("Talvez seu CPF esteja errado. Informe um CPF válido...\n");
+    }
+
+    printf("|           * Data sua data de Nascimento:                              |\n");
+    printf("| Informe o dia:                                                        |\n");
+    scanf("%d[0-9]", &funcionario.dia); 
+    printf("| Informe o mês:                                                        |\n");
+    scanf("%d[0-9]", &funcionario.mes);
+    printf("| Informe o ano:                                                        |\n");
+    scanf("%d[0-9]", &funcionario.ano);
+
+    dataValida = validaData(funcionario.dia, funcionario.mes, funcionario.ano);
+    if (!dataValida) {
+    printf("A data %02d/%02d/%d não é válida\n", funcionario.dia, funcionario.mes, funcionario.ano);
+    printf("Data fora dos padrões ou incorreta!!!\n\n");
+         } else {
+          printf("A data %02d/%02d/%d está certa!\n", funcionario.dia, funcionario.mes, funcionario.ano);
+  }
+
     printf("|           * Celular ((DDD)número):                                    |\n");
     scanf("%[0-9]()", funcionario.cell);
     getchar();
+    validafone = validacell(funcionario.cell);
+    if (validafone){
+        printf("Número correto!\n");
+    } else{
+        printf("Informe um número correto...\n");
+    }
+
     printf("|           * E-mail:                                                   |\n");
     scanf("%[A-Za-z@._0-9]", funcionario.email);
     getchar();
-   /*printf("|           * Informe o plano desejado:                                 |\n");
-    printf("|               1. Cliente comum.                                       |\n");
-    printf("|               2. Cliente Premium.                                     |\n");
-    scanf("%d", &category);                                      */
-    getchar();
+    validEmail(funcionario.email);
+    if ((validEmail(funcionario.email))==1){
+        printf("E-mail válido...\n");
+    } else {
+        printf("E-mail inválido...\n");
+    }
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -111,7 +152,7 @@ void pesquisar_func(void) {
     printf("|          = = = = = =  Pesquise Funcionários  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
+    printf("|        Informe o CPF do funcionario que deseja encontrar:                 |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -132,7 +173,7 @@ void edit_func(void) {
     printf("|          = = = = = = =  Editar funcionários  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");
+    printf("|        Informe o CPF do funcionario que deseja alterar os dados:          |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");

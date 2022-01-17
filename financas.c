@@ -57,6 +57,7 @@ void mod_MenuFinancas(void) {
 void cadastro_planos(void) {
     system("clear||cls");
     struct financa financas;
+    char valNome;
     
     
     printf("\n");
@@ -71,6 +72,12 @@ void cadastro_planos(void) {
     printf("|           * Título do plano:                                          |\n");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", financas.titulo);
     getchar();
+    valNome = ehChar(financas.titulo);
+    if ((valNome) == 1){
+        printf("Nome correto!");
+    } else{
+        printf("Nome fora dos padrões!");
+    }
     printf("|           * Preço em R$: (Apenas números):                            |\n");
     scanf("%f",&financas.preco);
     getchar();
@@ -98,6 +105,18 @@ void edit_planos(void) {
     printf("|              Informe o plano que deseja editar :                      |\n");
     scanf("%d",&op);
     //Aqui printaria os planos pra escolher qual deseja editar
+    printf("|                                                                       |\n");
+    printf("|           1. Plano Família                                            |\n");
+    // mostrar beneficios
+    printf("|           2. Plano Individual                                         |\n");
+    // mostrar beneficios
+    printf("|           3. Plano Amigos                                             |\n");
+    // mostrar beneficios
+    printf("|           4. Plano Premium                                            |\n");
+    // mostrar beneficios
+    printf("|           5. Plano Daily                                              |\n");
+    // mostrar beneficios
+    printf("|                                                                       |\n");
     getchar();
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
