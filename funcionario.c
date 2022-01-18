@@ -50,10 +50,10 @@ void modulo_funcionario(void) {
         } while (op!='0');
 }
 
-void cadastro_clientes(void) {
+void cadastrar_func(void) {
     funcionario* fc;
 
-    fc = cadastra_func();
+    fc = cadastro_func();
     gravarFuncionario(fc);
     free(fc);
 }
@@ -61,98 +61,15 @@ void cadastro_clientes(void) {
 void gravarFuncionario(funcionario *fc){
     FILE* fp;
 
-    fp = fopen("cliente.dat", "at");
+    fp = fopen("funcionario.dat", "at");
     if (fp == NULL){
-        telaErrorArquivoCliente();
+        telaErrorArquivofc();
         }
     fwrite(fc, sizeof(funcionario),1 , fp);
     fclose(fp);
 }
 
-/*
-void cadastro_func(void) {
-    system("clear||cls");
-    struct func funcionario;
-    int dataValida;
-    int validafone;
-    char valNome;
-    int validacCpf;
-    
 
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = =  Cadastrar Funcionário  = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|                     * Insira os dados abaixo *                        |\n");
-    printf("|                                                                       |\n");
-    printf("|           * Nome Completo:                                            |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcionario.nome);
-    getchar();
-    valNome = validarNome(funcionario.nome);
-    if ((valNome) == 1){
-        printf("Nome correto!\n");
-    } else{
-        printf("Nome fora dos padrões!\n");
-    }
-    
-    printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%[0-9]",funcionario.cpf);
-    getchar();
-    validacCpf = validarCPF(funcionario.cpf);
-    if (validacCpf){
-        printf("CPF Correto!\n");
-    } else{
-        printf("Talvez seu CPF esteja errado. Informe um CPF válido...\n");
-    }
-
-    printf("|           * Data sua data de Nascimento:                              |\n");
-    printf("| Informe o dia:                                                        |\n");
-    scanf("%d[0-9]", &funcionario.dia); 
-    printf("| Informe o mês:                                                        |\n");
-    scanf("%d[0-9]", &funcionario.mes);
-    printf("| Informe o ano:                                                        |\n");
-    scanf("%d[0-9]", &funcionario.ano);
-
-    dataValida = validaData(funcionario.dia, funcionario.mes, funcionario.ano);
-    if (!dataValida) {
-    printf("A data %02d/%02d/%d não é válida\n", funcionario.dia, funcionario.mes, funcionario.ano);
-    printf("Data fora dos padrões ou incorreta!!!\n\n");
-         } else {
-          printf("A data %02d/%02d/%d está certa!\n", funcionario.dia, funcionario.mes, funcionario.ano);
-  }
-
-    printf("|           * Celular ((DDD)número):                                    |\n");
-    scanf("%[0-9]()", funcionario.cell);
-    getchar();
-    validafone = validacell(funcionario.cell);
-    if (validafone){
-        printf("Número correto!\n");
-    } else{
-        printf("Informe um número correto...\n");
-    }
-
-    printf("|           * E-mail:                                                   |\n");
-    scanf("%[A-Za-z@._0-9]", funcionario.email);
-    getchar();
-    validEmail(funcionario.email);
-    if ((validEmail(funcionario.email))==1){
-        printf("E-mail válido...\n");
-    } else {
-        printf("E-mail inválido...\n");
-    }
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    mod_MenuFuncionarios();
-    printf("\n");
-
-}
-*/
 void pesquisar_func(void) {
     char cpf[12];
     system("clear||cls");
@@ -163,7 +80,7 @@ void pesquisar_func(void) {
     printf("|          = = = = = =  Pesquise Funcionários  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do funcionario que deseja encontrar:                 |\n");
+    printf("|        Informe o CPF do funcionario que deseja encontrar:             |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -216,11 +133,7 @@ void excluir_func(void) {
 }
 
 
-funcionario *cadastra_func(void) {
-    // int dataValida;
-    // int validafone;
-    // char valNome;
-    // int validacCpf;
+funcionario *cadastro_func(void) {
     funcionario* fc;
 
     fc = (funcionario*) malloc(sizeof(funcionario));
@@ -259,36 +172,19 @@ funcionario *cadastra_func(void) {
     scanf("%s", fc->email);
     getchar();
     } while (!validEmail(fc->email));
-/*
-    do {
-    printf("|           * Informe o plano desejado:                                 |\n");
-    printf("|               1. Cliente comum.                                       |\n");
-    printf("|               2. Cliente Premium.                                     |\n");
-    scanf("%d", &fc->category);
-    getchar();
-    }while(!ehDigito(fc->category));
-*/
+
     return fc;
 };
 
-void telaErrorArquivoCliente(void) {
+void telaErrorArquivofc(void) {
 	system("clear||cls");  
 	printf("\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          = = = =   Escola de Idiomas Língua Solta    = = = =          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///                Developed by  @flgorgonio - Jan, 2021                  ///\n");
-	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
 	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = = com informações sobre os alunos = = = =             ///\n");
+	printf("///           = = = com informações sobre os funcionários = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
 	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
@@ -297,4 +193,4 @@ void telaErrorArquivoCliente(void) {
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
 	exit(1);
-}
+};

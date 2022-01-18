@@ -196,19 +196,10 @@ void telaErrorArquivoCliente(void) {
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          = = = =   Escola de Idiomas Língua Solta    = = = =          ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///          ===================================================          ///\n");
-	printf("///                Developed by  @flgorgonio - Jan, 2021                  ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
 	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = = com informações sobre os alunos = = = =             ///\n");
+	printf("///           = = = = com informações sobre os clientes = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
 	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
@@ -217,4 +208,4 @@ void telaErrorArquivoCliente(void) {
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
 	exit(1);
-}
+};

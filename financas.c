@@ -53,40 +53,22 @@ void mod_MenuFinancas(void) {
 
 
 void cadastro_planos(void) {
-    system("clear||cls");
-    struct financa financas;
-    char valNome;
-    
-    
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Cadastrar Planos = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|                     * Insira os dados abaixo *                        |\n");
-    printf("|                                                                       |\n");
-    printf("|           * Título do plano:                                          |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ 0-9]", financas.titulo);
-    getchar();
-    valNome = validarNome(financas.titulo);
-    if ((valNome) == 1){
-        printf("Nome correto!\n");
-    } else{
-        printf("Nome fora dos padrões!\n");
-    }
-    printf("|           * Preço em R$: (Apenas números):                            |\n");
-    scanf("%f",&financas.preco);
-    getchar();
-    printf("|           * Benefícios do plano:                                      |\n");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ*0-9]", financas.beneficios);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
+    financas* planos;
+
+    planos = cadastrar_fin();
+    gravarPlanos(planos);
+    free(planos);
+}
+
+void gravarPlanos(financas *planos){
+    FILE* fp;
+
+    fp = fopen("planos.dat", "at");
+    if (fp == NULL){
+        telaErrorArquivofin();
+        }
+    fwrite(planos, sizeof(financas),1 , fp);
+    fclose(fp);
 }
 
 void edit_planos(void) {
@@ -171,3 +153,58 @@ void listar_planos(void) {
     getchar();
     printf("\n");
 }
+
+financas *cadastrar_fin(void) {
+    financas* planos;
+    planos = (financas*) malloc(sizeof(financas));
+
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Cadastrar Planos = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|                     * Insira os dados abaixo *                        |\n");
+    printf("|                                                                       |\n");
+    do {
+    printf("|           * Titulo do plano:                                          |\n");
+    scanf("%s", planos -> titulo);
+    getchar();
+    } while (!validarNome(planos -> titulo));
+  
+    printf("|           * Preço em R$: (Apenas números):                            |\n");
+    scanf("%f",&planos -> preco);
+    getchar();
+    printf("|           * Benefícios do plano:                                      |\n");
+    scanf("%s", planos -> beneficios);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+    
+    
+    return planos; 
+
+}
+
+void telaErrorArquivofin(void) {
+	system("clear||cls");  
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+	printf("///           = = = = com informações sobre os planos = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+	exit(1);
+};
