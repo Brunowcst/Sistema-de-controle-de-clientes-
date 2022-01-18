@@ -5,17 +5,6 @@
 #include "bibliotecascc.h"
 
 typedef struct func funcionario;
-struct func {
-    char nome[51];
-    char cpf[12];
-    char nasc[11];
-    char cell[12];
-    char email[51];
-    int dia;
-    int mes;
-    int ano;
-};
-
 
 void mod_MenuFuncionarios(void) {
     system("clear||cls");
@@ -64,12 +53,12 @@ void modulo_funcionario(void) {
 void cadastro_clientes(void) {
     funcionario* fc;
 
-    fc = cadastrar();
-    gravarCliente(fc);
+    fc = cadastra_func();
+    gravarFuncionario(fc);
     free(fc);
 }
 
-void gravarCliente(funcionario *fc){
+void gravarFuncionario(funcionario *fc){
     FILE* fp;
 
     fp = fopen("cliente.dat", "at");

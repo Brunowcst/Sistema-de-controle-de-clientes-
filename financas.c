@@ -5,11 +5,6 @@
 #include "bibliotecascc.h"
 
 typedef struct financa financas;
-struct financa{
-    char titulo[51];
-    char beneficios[51];
-    float preco;
-};
 
 void modulo_financas(void) {
     char op;

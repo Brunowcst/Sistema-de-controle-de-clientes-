@@ -140,10 +140,7 @@ void excluir_clientes(void) {
 }
 
 cliente *cadastrar(void){
-    // int dataValida;
-    // int validafone;
-    // char valNome;
-    // int validacCpf;
+    
     cliente* cl;
 
     cl = (cliente*) malloc(sizeof(cliente));

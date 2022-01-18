@@ -15,9 +15,13 @@ struct func {
 
 funcionario *cadastra_func(void);
 
+void gravarFuncionario(funcionario *fc);
+
 void mod_MenuFuncionarios(void);
 void modulo_funcionario(void);
 void cadastro_func(void);
 void pesquisar_func(void);
 void edit_func(void);
 void excluir_func(void);
+
+void telaErrorArquivoCliente(void);
