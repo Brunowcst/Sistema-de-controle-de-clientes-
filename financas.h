@@ -1,5 +1,13 @@
 /// Assinaturas Módulos Finanças
 
+typedef struct financa financas;
+struct financa{
+    char titulo[51];
+    char beneficios[51];
+    float preco;
+};
+
+financas *cadastra(void);
 
 void mod_MenuFinancas(void);
 void modulo_financas(void);

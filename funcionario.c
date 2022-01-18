@@ -61,6 +61,26 @@ void modulo_funcionario(void) {
         } while (op!='0');
 }
 
+void cadastro_clientes(void) {
+    funcionario* fc;
+
+    fc = cadastrar();
+    gravarCliente(fc);
+    free(fc);
+}
+
+void gravarCliente(funcionario *fc){
+    FILE* fp;
+
+    fp = fopen("cliente.dat", "at");
+    if (fp == NULL){
+        telaErrorArquivoCliente();
+        }
+    fwrite(fc, sizeof(funcionario),1 , fp);
+    fclose(fp);
+}
+
+/*
 void cadastro_func(void) {
     system("clear||cls");
     struct func funcionario;
@@ -143,7 +163,7 @@ void cadastro_func(void) {
     printf("\n");
 
 }
-
+*/
 void pesquisar_func(void) {
     char cpf[12];
     system("clear||cls");
@@ -204,4 +224,88 @@ void excluir_func(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+}
+
+
+funcionario *cadastra_func(void) {
+    // int dataValida;
+    // int validafone;
+    // char valNome;
+    // int validacCpf;
+    funcionario* fc;
+
+    fc = (funcionario*) malloc(sizeof(funcionario));
+    
+    do {
+    printf("|           * Nome Completo:                                            |\n");
+    scanf("%s", fc->nome);
+    getchar();
+    } while (!validarNome(fc->nome));
+    
+    do {
+    printf("|           * CPF (Apenas números):                                     |\n");
+    scanf("%s",fc->cpf);
+    getchar();
+    } while(!validarCPF(fc->cpf));
+    
+    do{
+    printf("|           * Data sua data de Nascimento:                              |\n");
+    printf("| Informe o dia:                                                        |\n");
+    scanf("%d", &fc->dia); 
+    printf("| Informe o mês:                                                        |\n");
+    scanf("%d", &fc->mes);
+    printf("| Informe o ano:                                                        |\n");
+    scanf("%d", &fc->ano);
+    getchar();
+    } while(!validaData(fc->dia, fc->mes, fc->ano));
+
+    do{
+    printf("|           * Celular ((DDD)número):                                    |\n");
+    scanf("%s", fc->cell);
+    getchar();
+    } while (!validacell(fc->cell));
+
+    do{
+    printf("|           * E-mail:                                                   |\n");
+    scanf("%s", fc->email);
+    getchar();
+    } while (!validEmail(fc->email));
+/*
+    do {
+    printf("|           * Informe o plano desejado:                                 |\n");
+    printf("|               1. Cliente comum.                                       |\n");
+    printf("|               2. Cliente Premium.                                     |\n");
+    scanf("%d", &fc->category);
+    getchar();
+    }while(!ehDigito(fc->category));
+*/
+    return fc;
+};
+
+void telaErrorArquivoCliente(void) {
+	system("clear||cls");  
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = =   Escola de Idiomas Língua Solta    = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///                Developed by  @flgorgonio - Jan, 2021                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+	printf("///           = = = = com informações sobre os alunos = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+	exit(1);
 }

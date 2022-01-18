@@ -4,7 +4,7 @@
 #include "financas.h"
 #include "bibliotecascc.h"
 
-typedef struct financa financ;
+typedef struct financa financas;
 struct financa{
     char titulo[51];
     char beneficios[51];
@@ -34,6 +34,7 @@ void modulo_financas(void) {
              
         } while (op!='0');
 }
+
 
 void mod_MenuFinancas(void) {
     system("clear||cls");
