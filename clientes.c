@@ -184,7 +184,7 @@ cliente *cadastrar(void){
     printf("|           * Informe o plano desejado:                                 |\n");
     printf("|               1. Cliente comum.                                       |\n");
     printf("|               2. Cliente Premium.                                     |\n");
-    scanf("%d", &cl->category);
+    scanf("%c", &cl->category);
     getchar();
     }while(!ehDigito(cl->category));
 

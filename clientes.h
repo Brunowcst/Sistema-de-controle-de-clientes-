@@ -5,7 +5,7 @@ struct clientes{
     char cpf[12];
     char cell[12];
     char email[51];
-    int category;
+    char category;
     int dia;
     int mes;
     int ano;
