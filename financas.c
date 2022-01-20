@@ -169,7 +169,7 @@ financas *cadastrar_fin(void) {
     printf("|                                                                       |\n");
     do {
     printf("|           * Titulo do plano:                                          |\n");
-    scanf("%s", planos -> titulo);
+    scanf("%50[^\n]", planos -> titulo);
     getchar();
     } while (!validarNome(planos -> titulo));
   
@@ -177,7 +177,7 @@ financas *cadastrar_fin(void) {
     scanf("%f",&planos -> preco);
     getchar();
     printf("|           * Benefícios do plano:                                      |\n");
-    scanf("%s", planos -> beneficios);
+    scanf("%50[^\n]", planos -> beneficios);
     getchar();
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");

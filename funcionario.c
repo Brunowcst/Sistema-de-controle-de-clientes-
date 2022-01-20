@@ -140,13 +140,13 @@ funcionario *cadastro_func(void) {
     
     do {
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%s", fc->nome);
+    scanf("%50[^\n]", fc->nome);
     getchar();
     } while (!validarNome(fc->nome));
     
     do {
     printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%s",fc->cpf);
+    scanf("%11[^\n]",fc->cpf);
     getchar();
     } while(!validarCPF(fc->cpf));
     
@@ -163,13 +163,13 @@ funcionario *cadastro_func(void) {
 
     do{
     printf("|           * Celular ((DDD)número):                                    |\n");
-    scanf("%s", fc->cell);
+    scanf("%11[^\n]", fc->cell);
     getchar();
     } while (!validacell(fc->cell));
 
     do{
     printf("|           * E-mail:                                                   |\n");
-    scanf("%s", fc->email);
+    scanf("%50[^\n]", fc->email);
     getchar();
     } while (!validEmail(fc->email));
 
