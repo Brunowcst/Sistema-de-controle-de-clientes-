@@ -147,14 +147,14 @@ cliente *cadastrar(void){
     
     do {
     printf("|           * Nome Completo:                                            |\n");
-    scanf("%s", cl->nome);
-    getchar();
+    scanf("%50[^\n]", cl->nome);
+    //getchar();
     } while (!validarNome(cl->nome));
     
     do {
     printf("|           * CPF (Apenas números):                                     |\n");
-    scanf("%s",cl->cpf);
-    getchar();
+    scanf("%11[^\n]",cl->cpf);
+    //getchar();
     } while(!validarCPF(cl->cpf));
     
     do{
@@ -170,14 +170,14 @@ cliente *cadastrar(void){
 
     do{
     printf("|           * Celular ((DDD)número):                                    |\n");
-    scanf("%s", cl->cell);
-    getchar();
+    scanf("%11[^\n]", cl->cell);
+   // getchar();
     } while (!validacell(cl->cell));
 
     do{
     printf("|           * E-mail:                                                   |\n");
-    scanf("%s", cl->email);
-    getchar();
+    scanf("%51[^\n]", cl->email);
+    //getchar();
     } while (!validEmail(cl->email));
 
     do {
