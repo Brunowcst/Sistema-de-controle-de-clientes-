@@ -9,7 +9,7 @@ struct func {
     char cell[12];
     char email[51];
     int dia;
-    int status;
+    int statusf;
     int mes;
     int ano;
 };

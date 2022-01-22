@@ -59,10 +59,10 @@ void cadastrar_func(void) {
     free(fc);
 }
 
-void gravarFuncionario(funcionario *fc){
+void gravarFuncionario(funcionario *fc) {
     FILE* fp;
 
-    fp = fopen("funcionario.dat", "at");
+    fp = fopen("funcionario.datBin", "ab");
     if (fp == NULL){
         telaErrorArquivofc();
         }
@@ -87,12 +87,12 @@ funcionario *pesquisa_fc(char* cpf){
     funcionario* fc;
     
     fc = (funcionario*)malloc(sizeof(funcionario));
-    fp = fopen("funcionario.dat", "rt");
+    fp = fopen("funcionario.datBin", "rb");
     if (fp == NULL){
         telaErrorArquivofc();
     }
     while (fread(fc, sizeof(funcionario), 1, fp)){
-        if((strcmp(fc->cpf, cpf) == 0) && (fc->status == 1)){
+        if((strcmp(fc->cpf, cpf) == 0) && (fc->statusf == 1)){
             fclose(fp);
             return fc;
         }
@@ -104,15 +104,15 @@ funcionario *pesquisa_fc(char* cpf){
 void exibirFuncionario(funcionario* fc) {
 
 	if (fc == NULL) {
-		printf("\n= = = Cliente não encontrado = = =\n");
+		printf("\n= = = Funcionário não encontrado = = =\n");
 	} else {
-		printf("\n= = = Cliente Cadastrado = = =\n");
+		printf("\n= = = Funcionário Cadastrado = = =\n");
 		printf("CPF: %s\n", fc->cpf);
 		printf("Nome do aluno: %s\n", fc->nome);
 		printf("Endereço eletrônico: %s\n", fc->email);
 		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
 		printf("Celular: %s\n", fc->cell);
-		printf("Status: %d\n", fc->status);
+		printf("Status: %d\n", fc->statusf);
 	}
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
@@ -224,7 +224,7 @@ funcionario *cadastro_func(void) {
     getchar();
     } while (!validEmail(fc->email));
 
-    fc -> status = 1;
+    fc->statusf = 1;
 
     return fc;
 };
