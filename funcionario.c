@@ -36,7 +36,7 @@ void modulo_funcionario(void) {
         scanf("%c", &op);
         getchar();
         switch(op){
-            case '1' : cadastro_func();
+            case '1' : cadastrar_func();
                 break;
             case '2' : edit_func();
                 break;
@@ -62,7 +62,7 @@ void cadastrar_func(void) {
 void gravarFuncionario(funcionario *fc) {
     FILE* fp;
 
-    fp = fopen("funcionario.datBin", "ab");
+    fp = fopen("func.datBin", "ab");
     if (fp == NULL){
         telaErrorArquivofc();
         }
@@ -76,23 +76,23 @@ void pesquisar_func(void) {
     char* cpf;
 
     cpf = telaPesquisarFunc();
-    fc = pesquisa_fc(cpf);
+    fc = pesquisa_func(cpf);
     exibirFuncionario(fc);
 	free(fc); 
 	free(cpf);
 }
 
-funcionario *pesquisa_fc(char* cpf){
+funcionario *pesquisa_func(char* cpf){
     FILE* fp;
     funcionario* fc;
     
     fc = (funcionario*)malloc(sizeof(funcionario));
-    fp = fopen("funcionario.datBin", "rb");
+    fp = fopen("func.datBin", "rb");
     if (fp == NULL){
         telaErrorArquivofc();
     }
     while (fread(fc, sizeof(funcionario), 1, fp)){
-        if((strcmp(fc->cpf, cpf) == 0) && (fc->statusf == 1)){
+        if((strcmp(fc->cpf, cpf) == 0) && (fc->status == 1)){
             fclose(fp);
             return fc;
         }
@@ -112,7 +112,7 @@ void exibirFuncionario(funcionario* fc) {
 		printf("Endereço eletrônico: %s\n", fc->email);
 		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
 		printf("Celular: %s\n", fc->cell);
-		printf("Status: %d\n", fc->statusf);
+		printf("Status: %d\n", fc->status);
 	}
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
@@ -224,7 +224,7 @@ funcionario *cadastro_func(void) {
     getchar();
     } while (!validEmail(fc->email));
 
-    fc->statusf = 1;
+    fc->status = 1;
 
     return fc;
 };
