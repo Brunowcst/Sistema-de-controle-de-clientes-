@@ -9,6 +9,7 @@ struct func {
     char cell[12];
     char email[51];
     int dia;
+    int status;
     int mes;
     int ano;
 };
@@ -20,6 +21,10 @@ void gravarFuncionario(funcionario *fc);
 void mod_MenuFuncionarios(void);
 void modulo_funcionario(void);
 void cadastrar_func(void);
+char* telaPesquisarFunc(void);
+funcionario *pesquisa_fc(char* cpf);
+void exibirFuncionario(funcionario* cl);
+
 void pesquisar_func(void);
 void edit_func(void);
 void excluir_func(void);

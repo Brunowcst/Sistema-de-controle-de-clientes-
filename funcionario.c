@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "funcionario.h"
 #include "bibliotecascc.h"
@@ -69,26 +70,76 @@ void gravarFuncionario(funcionario *fc){
     fclose(fp);
 }
 
-
 void pesquisar_func(void) {
-    char cpf[12];
-    system("clear||cls");
+    
+    funcionario* fc;    
+    char* cpf;
+
+    cpf = telaPesquisarFunc();
+    fc = pesquisa_fc(cpf);
+    exibirFuncionario(fc);
+	free(fc); 
+	free(cpf);
+}
+
+funcionario *pesquisa_fc(char* cpf){
+    FILE* fp;
+    funcionario* fc;
+    
+    fc = (funcionario*)malloc(sizeof(funcionario));
+    fp = fopen("funcionario.dat", "rt");
+    if (fp == NULL){
+        telaErrorArquivofc();
+    }
+    while (fread(fc, sizeof(funcionario), 1, fp)){
+        if((strcmp(fc->cpf, cpf) == 0) && (fc->status == 1)){
+            fclose(fp);
+            return fc;
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+void exibirFuncionario(funcionario* fc) {
+
+	if (fc == NULL) {
+		printf("\n= = = Cliente não encontrado = = =\n");
+	} else {
+		printf("\n= = = Cliente Cadastrado = = =\n");
+		printf("CPF: %s\n", fc->cpf);
+		printf("Nome do aluno: %s\n", fc->nome);
+		printf("Endereço eletrônico: %s\n", fc->email);
+		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
+		printf("Celular: %s\n", fc->cell);
+		printf("Status: %d\n", fc->status);
+	}
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+}
+
+
+char* telaPesquisarFunc(void) {
+	char* cpf;
+
+	cpf = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = =  Pesquise Funcionários  = = = = = =              |\n");
+    printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do funcionario que deseja encontrar:             |\n");
-    scanf("%[0-9]",cpf);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
+    printf("|    Informe o CPF(Apenas números) do funcionário que deseja encontrar: |\n");
+	scanf("%[0-9]", cpf);
+	getchar();
+	printf("|                                                                       |\n");
+	printf("|                                                                       |\n");
+	printf("|_______________________________________________________________________|\n");
+	printf("\n");
+	sleep(2);
+  	return cpf;
 }
 
 void edit_func(void) {
@@ -172,6 +223,8 @@ funcionario *cadastro_func(void) {
     scanf("%50[^\n]", fc->email);
     getchar();
     } while (!validEmail(fc->email));
+
+    fc -> status = 1;
 
     return fc;
 };
