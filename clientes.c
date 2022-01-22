@@ -66,7 +66,7 @@ void cadastro_clientes(void) {
 void gravarCliente(cliente *cl){
     FILE* fp;
 
-    fp = fopen("clientes.dat", "at");
+    fp = fopen("clientes.datBin", "ab");
     if (fp == NULL){
         telaErrorArquivoCliente();
         }
@@ -114,7 +114,7 @@ cliente *pesquisa_Cl(char* cpf){
     cliente* cl;
     
     cl = (cliente*)malloc(sizeof(cliente));
-    fp = fopen("clientes.dat", "rt");
+    fp = fopen("clientes.datBin", "rb");
     if (fp == NULL){
         telaErrorArquivoCliente();
     }
