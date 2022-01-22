@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "clientes.h"
 #include "bibliotecascc.h"
@@ -7,7 +8,7 @@
 
 typedef struct clientes cliente;
 
-cliente *cadastrar();
+//cliente *cadastrar();
 
 void mod_MenuClientes(void) {
     system("clear||cls");
@@ -65,7 +66,7 @@ void cadastro_clientes(void) {
 void gravarCliente(cliente *cl){
     FILE* fp;
 
-    fp = fopen("cliente.dat", "at");
+    fp = fopen("clientes.dat", "at");
     if (fp == NULL){
         telaErrorArquivoCliente();
         }
@@ -97,8 +98,59 @@ void edit_clientes(void) {
 
 
 void pesquisar_clientes(void) {
-    struct clientes cliente;
-    system("clear||cls");
+    
+    cliente* cl;    
+    char* cpf;
+
+    cpf = telaPesquisarCliente();
+    cl = pesquisa_Cl(cpf);
+    exibirCliente(cl);
+	free(cl); 
+	free(cpf);
+}
+
+cliente *pesquisa_Cl(char* cpf){
+    FILE* fp;
+    cliente* cl;
+    
+    cl = (cliente*)malloc(sizeof(cliente));
+    fp = fopen("clientes.dat", "rt");
+    if (fp == NULL){
+        telaErrorArquivoCliente();
+    }
+    while (fread(cl, sizeof(cliente), 1, fp)){
+        if((strcmp(cl->cpf, cpf) == 0) && (cl->status == 1)){
+            fclose(fp);
+            return cl;
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+void exibirCliente(cliente* cl) {
+
+	if (cl == NULL) {
+		printf("\n= = = Cliente não encontrado = = =\n");
+	} else {
+		printf("\n= = = Cliente Cadastrado = = =\n");
+		printf("CPF: %s\n", cl->cpf);
+		printf("Nome do aluno: %s\n", cl->nome);
+		printf("Endereço eletrônico: %s\n", cl->email);
+		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
+		printf("Celular: %s\n", cl->cell);
+		printf("Status: %d\n", cl->status);
+	}
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+}
+
+
+char* telaPesquisarCliente(void) {
+	char* cpf;
+
+	cpf = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -106,17 +158,16 @@ void pesquisar_clientes(void) {
     printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja encontrar:                 |\n");
-    scanf("%[0-9]",cliente.cpf);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
+    printf("|        Informe o CPF(Apenas números) do cliente que deseja encontrar: |\n");
+	scanf("%[0-9]", cpf);
+	getchar();
+	printf("|                                                                       |\n");
+	printf("|                                                                       |\n");
+	printf("|_______________________________________________________________________|\n");
+	printf("\n");
+	sleep(2);
+  	return cpf;
 }
-
 
 void excluir_clientes(void) {
     struct clientes cliente;
@@ -187,6 +238,8 @@ cliente *cadastrar(void){
     scanf("%c", &cl->category);
     getchar();
     }while(!ehDigito(cl->category));
+    
+    cl -> status = 1;
 
     return cl;
 };

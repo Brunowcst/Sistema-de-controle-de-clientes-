@@ -6,6 +6,7 @@ struct clientes{
     char cell[12];
     char email[51];
     char category;
+    int status;
     int dia;
     int mes;
     int ano;
@@ -17,6 +18,9 @@ void mod_MenuClientes(void);
 void modulo_clientes(void);
 
 void pesquisar_clientes(void);
+char* telaPesquisarCliente(void);
+cliente *pesquisa_Cl(char* cpf);
+void exibirCliente(cliente* cl);
 
 void cadastro_clientes(void);
 void gravarCliente(cliente *cl);
