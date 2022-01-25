@@ -50,6 +50,7 @@ void modulo_clientes(void){
                 break;
             default:
                 printf("Escolha uma opção válida...\n");
+                sleep(2);
                 break;
         }
     } while (op != '0');
@@ -66,7 +67,7 @@ void cadastro_clientes(void) {
 void gravarCliente(cliente *cl){
     FILE* fp;
 
-    fp = fopen("clientes.datBin", "ab");
+    fp = fopen("clientes.dat", "ab");
     if (fp == NULL){
         telaErrorArquivoCliente();
         }
@@ -114,7 +115,7 @@ cliente *pesquisa_Cl(char* cpf){
     cliente* cl;
     
     cl = (cliente*)malloc(sizeof(cliente));
-    fp = fopen("clientes.datBin", "rb");
+    fp = fopen("clientes.dat", "rb");
     if (fp == NULL){
         telaErrorArquivoCliente();
     }
@@ -133,9 +134,9 @@ void exibirCliente(cliente* cl) {
 	if (cl == NULL) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
-		printf("\n= = = Cliente Cadastrado = = =\n");
-		printf("CPF: %s\n", cl->cpf);
-		printf("Nome do aluno: %s\n", cl->nome);
+		printf("\n= = = Cliente Cadastrado = = =\n");		
+		printf("Nome do cliente: %s\n", cl->nome);
+        printf("CPF: %s\n", cl->cpf);
 		printf("Endereço eletrônico: %s\n", cl->email);
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
@@ -195,6 +196,14 @@ cliente *cadastrar(void){
     cliente* cl;
 
     cl = (cliente*) malloc(sizeof(cliente));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = = = Cadastrar clientes  = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
     
     do {
     printf("|           * Nome Completo:                                            |\n");

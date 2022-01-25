@@ -23,6 +23,7 @@ void modulo_financas(void) {
         case '4' : excluir_planos();
             break;
         default:
+            sleep(2);
             printf("Escolha uma opção válida...\n");
             break;
             }
@@ -63,7 +64,7 @@ void cadastro_planos(void) {
 void gravarPlanos(financas *planos){
     FILE* fp;
 
-    fp = fopen("planos.dat", "at");
+    fp = fopen("planos.dat", "ab");
     if (fp == NULL){
         telaErrorArquivofin();
         }
@@ -157,7 +158,7 @@ void listar_planos(void) {
 financas *cadastrar_fin(void) {
     financas* planos;
     planos = (financas*) malloc(sizeof(financas));
-
+    system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
@@ -179,7 +180,6 @@ financas *cadastrar_fin(void) {
     printf("|           * Benefícios do plano:                                      |\n");
     scanf("%50[^\n]", planos -> beneficios);
     getchar();
-    printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
