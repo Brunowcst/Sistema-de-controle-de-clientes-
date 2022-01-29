@@ -26,6 +26,10 @@ void cadastro_clientes(void);
 void gravarCliente(cliente *cl);
 
 void edit_clientes(void);
+char* telaEdit_clientes(void);
+void regravarcliente(cliente* cl);
+
 void excluir_clientes(void);
+char* telaExcluir_clientes(void);
 
 void telaErrorArquivoCliente(void);

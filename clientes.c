@@ -8,8 +8,6 @@
 
 typedef struct clientes cliente;
 
-//cliente *cadastrar();
-
 void mod_MenuClientes(void) {
     system("clear||cls");
     printf("\n");
@@ -63,134 +61,6 @@ void cadastro_clientes(void) {
     gravarCliente(cl);
     free(cl);
 }
-
-void gravarCliente(cliente *cl){
-    FILE* fp;
-
-    fp = fopen("clientes.dat", "ab");
-    if (fp == NULL){
-        telaErrorArquivoCliente();
-        }
-    fwrite(cl, sizeof(cliente),1 , fp);
-    fclose(fp);
-}
-
-
-void edit_clientes(void) {
-    struct clientes cliente;
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");    
-    scanf("%[0-9]",cliente.cpf);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
-
-void pesquisar_clientes(void) {
-    
-    cliente* cl;    
-    char* cpf;
-
-    cpf = telaPesquisarCliente();
-    cl = pesquisa_Cl(cpf);
-    exibirCliente(cl);
-	free(cl); 
-	free(cpf);
-}
-
-cliente *pesquisa_Cl(char* cpf){
-    FILE* fp;
-    cliente* cl;
-    
-    cl = (cliente*)malloc(sizeof(cliente));
-    fp = fopen("clientes.dat", "rb");
-    if (fp == NULL){
-        telaErrorArquivoCliente();
-    }
-    while (fread(cl, sizeof(cliente), 1, fp)){
-        if((strcmp(cl->cpf, cpf) == 0) && (cl->status == 1)){
-            fclose(fp);
-            return cl;
-        }
-    }
-    fclose(fp);
-    return NULL;
-}
-
-void exibirCliente(cliente* cl) {
-
-	if (cl == NULL) {
-		printf("\n= = = Cliente não encontrado = = =\n");
-	} else {
-		printf("\n= = = Cliente Cadastrado = = =\n");		
-		printf("Nome do cliente: %s\n", cl->nome);
-        printf("CPF: %s\n", cl->cpf);
-		printf("Endereço eletrônico: %s\n", cl->email);
-		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
-		printf("Celular: %s\n", cl->cell);
-		printf("Status: %d\n", cl->status);
-	}
-	printf("\n\nTecle ENTER para continuar!\n\n");
-	getchar();
-}
-
-
-char* telaPesquisarCliente(void) {
-	char* cpf;
-
-	cpf = (char*) malloc(12*sizeof(char));
-	system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|        Informe o CPF(Apenas números) do cliente que deseja encontrar: |\n");
-	scanf("%[0-9]", cpf);
-	getchar();
-	printf("|                                                                       |\n");
-	printf("|                                                                       |\n");
-	printf("|_______________________________________________________________________|\n");
-	printf("\n");
-	sleep(2);
-  	return cpf;
-}
-
-void excluir_clientes(void) {
-    struct clientes cliente;
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Excluir  clientes  = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
-    scanf("%[0-9]",cliente.cpf);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
 cliente *cadastrar(void){
     
     cliente* cl;
@@ -252,6 +122,209 @@ cliente *cadastrar(void){
 
     return cl;
 };
+
+
+void gravarCliente(cliente *cl){
+    FILE* fp;
+
+    fp = fopen("clientes.dat", "ab");
+    if (fp == NULL){
+        telaErrorArquivoCliente();
+        }
+    fwrite(cl, sizeof(cliente),1 , fp);
+    fclose(fp);
+}
+
+
+void edit_clientes(void) {
+    cliente* cl;
+    char* cpf;
+
+    cpf = telaEdit_clientes();
+    cl = pesquisa_Cl(cpf);
+    if (cl == NULL){
+        printf("= = = Cliente não encontrado... = = =\n");
+    } else {
+        cl = cadastrar();
+        regravarcliente(cl);
+        free(cl);
+    }
+    free(cpf);
+}
+
+void regravarcliente(cliente* cl){
+    int ok;
+
+    FILE* fp;
+    cliente* cl_Read;
+
+    cl_Read = (cliente*)malloc(sizeof(cliente));
+    fp = fopen("clientes.dat", "rb");
+    if (fp == NULL){
+        telaErrorArquivoCliente();
+        }
+    ok = 0;
+    while(!feof(fp)){
+        (fread(cl_Read, sizeof(cliente),1 , fp));
+        if (strcmp(cl_Read->cpf, cl->cpf)== 0){
+            ok = 1;
+            fseek(fp, -1*sizeof(cliente), SEEK_CUR);
+        fwrite(cl_Read, sizeof(cliente), 1, fp);
+        
+        }
+    if (ok == 0){
+        printf("Cliente não encontrado!");
+        }
+    }
+    fclose(fp);
+    free(cl_Read);
+}
+
+char* telaEdit_clientes(void){
+    char* cpf;
+    
+    cpf = (char*)malloc(12*sizeof(char));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");    
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+
+    return cpf;
+}
+
+
+void pesquisar_clientes(void) {
+    
+    cliente* cl;    
+    char* cpf;
+
+    cpf = telaPesquisarCliente();
+    cl = pesquisa_Cl(cpf);
+    exibirCliente(cl);
+	free(cl);
+    free(cpf);
+}
+
+cliente *pesquisa_Cl(char* cpf){
+    FILE* fp;
+    cliente* cl;
+    
+    cl = (cliente*)malloc(sizeof(cliente));
+    fp = fopen("clientes.dat", "rb");
+    if (fp == NULL){
+        telaErrorArquivoCliente();
+    }
+    while(!feof(fp)) {
+        (fread(cl, sizeof(cliente), 1, fp));
+        if((strcmp(cl->cpf, cpf) == 0) && (cl->status == 1)){
+            fclose(fp);
+            return cl;
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+char* telaPesquisarCliente(void) {
+	char* cpf;
+
+	cpf = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF(Apenas números) do cliente que deseja encontrar: |\n");
+	scanf("%[0-9]", cpf);
+	getchar();
+	printf("|                                                                       |\n");
+	printf("|                                                                       |\n");
+	printf("|_______________________________________________________________________|\n");
+	printf("\n");
+	sleep(2);
+  	return cpf;
+}
+
+void exibirCliente(cliente* cl) {
+
+	if (cl == NULL) {
+		printf("\n= = = Cliente não encontrado = = =\n");
+	} else {
+		printf("\n= = = Cliente Cadastrado = = =\n");		
+		printf("Nome do cliente: %s\n", cl->nome);
+        printf("CPF: %s\n", cl->cpf);
+		printf("Endereço eletrônico: %s\n", cl->email);
+		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
+		printf("Celular: %s\n", cl->cell);
+		printf("Status: %d\n", cl->status);
+	}
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+}
+
+
+
+
+void excluir_clientes(void) {
+    cliente* cl;
+    char* cpf;
+
+    cpf = telaExcluir_clientes();
+    cl = (cliente*)malloc(sizeof(cliente));
+    cl= pesquisa_Cl(cpf);
+
+    if(cl == NULL){
+        printf("= = = Não foi possível encontrar o cliente!!! = = =");
+    } else {
+        cl->status = 0;
+        regravarcliente(cl);
+        free(cl);
+    }
+    free(cpf);
+}
+
+char* telaExcluir_clientes(void){
+    char* cpf;
+
+    cpf = (char*)malloc(12*sizeof(char));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Excluir  clientes  = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");
+    scanf("%[0-9]",cpf);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+
+    return cpf;
+}
+
+
 
 void telaErrorArquivoCliente(void) {
 	system("clear||cls");  
