@@ -164,17 +164,14 @@ void regravarcliente(cliente* cl){
         telaErrorArquivoCliente();
         }
     ok = 0;
-    while(!feof(fp)){
-        (fread(cl_Read, sizeof(cliente),1 , fp));
+    while (fread(cl_Read, sizeof(cliente),1 , fp) && !ok){
+        
         if (strcmp(cl_Read->cpf, cl->cpf)== 0){
             ok = 1;
             fseek(fp, -1*sizeof(cliente), SEEK_CUR);
-        fwrite(cl_Read, sizeof(cliente), 1, fp);
+        fwrite(cl_Read, sizeof(cliente), 1, fp);        
+        }
         
-        }
-    if (ok == 0){
-        printf("Cliente não encontrado!");
-        }
     }
     fclose(fp);
     free(cl_Read);
@@ -227,8 +224,7 @@ cliente *pesquisa_Cl(char* cpf){
     if (fp == NULL){
         telaErrorArquivoCliente();
     }
-    while(!feof(fp)) {
-        (fread(cl, sizeof(cliente), 1, fp));
+    while (fread(cl, sizeof(cliente), 1, fp)){    
         if((strcmp(cl->cpf, cpf) == 0) && (cl->status == 1)){
             fclose(fp);
             return cl;
