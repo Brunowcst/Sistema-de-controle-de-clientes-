@@ -159,7 +159,7 @@ void regravarcliente(cliente* cl){
     cliente* cl_Read;
 
     cl_Read = (cliente*)malloc(sizeof(cliente));
-    fp = fopen("clientes.dat", "rb");
+    fp = fopen("clientes.dat", "r+b");
     if (fp == NULL){
         telaErrorArquivoCliente();
         }
@@ -169,7 +169,7 @@ void regravarcliente(cliente* cl){
         if (strcmp(cl_Read->cpf, cl->cpf)== 0){
             ok = 1;
             fseek(fp, -1*sizeof(cliente), SEEK_CUR);
-        fwrite(cl_Read, sizeof(cliente), 1, fp);        
+        fwrite(cl, sizeof(cliente), 1, fp);        
         }
         
     }

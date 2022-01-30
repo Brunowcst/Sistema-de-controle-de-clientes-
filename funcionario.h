@@ -25,8 +25,20 @@ char* telaPesquisarFunc(void);
 funcionario *pesquisa_func(char* cpf);
 void exibirFuncionario(funcionario* fc);
 
+
 void pesquisar_func(void);
+
 void edit_func(void);
+char* telaEdit_func(void);
+void regravarfunc(funcionario* fc);
+
+
 void excluir_func(void);
+char* telaExcluir_func(void);
+
+
+
 
 void telaErrorArquivofc(void);
+
+

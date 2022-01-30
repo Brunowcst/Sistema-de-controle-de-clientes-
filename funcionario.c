@@ -144,28 +144,101 @@ char* telaPesquisarFunc(void) {
   	return cpf;
 }
 
+
+void regravarfunc(funcionario* fc){
+    int ok;
+
+    FILE* fp;
+    funcionario* fc_Read;
+
+    fc_Read = (funcionario*)malloc(sizeof(funcionario));
+    fp = fopen("func.dat", "r+b");
+    if (fp == NULL){
+        telaErrorArquivofc();
+        }
+    ok = 0;
+    while (fread(fc_Read, sizeof(funcionario),1 , fp) && !ok){
+        
+        if (strcmp(fc_Read->cpf, fc->cpf)== 0){
+            ok = 1;
+            fseek(fp, -1*sizeof(funcionario), SEEK_CUR);
+        fwrite(fc, sizeof(funcionario), 1, fp);        
+        }
+        
+    }
+    fclose(fp);
+    free(fc_Read);
+}
+
+
 void edit_func(void) {
-    char cpf[12];
-    system("clear||cls");
+    funcionario* fc;
+    char* cpf;
+
+    cpf = telaEdit_func();
+    fc = pesquisa_func(cpf);
+    if (fc == NULL){
+        printf("= = = Funcionário não encontrado... = = =\n");
+    } else {
+        fc = cadastro_func();
+        regravarfunc(fc);
+        free(fc);
+    }
+    free(cpf);
+}
+
+
+char* telaEdit_func(void) {
+ 	char* cpf;
+
+	cpf = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Editar funcionários  = = = = = =              |\n");
+    printf("|          = = = = =  Pesquise por funcionários  = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do funcionario que deseja alterar os dados:          |\n");
-    scanf("%[0-9]",cpf);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
+    printf("|    Informe o CPF(Apenas números) do funcionário que deseja encontrar: |\n");
+	scanf("%[0-9]", cpf);
+	getchar();
+	printf("|                                                                       |\n");
+	printf("|                                                                       |\n");
+	printf("|_______________________________________________________________________|\n");
+	printf("\n");
+	sleep(2);
+  	return cpf;
 }
+
+
 void excluir_func(void) {
-    char cpf[12];
+    funcionario* fc;
+    char* cpf;
+
+    cpf = telaExcluir_func();
+    fc = (funcionario*)malloc(sizeof(funcionario));
+    fc= pesquisa_func(cpf);
+
+    if(fc == NULL){
+        printf("= = = Não foi possível encontrar o funcionário!!! = = =");
+    } else {
+        fc->status = 0;
+        regravarfunc(fc);
+        free(fc);
+    }
+    free(cpf);
+}
+
+
+
+
+
+
+char* telaExcluir_func(void) {
+
+    char* cpf;
+    cpf = (char*)malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -183,6 +256,8 @@ void excluir_func(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+
+    return cpf;
 }
 
 
