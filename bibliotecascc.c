@@ -75,6 +75,14 @@ int ehDigito(char c) {
   }
 }
 
+int ehDigito2(int c) {
+  if (c >= 0 && c <= 9) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
 
 // Valida e-mail:
 

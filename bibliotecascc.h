@@ -8,6 +8,7 @@ int validaData(int, int, int);
 
 int validacell(char*);
 int ehDigito(char);
+int ehDigito2(int);
 
 // Valida email
 

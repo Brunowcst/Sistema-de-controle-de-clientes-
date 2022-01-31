@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "financas.h"
 #include "bibliotecascc.h"
 
@@ -70,6 +71,90 @@ void gravarPlanos(financas *planos){
         }
     fwrite(planos, sizeof(financas),1 , fp);
     fclose(fp);
+}
+
+void editar_planos(void) {
+    financas* planos;
+    int cod;
+
+    cod = telaEdit_planos();
+    planos = pesquisa_planos(cod);
+    if (planos == NULL){
+        printf("= = = Cliente não encontrado... = = =\n");
+    } else {
+        planos = cadastrar_fin();
+        regravarplanos(planos);
+        free(planos);
+    }
+    // free(cod);
+}
+
+void regravarplanos(financas* planos){
+    int achou;
+
+    FILE* fp;
+    financas* planoLido;
+
+    planoLido = (financas*)malloc(sizeof(financas));
+    fp = fopen("planos.dat", "r+b");
+    if (fp == NULL){
+        telaErrorArquivofin();
+        }
+    achou = 0;
+    while (fread(planoLido, sizeof(financas),1 , fp) && !achou){
+        
+        if (planoLido->codigo == planos->codigo){
+            achou = 1;
+            fseek(fp, -1*sizeof(financas), SEEK_CUR);
+        fwrite(planos, sizeof(financas), 1, fp);        
+        }
+        
+    }
+    fclose(fp);
+    free(planoLido);
+}
+
+financas* pesquisa_planos(int cod){
+    FILE* fp;
+    financas* plano;
+    
+    plano = (financas*)malloc(sizeof(financas));
+    fp = fopen("planos.dat", "rb");
+    if (fp == NULL){
+        telaErrorArquivofin();
+    }
+    while (fread(plano, sizeof(financas), 1, fp)){    
+        if((plano->codigo == cod)){
+            fclose(fp);
+            return plano;
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+int telaEdit_planos(void){
+    int cod;
+    // cod = (int*)malloc(sizeof(int));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o Código do plano:                                     |\n");    
+    scanf("%d", &cod);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+
+    return cod;
 }
 
 void edit_planos(void) {
@@ -180,6 +265,11 @@ financas *cadastrar_fin(void) {
     printf("|           * Benefícios do plano:                                      |\n");
     scanf("%50[^\n]", planos -> beneficios);
     getchar();
+    do {
+    printf("|           * Informe um código de busca:                               |\n");
+    scanf("%d", &planos->codigo);
+    getchar(); 
+    } while(!ehDigito2(planos->codigo));
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
