@@ -65,7 +65,7 @@ void cadastro_planos(void) {
 void gravarPlanos(financas *planos){
     FILE* fp;
 
-    fp = fopen("planos.dat", "ab");
+    fp = fopen("planos.txt", "ab");
     if (fp == NULL){
         telaErrorArquivofin();
         }
@@ -96,7 +96,7 @@ void regravarplanos(financas* planos){
     financas* planoLido;
 
     planoLido = (financas*)malloc(sizeof(financas));
-    fp = fopen("planos.dat", "r+b");
+    fp = fopen("planos.txt", "r+b");
     if (fp == NULL){
         telaErrorArquivofin();
         }
@@ -116,22 +116,23 @@ void regravarplanos(financas* planos){
 
 financas* pesquisa_planos(int cod){
     FILE* fp;
-    financas* plano;
+    financas* planos;
     
-    plano = (financas*)malloc(sizeof(financas));
-    fp = fopen("planos.dat", "rb");
+    planos = (financas*)malloc(sizeof(financas));
+    fp = fopen("planos.txt", "rb");
     if (fp == NULL){
         telaErrorArquivofin();
     }
-    while (fread(plano, sizeof(financas), 1, fp)){    
-        if((plano->codigo == cod)){
+    while (fread(planos, sizeof(financas), 1, fp)){    
+        if((planos->codigo == cod)){
             fclose(fp);
-            return plano;
+            return planos;
         }
     }
     fclose(fp);
     return NULL;
 }
+
 
 int telaEdit_planos(void){
     int cod;
@@ -213,7 +214,38 @@ void excluir_planos(void) {
     printf("\n");
 }
 
-void listar_planos(void) {
+void exibirPlanos(financas* planos) {
+
+	if (planos == NULL) {
+		printf("\n= = = Plano não encontrado = = =\n");
+	} else {
+		printf("\n= = = Plano Cadastrado = = =\n");		
+		printf("Titulo do plano: %s\n", planos->titulo);
+        printf("Código do plano: %d\n", planos->codigo);
+		printf("Preço: %.2f\n", planos->preco);
+	}
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+}
+
+
+void pesquisarPlano(void) {
+    
+    financas* planos;    
+    int cod;
+
+    cod = listar_planos();
+    planos = pesquisa_planos(cod);
+    exibirPlanos(planos);
+	free(planos);
+   // free(cod);
+}
+
+
+int listar_planos(void) {
+    int cod;
+
+
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -221,7 +253,9 @@ void listar_planos(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|          = = = = = = =  Listagem de Planos   = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
+    printf("|             Digite o código do plano que deseja exibir:               |\n");
+    scanf("%d",&cod);
+   /* printf("|                                                                       |\n");
     printf("|           1. Plano Família                                            |\n");
     // mostrar beneficios
     printf("|           2. Plano Individual                                         |\n");
@@ -232,12 +266,14 @@ void listar_planos(void) {
     // mostrar beneficios
     printf("|           5. Plano Daily                                              |\n");
     // mostrar beneficios
+    */
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     printf("\n");
+    return cod;
 }
 
 financas *cadastrar_fin(void) {
