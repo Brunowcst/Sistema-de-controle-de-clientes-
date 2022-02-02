@@ -15,7 +15,7 @@ void mod_MenuFinancas(void);
 void modulo_financas(void);
 
 void cadastro_planos(void);
-void edit_planos(void);
+//void edit_planos(void);
 void editar_planos(void);
 int telaEdit_planos(void);
 void excluir_planos(void);

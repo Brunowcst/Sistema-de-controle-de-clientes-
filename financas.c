@@ -19,13 +19,14 @@ void modulo_financas(void) {
             break;
         case '2' : cadastro_planos();
             break;
-        case '3' : edit_planos();
+        case '3' : editar_planos();
             break;
         case '4' : excluir_planos();
             break;
         default:
+            
+            printf("\n\t\t>>> Ops!! escolha uma opção válida...\n");
             sleep(2);
-            printf("Escolha uma opção válida...\n");
             break;
             }
              
@@ -81,6 +82,7 @@ void editar_planos(void) {
     planos = pesquisa_planos(cod);
     if (planos == NULL){
         printf("= = = Cliente não encontrado... = = =\n");
+        sleep(2);
     } else {
         planos = cadastrar_fin();
         regravarplanos(planos);
@@ -158,66 +160,11 @@ int telaEdit_planos(void){
     return cod;
 }
 
-void edit_planos(void) {
-    int op;
-    
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Editar Planos   = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|              Informe o plano que deseja editar :                      |\n");
-    scanf("%d",&op);
-    //Aqui printaria os planos pra escolher qual deseja editar
-    printf("|                                                                       |\n");
-    printf("|           1. Plano Família                                            |\n");
-    // mostrar beneficios
-    printf("|           2. Plano Individual                                         |\n");
-    // mostrar beneficios
-    printf("|           3. Plano Amigos                                             |\n");
-    // mostrar beneficios
-    printf("|           4. Plano Premium                                            |\n");
-    // mostrar beneficios
-    printf("|           5. Plano Daily                                              |\n");
-    // mostrar beneficios
-    printf("|                                                                       |\n");
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
-
-// void excluir_planos(void) {
-//     int op;
-//     system("clear||cls");
-//     printf("\n");
-//     printf(" _______________________________________________________________________ \n");
-//     printf("|                                                                       |\n");
-//     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-//     printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
-//     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-//     printf("|                                                                       |\n");
-//     printf("|        Informe o plano que deseja excluir:                            |\n");
-//     scanf("%d", &op);
-//     getchar();
-//     printf("|                                                                       |\n");
-//     printf("|                                                                       |\n");
-//     printf("|_______________________________________________________________________|\n");
-//     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-//     getchar();
-//     printf("\n");
-// }
-
 void exibirPlanos(financas* planos) {
 
 	if (planos == NULL) {
 		printf("\n= = = Plano não encontrado = = =\n");
+        sleep(2);
 	} else {
 		printf("\n= = = Plano Cadastrado = = =\n");		
 		printf("Titulo do plano: %s\n", planos->titulo);
