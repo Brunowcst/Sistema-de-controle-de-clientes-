@@ -65,7 +65,7 @@ void cadastro_planos(void) {
 void gravarPlanos(financas *planos){
     FILE* fp;
 
-    fp = fopen("planos.txt", "ab");
+    fp = fopen("planos.dat", "ab");
     if (fp == NULL){
         telaErrorArquivofin();
         }
@@ -96,7 +96,7 @@ void regravarplanos(financas* planos){
     financas* planoLido;
 
     planoLido = (financas*)malloc(sizeof(financas));
-    fp = fopen("planos.txt", "r+b");
+    fp = fopen("planos.dat", "r+b");
     if (fp == NULL){
         telaErrorArquivofin();
         }
@@ -119,7 +119,7 @@ financas* pesquisa_planos(int cod){
     financas* planos;
     
     planos = (financas*)malloc(sizeof(financas));
-    fp = fopen("planos.txt", "rb");
+    fp = fopen("planos.dat", "rb");
     if (fp == NULL){
         telaErrorArquivofin();
     }
@@ -193,26 +193,26 @@ void edit_planos(void) {
     printf("\n");
 }
 
-void excluir_planos(void) {
-    int op;
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________ \n");
-    printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|                                                                       |\n");
-    printf("|        Informe o plano que deseja excluir:                            |\n");
-    scanf("%d", &op);
-    getchar();
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-    printf("\n");
-}
+// void excluir_planos(void) {
+//     int op;
+//     system("clear||cls");
+//     printf("\n");
+//     printf(" _______________________________________________________________________ \n");
+//     printf("|                                                                       |\n");
+//     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+//     printf("|          = = = = = = =   Excluir Planos  = = = = = = = =              |\n");
+//     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+//     printf("|                                                                       |\n");
+//     printf("|        Informe o plano que deseja excluir:                            |\n");
+//     scanf("%d", &op);
+//     getchar();
+//     printf("|                                                                       |\n");
+//     printf("|                                                                       |\n");
+//     printf("|_______________________________________________________________________|\n");
+//     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+//     getchar();
+//     printf("\n");
+// }
 
 void exibirPlanos(financas* planos) {
 
@@ -224,7 +224,7 @@ void exibirPlanos(financas* planos) {
         printf("Código do plano: %d\n", planos->codigo);
 		printf("Preço: %.2f\n", planos->preco);
 	}
-	printf("\n\nTecle ENTER para continuar!\n\n");
+	printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n\n");
 	getchar();
 }
 
@@ -306,6 +306,7 @@ financas *cadastrar_fin(void) {
     scanf("%d", &planos->codigo);
     getchar(); 
     } while(!ehDigito2(planos->codigo));
+    planos->status = 1;
     printf("|_______________________________________________________________________|\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -314,6 +315,49 @@ financas *cadastrar_fin(void) {
     
     return planos; 
 
+}
+
+void excluir_planos(void) {
+    financas* planos;
+    int cod;
+
+    cod = telaExcluir_planos();
+    planos = (financas*)malloc(sizeof(financas));
+    planos= pesquisa_planos(cod);
+
+    if(planos == NULL){
+        printf("= = = Não foi possível encontrar o cliente!!! = = =");
+    } else {
+        planos->status = 0;
+        regravarplanos(planos);
+        free(planos);
+    }
+    //free(cod);
+}
+
+int telaExcluir_planos(void){
+    int cod;
+
+    //cpf = (char*)malloc(12*sizeof(char));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = =  Excluir  planos    = = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    printf("|        Informe o código do plano que deseja excluir:                  |\n");
+    scanf("%d",&cod);
+    getchar();
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    printf("\n");
+
+    return cod;
 }
 
 void telaErrorArquivofin(void) {

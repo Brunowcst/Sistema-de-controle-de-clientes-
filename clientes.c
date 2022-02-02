@@ -270,7 +270,7 @@ void exibirCliente(cliente* cl) {
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: %d\n", cl->status);
 	}
-	printf("\n\nTecle ENTER para continuar!\n\n");
+	printf("\n\t\t\t>>> Tecle ENTER para continuar...\n\n");
 	getchar();
 }
 

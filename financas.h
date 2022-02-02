@@ -6,6 +6,7 @@ struct financa{
     char beneficios[51];
     float preco;
     int codigo;
+    int status;
 };
 
 financas *cadastrar_fin(void);
@@ -18,6 +19,7 @@ void edit_planos(void);
 void editar_planos(void);
 int telaEdit_planos(void);
 void excluir_planos(void);
+int telaExcluir_planos(void);
 int listar_planos(void);
 
 
