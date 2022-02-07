@@ -15,7 +15,7 @@ void modulo_financas(void) {
         scanf("%c", &op);
         getchar();
         switch(op){
-        case '1' : listar_planos();
+        case '1' : pesquisaPlano();
             break;
         case '2' : cadastro_planos();
             break;
@@ -164,19 +164,20 @@ void exibirPlanos(financas* planos) {
 
 	if (planos == NULL) {
 		printf("\n= = = Plano não encontrado = = =\n");
-        sleep(2);
+        sleep(3);
 	} else {
 		printf("\n= = = Plano Cadastrado = = =\n");		
 		printf("Titulo do plano: %s\n", planos->titulo);
         printf("Código do plano: %d\n", planos->codigo);
 		printf("Preço: %.2f\n", planos->preco);
+        printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n\n");
+	    getchar();
 	}
-	printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n\n");
-	getchar();
+	
 }
 
 
-void pesquisarPlano(void) {
+void pesquisaPlano(void) {
     
     financas* planos;    
     int cod;
