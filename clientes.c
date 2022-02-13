@@ -381,7 +381,7 @@ do {
 void listar_pplano(void) {
     FILE* fp;
     cliente* cl;
-    char* n_lido;
+    char n_lido[2];
 
     cl = (cliente*) malloc(sizeof(cliente));
 
@@ -403,7 +403,7 @@ void listar_pplano(void) {
     printf("|          >>> Informe o Nº do tipo de cliente que deseja listar:       |\n");
     printf("|_______________________________________________________________________|\n");
     printf("\n");
-    scanf("%[0-9]", n_lido);
+    scanf("%1[^\n]", n_lido);
     getchar();
     
 
