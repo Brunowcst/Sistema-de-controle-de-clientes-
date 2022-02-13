@@ -119,7 +119,7 @@ void exibirFuncionario(funcionario* fc) {
 		printf("Celular: %s\n", fc->cell);
 		printf("Status: %d\n", fc->status);
         printf("Cargo: ");
-        if (fc->cargo==1){
+        if (fc->cargo=='1'){
              printf("Administrativo\n");
         }else{ printf("Atendente\n");}
 	}
@@ -421,7 +421,7 @@ void exibirlistaFunc(funcionario* fc) {
 		printf("Celular: %s\n", fc->cell);
 		printf("Status: %d\n", fc->status);
         printf("Cargo: ");
-        if (fc->cargo==1){
+        if (fc->cargo=='1'){
             printf("Administrativo\n");
         }else{ printf("Atendente\n");}
 

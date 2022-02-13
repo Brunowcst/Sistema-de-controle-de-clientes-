@@ -272,6 +272,10 @@ void exibirCliente(cliente* cl) {
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: %d\n", cl->status);
+        printf("Categoria do cliente: ");
+        if (cl->category=='1'){
+            printf("Comum.\n");
+        }else{ printf("Premiun.\n");}
 	}
 	printf("\n\t\t\t>>> Tecle ENTER para continuar...\n\n");
 	getchar();
@@ -422,7 +426,7 @@ void exibirlista(cliente* cl) {
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: %d\n", cl->status);
         printf("Categoria do cliente: ");
-        if (cl->category==1){
+        if (cl->category=='1'){
             printf("Comum.\n");
         }else{ printf("Premiun.\n");}
         printf("\t\t >>> Tecle enter para exibir o próximo:\n");
