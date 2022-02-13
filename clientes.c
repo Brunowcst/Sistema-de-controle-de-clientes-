@@ -353,7 +353,7 @@ void listar_todos(void){
 
     printf("\n= = = Relatório de todos os clientes = = =\n");
     while(fread(cl, sizeof(cliente), 1, fp)) {        
-        exibirCliente(cl);
+        exibirlista(cl);
         }
 
     fclose(fp);
@@ -395,7 +395,6 @@ void listar_pplano(void) {
     while(fread(cl, sizeof(cliente), 1, fp)) {
         if (cl->category == n_lido){
             exibirlista(cl);
-            getchar();
         }
     }
     fclose(fp);
@@ -422,6 +421,8 @@ void exibirlista(cliente* cl) {
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: %d\n", cl->status);
+        printf("\t\t >>> Tecle enter para exibir o próximo:\n");
+        getchar();
 	}
 	
 }
