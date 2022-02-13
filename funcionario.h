@@ -12,6 +12,7 @@ struct func {
     int status;
     int mes;
     int ano;
+    char cargo;
 };
 
 funcionario *cadastro_func(void);
@@ -40,5 +41,16 @@ char* telaExcluir_func(void);
 
 
 void telaErrorArquivofc(void);
+
+
+//LISTAGEM
+void listar_func(void);
+void subMod_listarFunc(void);
+void listar_todosFunc(void);
+void exibirlistaFunc(funcionario* fc);
+void listar_ordemalphaFunc(void);
+void listar_pcargo(void);
+
+
 
 

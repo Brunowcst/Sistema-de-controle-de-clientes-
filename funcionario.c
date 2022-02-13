@@ -20,6 +20,7 @@ void mod_MenuFuncionarios(void) {
     printf("///           2. Editar Funcionarios                                      ///\n");
     printf("///           3. Pesquisar Funcionarios                                   ///\n");
     printf("///           4. Excluir Funcionarios                                     ///\n");
+    printf("///           5. Listar Funcionarios                                      ///\n");
     printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
     printf("///                                                                       ///\n");
@@ -43,6 +44,8 @@ void modulo_funcionario(void) {
             case '3' : pesquisar_func();
                 break;
             case '4' : excluir_func();
+                break;
+            case '5' : listar_func();
                 break;
             default:
                 printf("Escolha uma opção válida...\n");
@@ -115,6 +118,10 @@ void exibirFuncionario(funcionario* fc) {
 		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
 		printf("Celular: %s\n", fc->cell);
 		printf("Status: %d\n", fc->status);
+        printf("Cargo: ");
+        if (fc->cargo==1){
+             printf("Administrativo\n");
+        }else{ printf("Atendente\n");}
 	}
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
@@ -302,6 +309,14 @@ funcionario *cadastro_func(void) {
     getchar();
     } while (!validEmail(fc->email));
 
+    do{
+    printf("|           * Cargo:                                                    |\n");
+    printf("|           1. Administrativo                                           |\n");
+    printf("|           2. Atendente                                                |\n");
+    scanf("%c",&fc->cargo);
+    getchar();
+    }while(!ehDigito(fc->cargo));
+
     fc->status = 1;
 
     return fc;
@@ -325,3 +340,143 @@ void telaErrorArquivofc(void) {
 	getchar();
 	exit(1);
 };
+
+
+//LISTAGEM
+
+
+void listar_func(void) {
+
+    char op;
+    do {
+        subMod_listarFunc();
+        printf("\t\t>>> Escolha a opção desejada: \n");
+        scanf("%c", &op);
+        getchar();
+
+        switch(op){
+            case '1' : listar_todosFunc();
+                break;
+            case '2' : listar_pcargo();
+                break;
+            case '3' : listar_ordemalphaFunc();
+                break;
+            default:
+                printf("Escolha uma opção válida...\n");
+                sleep(2);
+                break;
+        }
+    } while (op != '0');
+}
+
+void subMod_listarFunc(void){
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________\n");
+    printf("|                                                                       |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|           = = = = = = = Listar Funcionarios = = = = = = =             |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|                                                                       |\n");
+    printf("|           1. Listar todos                                             |\n");
+    printf("|           2. Listar por cargo                                         |\n");
+    printf("|           3. Listar por ordem alfabética                              |\n");
+    printf("|           0. Voltar                                                   |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
+}
+
+void listar_todosFunc(void){
+    FILE* fp;
+    funcionario* fc;
+    fc = ( funcionario*) malloc(sizeof(funcionario));
+
+    fp = fopen("func.dat","rb");
+    if (fp == NULL){
+        printf("Erro na abertura do arquivo\n!");
+        exit(1);
+        }
+
+    printf("\n= = = Relatório de todos os funcionários = = =\n");
+    while(fread(fc, sizeof(funcionario), 1, fp)) {        
+        exibirlistaFunc(fc);
+        }
+
+    fclose(fp);
+    free(fc);
+}
+
+
+void exibirlistaFunc(funcionario* fc) {
+
+	if (fc == NULL) {
+		printf("\n= = = Funcionário não encontrado = = =\n");
+	} else {
+		printf("\n= = = Funcionário Cadastrado = = =\n");		
+		printf("Nome do Funcionário: %s\n", fc->nome);
+        printf("CPF: %s\n", fc->cpf);
+		printf("Endereço eletrônico: %s\n", fc->email);
+		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
+		printf("Celular: %s\n", fc->cell);
+		printf("Status: %d\n", fc->status);
+        printf("Cargo: ");
+        if (fc->cargo==1){
+            printf("Administrativo\n");
+        }else{ printf("Atendente\n");}
+
+        printf("\t\t >>> Tecle enter para exibir o próximo:\n");
+        getchar();
+	}
+	
+}
+
+void listar_ordemalphaFunc(void){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Em construção...");
+    sleep(3);
+}
+
+
+
+void listar_pcargo(void) {
+    FILE* fp;
+    funcionario* fc;
+    char n_lido;
+
+    fc = (funcionario*) malloc(sizeof(funcionario));
+
+    fp = fopen("func.dat","rb");
+    if (fp == NULL){
+        printf("\t\tErro na abertura do arquivo!\n");
+        exit(1);
+    }
+    do {
+        system("clear||cls");
+        printf("\n");
+        printf(" _______________________________________________________________________\n");
+        printf("|                                                                       |\n");
+        printf("|                Relatório de funcionários por cargo:                   |\n");
+        printf("|                                                                       |\n");
+        printf("|                                                                       |\n");
+        printf("|               1. Administrativo.                                      |\n");
+        printf("|               2. Atendente.                                           |\n");
+        printf("|                                                                       |\n");
+        printf("|                                                                       |\n");
+        printf("|        >>> Informe o Nº do tipo de funcionário que deseja listar:     |\n");
+        printf("|_______________________________________________________________________|\n");
+        printf("\t\n");
+        scanf("%c", &n_lido);
+        getchar();
+    } while(!ehDigito(n_lido));
+    
+
+    while(fread(fc, sizeof(funcionario), 1, fp)) {
+        if (fc->cargo == n_lido){
+            exibirlistaFunc(fc);
+        }
+    }
+    fclose(fp);
+    free(fc);
+}
