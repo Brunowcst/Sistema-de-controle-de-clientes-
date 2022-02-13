@@ -303,7 +303,7 @@ void listar_clientes(void){
     char op;
     do {
         subMod_listarCl();
-        printf("\t\t>>> Escolhaa opção desejada: \n");
+        printf("\t\t>>> Escolha a opção desejada: \n");
         scanf("%c", &op);
         getchar();
 
@@ -325,17 +325,19 @@ void listar_clientes(void){
 void subMod_listarCl(void){
     system("clear||cls");
     printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                       ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = = = =  Listar Clientes  = = = = = = =             ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           1. Listar todos                                             ///\n");
-    printf("///           2. Listar por categoria (plano)                             ///\n");
-    printf("///           3. Listar por ordem alfabética                              ///\n");
-    printf("///                                                                       ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf(" _______________________________________________________________________\n");
+    printf("|                                                                       |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|           = = = = = = = =  Listar Clientes  = = = = = = =             |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|                                                                       |\n");
+    printf("|           1. Listar todos                                             |\n");
+    printf("|           2. Listar por categoria (plano)                             |\n");
+    printf("|           3. Listar por ordem alfabética                              |\n");
+    printf("|           0. Voltar                                                   |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
 }
 
 void listar_todos(void){
@@ -358,8 +360,19 @@ void listar_todos(void){
     free(cl);
 }
 
-/*
-do {
+void listar_pplano(void) {
+    FILE* fp;
+    cliente* cl;
+    char n_lido;
+
+    cl = (cliente*) malloc(sizeof(cliente));
+
+    fp = fopen("clientes.dat","rb");
+    if (fp == NULL){
+        printf("\t\tErro na abertura do arquivo!\n");
+        exit(1);
+    }
+    do {
         system("clear||cls");
         printf("\n");
         printf(" _______________________________________________________________________\n");
@@ -370,46 +383,19 @@ do {
         printf("|               1. Cliente comum.                                       |\n");
         printf("|               2. Cliente Premium.                                     |\n");
         printf("|                                                                       |\n");
+        printf("|                                                                       |\n");
         printf("|          >>> Informe o Nº do tipo de cliente que deseja listar:       |\n");
         printf("|_______________________________________________________________________|\n");
-        printf("\n");
-        scanf("%1[^\n]", n_lido);
+        printf("\t\n");
+        scanf("%c", &n_lido);
         getchar();
     } while(!ehDigito(n_lido));
-    */
-
-void listar_pplano(void) {
-    FILE* fp;
-    cliente* cl;
-    char n_lido[2];
-
-    cl = (cliente*) malloc(sizeof(cliente));
-
-    fp = fopen("clientes.dat","rb");
-    if (fp == NULL){
-        printf("\t\tErro na abertura do arquivo!\n");
-        exit(1);
-    }
-    system("clear||cls");
-    printf("\n");
-    printf(" _______________________________________________________________________\n");
-    printf("|                                                                       |\n");
-    printf("|                Relatório de clientes  por plano:                      |\n");
-    printf("|                                                                       |\n");
-    printf("|                                                                       |\n");
-    printf("|               1. Cliente comum.                                       |\n");
-    printf("|               2. Cliente Premium.                                     |\n");
-    printf("|                                                                       |\n");
-    printf("|          >>> Informe o Nº do tipo de cliente que deseja listar:       |\n");
-    printf("|_______________________________________________________________________|\n");
-    printf("\n");
-    scanf("%1[^\n]", n_lido);
-    getchar();
     
 
     while(fread(cl, sizeof(cliente), 1, fp)) {
-        if (strcmp(cl->category, n_lido) == 0){
-            exibirCliente(cl);
+        if (cl->category == n_lido){
+            exibirlista(cl);
+            getchar();
         }
     }
     fclose(fp);
@@ -418,8 +404,26 @@ void listar_pplano(void) {
 
 
 void listar_ordemalpha(void){
-    printf("Em construção...");
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Em construção...");
     sleep(3);
+}
+
+void exibirlista(cliente* cl) {
+
+	if (cl == NULL) {
+		printf("\n= = = Cliente não encontrado = = =\n");
+	} else {
+		printf("\n= = = Cliente Cadastrado = = =\n");		
+		printf("Nome do cliente: %s\n", cl->nome);
+        printf("CPF: %s\n", cl->cpf);
+		printf("Endereço eletrônico: %s\n", cl->email);
+		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
+		printf("Celular: %s\n", cl->cell);
+		printf("Status: %d\n", cl->status);
+	}
+	
 }
 
 char* telaExcluir_clientes(void){

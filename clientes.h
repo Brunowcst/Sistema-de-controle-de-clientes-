@@ -37,5 +37,6 @@ void listar_clientes(void);
 void listar_todos(void);
 void listar_pplano(void);
 void listar_ordemalpha(void);
+void exibirlista(cliente* cl);
 
 void telaErrorArquivoCliente(void);
