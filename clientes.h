@@ -32,4 +32,10 @@ void regravarcliente(cliente* cl);
 void excluir_clientes(void);
 char* telaExcluir_clientes(void);
 
+void subMod_listarCl(void);
+void listar_clientes(void);
+void listar_todos(void);
+void listar_pplano(void);
+void listar_ordemalpha(void);
+
 void telaErrorArquivoCliente(void);

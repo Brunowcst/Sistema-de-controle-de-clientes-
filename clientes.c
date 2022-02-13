@@ -21,6 +21,7 @@ void mod_MenuClientes(void) {
     printf("///           2. Editar Clientes                                          ///\n");
     printf("///           3. Pesquisar Clientes                                       ///\n");
     printf("///           4. Excluir clientes                                         ///\n");
+    printf("///           5. Listar clientes                                          ///\n");
     printf("///           0. Voltar                                                   ///\n");
     printf("///                                                                       ///\n");
     printf("///                                                                       ///\n");
@@ -45,6 +46,8 @@ void modulo_clientes(void){
             case '3' : pesquisar_clientes();
                 break;
             case '4' : excluir_clientes();
+                break;
+            case '5': listar_clientes();
                 break;
             default:
                 printf("Escolha uma opção válida...\n");
@@ -293,6 +296,130 @@ void excluir_clientes(void) {
         free(cl);
     }
     free(cpf);
+}
+
+void listar_clientes(void){
+
+    char op;
+    do {
+        subMod_listarCl();
+        printf("\t\t>>> Escolhaa opção desejada: \n");
+        scanf("%c", &op);
+        getchar();
+
+        switch(op){
+            case '1' : listar_todos();
+                break;
+            case '2' : listar_pplano();
+                break;
+            case '3' : listar_ordemalpha();
+                break;
+            default:
+                printf("Escolha uma opção válida...\n");
+                sleep(2);
+                break;
+        }
+    } while (op != '0');
+}
+
+void subMod_listarCl(void){
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = = =  Listar Clientes  = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           1. Listar todos                                             ///\n");
+    printf("///           2. Listar por categoria (plano)                             ///\n");
+    printf("///           3. Listar por ordem alfabética                              ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+}
+
+void listar_todos(void){
+    FILE* fp;
+    cliente* cl;
+    cl = (cliente*) malloc(sizeof(cliente));
+
+    fp = fopen("clientes.dat","rb");
+    if (fp == NULL){
+        printf("Erro na abertura do arquivo\n!");
+        exit(1);
+        }
+
+    printf("\n= = = Relatório de todos os clientes = = =\n");
+    while(fread(cl, sizeof(cliente), 1, fp)) {        
+        exibirCliente(cl);
+        }
+
+    fclose(fp);
+    free(cl);
+}
+
+/*
+do {
+        system("clear||cls");
+        printf("\n");
+        printf(" _______________________________________________________________________\n");
+        printf("|                                                                       |\n");
+        printf("|                Relatório de clientes  por plano:                      |\n");
+        printf("|                                                                       |\n");
+        printf("|                                                                       |\n");
+        printf("|               1. Cliente comum.                                       |\n");
+        printf("|               2. Cliente Premium.                                     |\n");
+        printf("|                                                                       |\n");
+        printf("|          >>> Informe o Nº do tipo de cliente que deseja listar:       |\n");
+        printf("|_______________________________________________________________________|\n");
+        printf("\n");
+        scanf("%1[^\n]", n_lido);
+        getchar();
+    } while(!ehDigito(n_lido));
+    */
+
+void listar_pplano(void) {
+    FILE* fp;
+    cliente* cl;
+    char* n_lido;
+
+    cl = (cliente*) malloc(sizeof(cliente));
+
+    fp = fopen("clientes.dat","rb");
+    if (fp == NULL){
+        printf("\t\tErro na abertura do arquivo!\n");
+        exit(1);
+    }
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________\n");
+    printf("|                                                                       |\n");
+    printf("|                Relatório de clientes  por plano:                      |\n");
+    printf("|                                                                       |\n");
+    printf("|                                                                       |\n");
+    printf("|               1. Cliente comum.                                       |\n");
+    printf("|               2. Cliente Premium.                                     |\n");
+    printf("|                                                                       |\n");
+    printf("|          >>> Informe o Nº do tipo de cliente que deseja listar:       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
+    scanf("%[0-9]", n_lido);
+    getchar();
+    
+
+    while(fread(cl, sizeof(cliente), 1, fp)) {
+        if (strcmp(cl->category, n_lido) == 0){
+            exibirCliente(cl);
+        }
+    }
+    fclose(fp);
+    free(cl);
+}
+
+
+void listar_ordemalpha(void){
+    printf("Em construção...");
+    sleep(3);
 }
 
 char* telaExcluir_clientes(void){
