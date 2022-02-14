@@ -14,7 +14,7 @@ void mod_MenuClientes(void) {
     printf(" __________________________________________________________________________\n");
     printf("|                                                                          |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
-    printf("|           = = = = = = = =   Menu Clientes   = = = = = = =                |\n");
+    printf("|           = = = = = = = =   MENU CLIENTES   = = = = = = =                |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
     printf("|                                                                          |\n");
     printf("|           1. Cadastrar Clientes                                          |\n");
@@ -74,7 +74,7 @@ cliente *cadastrar(void){
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = = = Cadastrar clientes  = = = = = =              |\n");
+    printf("|          = = = = = = = = CADASTRAR CLIENTES  = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     
@@ -189,7 +189,7 @@ char* telaEdit_clientes(void){
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =   Editar clientes   = = = = = = =              |\n");
+    printf("|          = = = = = = =    EDITAR CLIENTES  = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja alterar os dados:          |\n");    
@@ -246,7 +246,7 @@ char* telaPesquisarCliente(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = = Pesquise por clientes = = = = = =              |\n");
+    printf("|          = = = = = = =  PESQUISAR CLIENTES   = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF(Apenas números) do cliente que deseja encontrar: |\n");
@@ -265,7 +265,7 @@ void exibirCliente(cliente* cl) {
 	if (cl == NULL) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
-		printf("\n= = = Cliente Cadastrado = = =\n");		
+		printf("\n= = = CLIENTE CADASTRADO = = =\n");		
 		printf("Nome do cliente: %s\n", cl->nome);
         printf("CPF: %s\n", cl->cpf);
 		printf("Endereço eletrônico: %s\n", cl->email);
@@ -337,7 +337,7 @@ void subMod_listarCl(void){
     printf(" _______________________________________________________________________\n");
     printf("|                                                                       |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
-    printf("|           = = = = = = = =  Listar Clientes  = = = = = = =             |\n");
+    printf("|           = = = = = = = =  LISTAR CLIENTES  = = = = = = =             |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
     printf("|                                                                       |\n");
     printf("|           1. Listar todos                                             |\n");
@@ -386,7 +386,7 @@ void listar_pplano(void) {
         printf("\n");
         printf(" _______________________________________________________________________\n");
         printf("|                                                                       |\n");
-        printf("|                Relatório de clientes  por plano:                      |\n");
+        printf("|                Relatório de clientes por plano:                       |\n");
         printf("|                                                                       |\n");
         printf("|                                                                       |\n");
         printf("|               1. Cliente comum.                                       |\n");
@@ -471,7 +471,7 @@ void exibirlista(cliente* cl) {
 	if (cl == NULL) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
-		printf("\n= = = Cliente Cadastrado = = =\n");		
+		printf("\n= = = CLIENTE CADASTRADO = = =\n");		
 		printf("Nome do cliente: %s\n", cl->nome);
         printf("CPF: %s\n", cl->cpf);
 		printf("Endereço eletrônico: %s\n", cl->email);
@@ -482,7 +482,7 @@ void exibirlista(cliente* cl) {
         if (cl->category=='1'){
             printf("Comum.\n");
         }else if (cl->category == '2'){ 
-            printf("Premiun.\n");}
+            printf("Premium.\n");}
          else { printf("Não informado.");}
         printf("\t\t >>> Tecle enter para exibir o próximo:\n");
         getchar();
@@ -498,7 +498,7 @@ char* telaExcluir_clientes(void){
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Excluir  clientes  = = = = = = =              |\n");
+    printf("|          = = = = = = =   EXCLUIR CLIENTES  = = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|        Informe o CPF do cliente que deseja excluir:                   |\n");

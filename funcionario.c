@@ -13,14 +13,14 @@ void mod_MenuFuncionarios(void) {
     printf(" _____________________________________________________________________________\n");
     printf("|                                                                             |\n");
     printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                 |\n");
-    printf("|             = = = = = = = = Menu Funcionários = = = = = = =                 |\n");
+    printf("|             = = = = = = = = MENU FUNCIONÁRIOS = = = = = = =                 |\n");
     printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                 |\n");
     printf("|                                                                             |\n");
-    printf("|             1. Cadastrar Funcionarios                                       |\n");
-    printf("|             2. Editar Funcionarios                                          |\n");
-    printf("|             3. Pesquisar Funcionarios                                       |\n");
-    printf("|             4. Excluir Funcionarios                                         |\n");
-    printf("|             5. Listar Funcionarios                                          |\n");
+    printf("|             1. Cadastrar funcionários                                       |\n");
+    printf("|             2. Editar funcionários                                          |\n");
+    printf("|             3. Pesquisar funcionários                                       |\n");
+    printf("|             4. Excluir funcionários                                         |\n");
+    printf("|             5. Listar funcionários                                          |\n");
     printf("|             0. Voltar                                                       |\n");
     printf("|                                                                             |\n");
     printf("|                                                                             |\n");
@@ -111,8 +111,8 @@ void exibirFuncionario(funcionario* fc) {
 	if (fc == NULL) {
 		printf("\n= = = Funcionário não encontrado = = =\n");
 	} else {
-		printf("\n= = = Funcionário Cadastrado = = =\n");		
-		printf("Nome do Funcionário: %s\n", fc->nome);
+		printf("\n= = = FUNCIONÁRIO CADASTRADO = = =\n");		
+		printf("Nome do funcionário: %s\n", fc->nome);
         printf("CPF: %s\n", fc->cpf);
 		printf("Endereço eletrônico: %s\n", fc->email);
 		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
@@ -137,7 +137,7 @@ char* telaPesquisarFunc(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = Pesquise por Funcionrios  = = = = =              |\n");
+    printf("|          = = = = =   PESQUISAR FUNCIONÁRIOS    = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
     printf("|    Informe o CPF(Apenas números) do funcionário que deseja encontrar: |\n");
@@ -203,9 +203,9 @@ char* telaEdit_func(void) {
     printf("\n");
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = =  Pesquise por funcionários  = = = = =              |\n");
-    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|      = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =      |\n");
+    printf("|      = PESQUISE PELO FUNCIONÁRIO QUE DESEJA ALTERAR OS DADOS:  =      |\n");
+    printf("|      = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =      |\n");
     printf("|                                                                       |\n");
     printf("|    Informe o CPF(Apenas números) do funcionário que deseja encontrar: |\n");
 	scanf("%[0-9]", cpf);
@@ -251,10 +251,10 @@ char* telaExcluir_func(void) {
     printf(" _______________________________________________________________________ \n");
     printf("|                                                                       |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
-    printf("|          = = = = = = =  Excluir funcionários = = = = = =              |\n");
+    printf("|          = = = = = = =  EXCLUIR FUNCIONÁRIOS = = = = = =              |\n");
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|                                                                       |\n");
-    printf("|        Informe o CPF do funcionário que deseja escluir:               |\n");
+    printf("|        Informe o CPF do funcionário que deseja excluir:               |\n");
     scanf("%[0-9]",cpf);
     getchar();
     printf("|                                                                       |\n");
@@ -275,7 +275,7 @@ funcionario *cadastro_func(void) {
     system("clear||cls");
     printf("\n");
     do {
-    printf("|           * Nome Completo:                                            |\n");
+    printf("|           * Nome completo:                                            |\n");
     scanf("%50[^\n]", fc->nome);
     getchar();
     } while (!validarNome(fc->nome));
@@ -287,7 +287,7 @@ funcionario *cadastro_func(void) {
     } while(!validarCPF(fc->cpf));
     
     do{
-    printf("|           * Data sua data de Nascimento:                              |\n");
+    printf("|           * Data sua data de nascimento:                              |\n");
     printf("| Informe o dia:                                                        |\n");
     scanf("%d", &fc->dia); 
     printf("| Informe o mês:                                                        |\n");
@@ -375,7 +375,7 @@ void subMod_listarFunc(void){
     printf(" _______________________________________________________________________\n");
     printf("|                                                                       |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
-    printf("|           = = = = = = = Listar Funcionarios = = = = = = =             |\n");
+    printf("|           = = = = = = = LISTAR FUNCIONÁRIOS = = = = = = =             |\n");
     printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
     printf("|                                                                       |\n");
     printf("|           1. Listar todos                                             |\n");
@@ -413,8 +413,8 @@ void exibirlistaFunc(funcionario* fc) {
 	if (fc == NULL) {
 		printf("\n= = = Funcionário não encontrado = = =\n");
 	} else {
-		printf("\n= = = Funcionário Cadastrado = = =\n");		
-		printf("Nome do Funcionário: %s\n", fc->nome);
+		printf("\n= = = FUNCIONÁRIO CADASTRADO = = =\n");		
+		printf("Nome do funcionário: %s\n", fc->nome);
         printf("CPF: %s\n", fc->cpf);
 		printf("Endereço eletrônico: %s\n", fc->email);
 		printf("Data de Nasc: %d/%d/%d\n", fc->dia, fc->mes, fc->ano);
