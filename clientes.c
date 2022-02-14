@@ -414,7 +414,7 @@ void listar_pplano(void) {
 void listar_ordemalpha(void){
 
     FILE* fp;
-    int tam;
+    //int tam;
     char linha[256];
     cliente* novoCl;
     cliente* list;
@@ -428,8 +428,6 @@ void listar_ordemalpha(void){
     list = NULL;
     while(fgets(linha,256,fp)){
 		novoCl = (cliente*) malloc(sizeof(cliente));
-		tam = strlen(linha) + 1;
-		*novoCl->nome = (char*) malloc(tam*sizeof(char));
 		strcpy(novoCl->nome, linha);
       if (list == NULL) {
 		list = novoCl;
@@ -454,8 +452,7 @@ void listar_ordemalpha(void){
     // Listagem de clientes ordem alfabética
    	novoCl = list;
 	while (novoCl != NULL) {
-		//printf("Fruta %d: %s", i, novoCl->nome);
-        exibirCliente(novoCl);
+		exibirCliente(novoCl);
 		novoCl = novoCl->prox;	
 	}
 
