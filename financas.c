@@ -37,20 +37,20 @@ void modulo_financas(void) {
 void mod_MenuFinancas(void) {
     system("clear||cls");
     printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                       ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = =   Módulo Financeiro   = = = = = = =             ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           1. Listar Planos                                            ///\n");
-    printf("///           2. Cadastrar PLanos                                         ///\n");
-    printf("///           3. Editar Planos                                            ///\n");
-    printf("///           4. Excluir Planos                                           ///\n");
-    printf("///           0. Voltar                                                   ///\n");
-    printf("///                                                                       ///\n");
-    printf("///                                                                       ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf(" _____________________________________________________________________________\n");
+    printf("|                                                                             |\n");
+    printf("|              = = = = = = = = = = = = = = = = = = = = = = = =                |/\n");
+    printf("|              = = = = = =   Módulo Financeiro   = = = = = = =                |\n");
+    printf("|              = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+    printf("|                                                                             |\n");
+    printf("|              1. Listar Planos                                               |\n");
+    printf("|              2. Cadastrar PLanos                                            |\n");
+    printf("|              3. Editar Planos                                               |\n");
+    printf("|              4. Excluir Planos                                              |\n");
+    printf("|              0. Voltar                                                      |\n");
+    printf("|                                                                             |\n");
+    printf("|                                                                             |\n");
+    printf("|_____________________________________________________________________________|\n");
     printf("\n");
 }
 
@@ -311,17 +311,17 @@ int telaExcluir_planos(void){
 void telaErrorArquivofin(void) {
 	system("clear||cls");  
 	printf("\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
-	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = = com informações sobre os planos = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
-	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
+	printf("_____________________________________________________________________________\n");
+	printf("|                                                                            |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|             = = = = = = =  Ops! Ocorreu em erro = = = = = =                |\n");
+	printf("|             = = =  Não foi possível acessar o arquivo = = =                |\n");
+	printf("|             = = = = com informações sobre os Planos   = = =                |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|             = =  Pedimos desculpas pelos inconvenientes = =                |\n");
+	printf("|             = = =  mas este programa será finalizado! = = =                |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|____________________________________________________________________________|\n");
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
 	exit(1);

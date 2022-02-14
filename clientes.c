@@ -11,21 +11,21 @@ typedef struct clientes cliente;
 void mod_MenuClientes(void) {
     system("clear||cls");
     printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                       ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = = = =   Menu Clientes   = = = = = = =             ///\n");
-    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                                                                       ///\n");
-    printf("///           1. Cadastrar Clientes                                       ///\n");
-    printf("///           2. Editar Clientes                                          ///\n");
-    printf("///           3. Pesquisar Clientes                                       ///\n");
-    printf("///           4. Excluir clientes                                         ///\n");
-    printf("///           5. Listar clientes                                          ///\n");
-    printf("///           0. Voltar                                                   ///\n");
-    printf("///                                                                       ///\n");
-    printf("///                                                                       ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf(" __________________________________________________________________________\n");
+    printf("|                                                                          |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+    printf("|           = = = = = = = =   Menu Clientes   = = = = = = =                |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+    printf("|                                                                          |\n");
+    printf("|           1. Cadastrar Clientes                                          |\n");
+    printf("|           2. Editar Clientes                                             |\n");
+    printf("|           3. Pesquisar Clientes                                          |\n");
+    printf("|           4. Excluir clientes                                            |\n");
+    printf("|           5. Listar clientes                                             |\n");
+    printf("|           0. Voltar                                                      |\n");
+    printf("|                                                                          |\n");
+    printf("|                                                                          |\n");
+    printf("|__________________________________________________________________________|\n");
     printf("\n"); 
 }
 
@@ -271,7 +271,12 @@ void exibirCliente(cliente* cl) {
 		printf("Endereço eletrônico: %s\n", cl->email);
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
-		printf("Status: %d\n", cl->status);
+		printf("Status: ");
+        if (cl->status == '1'){
+            printf("Ativo\n");
+        }else {
+            printf("Inativo\n");
+        }
         printf("Categoria do cliente: ");
         if (cl->category=='1'){
             printf("Comum.\n");
@@ -393,7 +398,7 @@ void listar_pplano(void) {
         printf("\t\n");
         scanf("%c", &n_lido);
         getchar();
-    } while(!ehDigito(n_lido));
+    } while(!ehDigito(n_lido) && (n_lido >= 1 || n_lido <=2));
     
 
     while(fread(cl, sizeof(cliente), 1, fp)) {
@@ -407,10 +412,61 @@ void listar_pplano(void) {
 
 
 void listar_ordemalpha(void){
-    system("clear||cls");
-    printf("\n");
-    printf("\t\t\t>>> Em construção...");
-    sleep(3);
+
+    FILE* fp;
+    int tam;
+    char linha[256];
+    cliente* novoCl;
+    cliente* list;
+
+    fp = fopen("clientes.dat","rb");
+    if (fp == NULL){
+        printf("\t\t>>> Erro na abertura do arquivo!\n");
+        exit(1);
+    }
+
+    list = NULL;
+    while(fgets(linha,256,fp)){
+		novoCl = (cliente*) malloc(sizeof(cliente));
+		tam = strlen(linha) + 1;
+		*novoCl->nome = (char*) malloc(tam*sizeof(char));
+		strcpy(novoCl->nome, linha);
+      if (list == NULL) {
+		list = novoCl;
+        novoCl->prox = NULL;
+	  }else if (strcmp(novoCl->nome,list->nome) < 0) {
+        novoCl->prox = list;
+        list = novoCl;
+      
+      }else {
+        cliente* anter = list;
+        cliente* atual = list->prox;
+        while ((atual != NULL) && strcmp(atual->nome,novoCl->nome) < 0) {
+            anter = atual;
+            atual = atual->prox;
+        }
+        anter->prox = novoCl;
+        novoCl->prox = atual;
+        }
+	}
+	fclose(fp);
+
+    // Listagem de clientes ordem alfabética
+   	novoCl = list;
+	while (novoCl != NULL) {
+		//printf("Fruta %d: %s", i, novoCl->nome);
+        exibirCliente(novoCl);
+		novoCl = novoCl->prox;	
+	}
+
+    // Liberar memória
+	novoCl = list;
+	while (list != NULL) {
+		list = list->prox;
+		free(novoCl->nome);
+		free(novoCl);
+		novoCl = list;
+    }
 }
 
 void exibirlista(cliente* cl) {
@@ -428,11 +484,12 @@ void exibirlista(cliente* cl) {
         printf("Categoria do cliente: ");
         if (cl->category=='1'){
             printf("Comum.\n");
-        }else{ printf("Premiun.\n");}
+        }else if (cl->category == '2'){ 
+            printf("Premiun.\n");}
+         else { printf("Não informado.");}
         printf("\t\t >>> Tecle enter para exibir o próximo:\n");
         getchar();
 	}
-	
 }
 
 char* telaExcluir_clientes(void){
@@ -465,17 +522,17 @@ char* telaExcluir_clientes(void){
 void telaErrorArquivoCliente(void) {
 	system("clear||cls");  
 	printf("\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
-	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = = com informações sobre os clientes = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
-	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
+	printf("_____________________________________________________________________________\n");
+	printf("|                                                                            |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|             = = = = = = =  Ops! Ocorreu em erro = = = = = =                |\n");
+	printf("|             = = =  Não foi possível acessar o arquivo = = =                |\n");
+	printf("|             = = = = com informações sobre os clientes = = =                |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|             = =  Pedimos desculpas pelos inconvenientes = =                |\n");
+	printf("|             = = =  mas este programa será finalizado! = = =                |\n");
+	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
+	printf("|____________________________________________________________________________|\n");
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
 	exit(1);

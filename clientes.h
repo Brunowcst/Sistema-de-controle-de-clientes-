@@ -10,6 +10,7 @@ struct clientes{
     int dia;
     int mes;
     int ano;
+    cliente *prox;
 };
 
 cliente *cadastrar(void);
@@ -19,15 +20,15 @@ void modulo_clientes(void);
 
 void pesquisar_clientes(void);
 char* telaPesquisarCliente(void);
-cliente *pesquisa_Cl(char* cpf);
-void exibirCliente(cliente* cl);
+cliente *pesquisa_Cl(char*);
+void exibirCliente(cliente*);
 
 void cadastro_clientes(void);
-void gravarCliente(cliente *cl);
+void gravarCliente(cliente*);
 
 void edit_clientes(void);
 char* telaEdit_clientes(void);
-void regravarcliente(cliente* cl);
+void regravarcliente(cliente*);
 
 void excluir_clientes(void);
 char* telaExcluir_clientes(void);
@@ -37,6 +38,6 @@ void listar_clientes(void);
 void listar_todos(void);
 void listar_pplano(void);
 void listar_ordemalpha(void);
-void exibirlista(cliente* cl);
+void exibirlista(cliente*);
 
 void telaErrorArquivoCliente(void);
