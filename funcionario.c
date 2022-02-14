@@ -431,14 +431,6 @@ void exibirlistaFunc(funcionario* fc) {
 	
 }
 
-void listar_ordemalphaFunc(void){
-    system("clear||cls");
-    printf("\n");
-    printf("\t\t\t>>> Em construção...");
-    sleep(3);
-}
-
-
 
 void listar_pcargo(void) {
     FILE* fp;
@@ -479,4 +471,62 @@ void listar_pcargo(void) {
     }
     fclose(fp);
     free(fc);
+}
+
+
+
+
+void listar_ordemalphaFunc(void) {
+
+    FILE* fp;
+    //int tam;
+    char linhaFc[256];
+    funcionario* novoFc;
+    funcionario* listFc;
+
+    fp = fopen("func.dat","rb");
+    if (fp == NULL){
+        printf("\t\t>>> Erro na abertura do arquivo!\n");
+        exit(1);
+    }
+
+    listFc = NULL;
+    while(fgets(linhaFc,256,fp)){
+		novoFc = (funcionario*) malloc(sizeof(funcionario));
+		strcpy(novoFc->nome, linhaFc);
+      if (listFc == NULL) {
+		listFc = novoFc;
+        novoFc->proxFc = NULL;
+	  }else if (strcmp(novoFc->nome,listFc->nome) < 0) {
+        novoFc->proxFc = listFc;
+        listFc = novoFc;
+      
+      }else {
+        funcionario* anterFc = listFc;
+        funcionario* atualFc = listFc->proxFc;
+        while ((atualFc != NULL) && strcmp(atualFc->nome,novoFc->nome) < 0) {
+            anterFc = atualFc;
+            atualFc = atualFc->proxFc;
+        }
+        anterFc->proxFc = novoFc;
+        novoFc->proxFc = atualFc;
+        }
+	}
+	fclose(fp);
+
+    // Listagem de clientes ordem alfabética
+   	novoFc = listFc;
+	while (novoFc != NULL) {
+		exibirlistaFunc(novoFc);
+		novoFc = novoFc->proxFc;	
+	}
+
+    // Liberar memória
+	novoFc = listFc;
+	while (listFc != NULL) {
+		listFc = listFc->proxFc;
+		free(novoFc->nome);
+		free(novoFc);
+		novoFc = listFc;
+    }
 }

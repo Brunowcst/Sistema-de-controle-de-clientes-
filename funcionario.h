@@ -13,6 +13,7 @@ struct func {
     int mes;
     int ano;
     char cargo;
+    funcionario *proxFc;
 };
 
 funcionario *cadastro_func(void);
@@ -24,7 +25,7 @@ void modulo_funcionario(void);
 void cadastrar_func(void);
 char* telaPesquisarFunc(void);
 funcionario *pesquisa_func(char* cpf);
-void exibirFuncionario(funcionario* fc);
+void exibirFuncionario(funcionario *);
 
 
 void pesquisar_func(void);
@@ -48,8 +49,8 @@ void listar_func(void);
 void subMod_listarFunc(void);
 void listar_todosFunc(void);
 void exibirlistaFunc(funcionario* fc);
-void listar_ordemalphaFunc(void);
 void listar_pcargo(void);
+void listar_ordemalphaFunc(void);
 
 
 
