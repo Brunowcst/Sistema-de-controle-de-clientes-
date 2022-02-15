@@ -367,6 +367,8 @@ void listar_planos(void) {
     while(fread(planos, sizeof(financas), 1, fp)) {
         if (planos->codigo == n_lido){
             exibirPlanos(planos);
+        } else {printf("\t\t>>> Nenhum plano encontrado\n");
+            sleep(2);
         }
     }
     fclose(fp);
