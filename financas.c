@@ -15,14 +15,15 @@ void modulo_financas(void) {
         scanf("%c", &op);
         getchar();
         switch(op){
-        case '1' : pesquisaPlano();
+        case '1' : cadastro_planos();
             break;
-        case '2' : cadastro_planos();
+        case '2' : pesquisaPlano();
             break;
         case '3' : editar_planos();
             break;
         case '4' : excluir_planos();
             break;
+        case '5' : listagem_planos();
         default:
             
             printf("\n\t\t>>> Ops!! escolha uma opção válida...\n");
@@ -43,10 +44,11 @@ void mod_MenuFinancas(void) {
     printf("|              = = = = = =   Módulo Financeiro   = = = = = = =                |\n");
     printf("|              = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
     printf("|                                                                             |\n");
-    printf("|              1. Listar Planos                                               |\n");
-    printf("|              2. Cadastrar PLanos                                            |\n");
+    printf("|              1. Cadastrar PLanos                                            |\n");
+    printf("|              2. Pesquisar Planos                                            |\n");
     printf("|              3. Editar Planos                                               |\n");
     printf("|              4. Excluir Planos                                              |\n");
+    printf("|              5. Listar planos                                               |\n");
     printf("|              0. Voltar                                                      |\n");
     printf("|                                                                             |\n");
     printf("|                                                                             |\n");
@@ -88,7 +90,7 @@ void editar_planos(void) {
         regravarplanos(planos);
         free(planos);
     }
-    // free(cod);
+    
 }
 
 void regravarplanos(financas* planos){
@@ -138,7 +140,7 @@ financas* pesquisa_planos(int cod){
 
 int telaEdit_planos(void){
     int cod;
-    // cod = (int*)malloc(sizeof(int));
+    
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -182,15 +184,14 @@ void pesquisaPlano(void) {
     financas* planos;    
     int cod;
 
-    cod = listar_planos();
+    cod = telaPesquisar_planos();
     planos = pesquisa_planos(cod);
     exibirPlanos(planos);
 	free(planos);
-   // free(cod);
 }
 
 
-int listar_planos(void) {
+int telaPesquisar_planos(void) {
     int cod;
 
 
@@ -203,18 +204,6 @@ int listar_planos(void) {
     printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
     printf("|             Digite o código do plano que deseja exibir:               |\n");
     scanf("%d",&cod);
-   /* printf("|                                                                       |\n");
-    printf("|           1. Plano Família                                            |\n");
-    // mostrar beneficios
-    printf("|           2. Plano Individual                                         |\n");
-    // mostrar beneficios
-    printf("|           3. Plano Amigos                                             |\n");
-    // mostrar beneficios
-    printf("|           4. Plano Premium                                            |\n");
-    // mostrar beneficios
-    printf("|           5. Plano Daily                                              |\n");
-    // mostrar beneficios
-    */
     printf("|                                                                       |\n");
     printf("|                                                                       |\n");
     printf("|_______________________________________________________________________|\n");
@@ -223,6 +212,7 @@ int listar_planos(void) {
     printf("\n");
     return cod;
 }
+
 
 financas *cadastrar_fin(void) {
     financas* planos;
@@ -260,9 +250,7 @@ financas *cadastrar_fin(void) {
     getchar();
     printf("\n");
     
-    
     return planos; 
-
 }
 
 void excluir_planos(void) {
@@ -280,13 +268,10 @@ void excluir_planos(void) {
         regravarplanos(planos);
         free(planos);
     }
-    //free(cod);
 }
 
 int telaExcluir_planos(void){
     int cod;
-
-    //cpf = (char*)malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
@@ -306,6 +291,107 @@ int telaExcluir_planos(void){
     printf("\n");
 
     return cod;
+}
+
+void listagem_planos(void){
+    char op;
+    do {
+        subMod_listar();   
+        printf("Escolha a opção desejada: ");
+        printf("\n");
+        scanf("%c", &op);
+        getchar();
+        switch(op){
+        case '1' : listar_planos();
+            break;
+        case '2' : listar_todosplanos();
+            break;
+        default:
+            printf("\n\t\t>>> Ops!! escolha uma opção válida...\n");
+            sleep(2);
+            break;
+            }
+             
+    } while (op!='0');
+}
+void subMod_listar(void){
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________\n");
+    printf("|                                                                       |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|           = = = = = = = =  LISTAR PLanos  = = = = = = = =             |\n");
+    printf("|           = = = = = = = = = = = = = = = = = = = = = = = =             |\n");
+    printf("|                                                                       |\n");
+    printf("|           1. Listar plano específico                                  |\n");
+    printf("|           2. Listar todos                                             |\n");
+    printf("|           0. Voltar                                                   |\n");
+    printf("|                                                                       |\n");
+    printf("|_______________________________________________________________________|\n");
+    printf("\n");
+}
+
+void listar_planos(void) {
+    FILE* fp;
+    financas* planos;
+    int n_lido;
+
+    planos = (financas*) malloc(sizeof(financas));
+
+    fp = fopen("planos.dat","rb");
+    if (fp == NULL){
+        printf("\t\tErro na abertura do arquivo!\n");
+        exit(1);
+    }
+    do {
+        system("clear||cls");
+        printf("\n");
+        printf(" _______________________________________________________________________\n");
+        printf("|                                                                       |\n");
+        printf("|            = = =  Relatório de planos cadastrados = = =               |\n");
+        printf("|                                                                       |\n");
+        printf("|                                                                       |\n");
+        printf("|           1. Plano Família                                            |\n");
+        printf("|           2. Plano Individual                                         |\n");
+        printf("|           3. Plano Amigos                                             |\n");
+        printf("|           4. Plano Premium                                            |\n");
+        printf("|           5. Plano Daily                                              |\n");
+        printf("|                                                                       |\n");
+        printf("|          >>> Informe o Nº do tipo de plano que deseja listar:         |\n");
+        printf("|_______________________________________________________________________|\n");
+        printf("\t\n");
+        scanf("%d", &n_lido);
+        getchar();
+    } while(!ehDigito2(n_lido));
+    
+
+    while(fread(planos, sizeof(financas), 1, fp)) {
+        if (planos->codigo == n_lido){
+            exibirPlanos(planos);
+        }
+    }
+    fclose(fp);
+    free(planos);
+}
+
+void listar_todosplanos(void){
+    FILE* fp;
+    financas* planos;
+    planos = (financas*) malloc(sizeof(financas));
+
+    fp = fopen("planos.dat","rb");
+    if (fp == NULL){
+        printf("Erro na abertura do arquivo\n!");
+        exit(1);
+        }
+
+    printf("\t\t\n= = = Relatório de todos os planos = = =\n");
+    while(fread(planos, sizeof(financas), 1, fp)) {        
+        exibirPlanos(planos);
+        }
+
+    fclose(fp);
+    free(planos);
 }
 
 void telaErrorArquivofin(void) {
