@@ -194,7 +194,6 @@ void pesquisaPlano(void) {
 int telaPesquisar_planos(void) {
     int cod;
 
-
     system("clear||cls");
     printf("\n");
     printf(" _______________________________________________________________________ \n");
