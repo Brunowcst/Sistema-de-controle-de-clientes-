@@ -449,20 +449,19 @@ void listar_ordemalpha(void){
     while(fgets(linha,256,fp)){
 		novoCl = (cliente*) malloc(sizeof(cliente));
 		strcpy(novoCl->nome, linha);
-      if (list == NULL) {
-		list = novoCl;
-        novoCl->prox = NULL;
-	  }else if (strcmp(novoCl->nome,list->nome) < 0) {
-        novoCl->prox = list;
-        list = novoCl;
-      
-      }else {
-        cliente* anter = list;
-        cliente* atual = list->prox;
-        while ((atual != NULL) && strcmp(atual->nome,novoCl->nome) < 0) {
-            anter = atual;
-            atual = atual->prox;
-        }
+        if (list == NULL) {
+		    list = novoCl;
+            novoCl->prox = NULL;
+	    }else if (strcmp(novoCl->nome,list->nome) < 0) {
+            novoCl->prox = list;
+            list = novoCl;
+        }else {
+            cliente* anter = list;
+            cliente* atual = list->prox;
+            while ((atual != NULL) && strcmp(atual->nome,novoCl->nome) < 0) {
+                anter = atual;
+                atual = atual->prox;
+            }
         anter->prox = novoCl;
         novoCl->prox = atual;
         }
@@ -472,7 +471,7 @@ void listar_ordemalpha(void){
     // Listagem de clientes ordem alfabética
    	novoCl = list;
 	while (novoCl != NULL) {
-		exibirCliente(novoCl);
+		exibirlista(novoCl);
 		novoCl = novoCl->prox;	
 	}
 
@@ -497,14 +496,17 @@ void exibirlista(cliente* cl) {
 		printf("Endereço eletrônico: %s\n", cl->email);
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
-		printf("Status: %d\n", cl->status);
+		printf("Status: ");
+        if (cl->status != 1) {
+            printf("Desativado");
+        }
         printf("Categoria do cliente: ");
-        if (cl->category=='1'){
+        if (cl->category =='1'){
             printf("Comum.\n");
         }else if (cl->category == '2'){ 
             printf("Premium.\n");}
          else { printf("Não informado.");}
-        printf("\t\t >>> Tecle enter para exibir o próximo:\n");
+        printf("\n\t\t >>> Tecle enter para exibir o próximo:\n");
         getchar();
 	}
 }
