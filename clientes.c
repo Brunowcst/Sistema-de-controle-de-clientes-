@@ -79,6 +79,10 @@ void cadastro_clientes(void) {
         printf("\t\t\nEste cliente já está cadastrado no sistema...\n");
         sleep(3);
     } else {
+        printf("\t\tNenhum cliente encontrado...\n");
+        printf("\t\tVamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        sleep(6);
+        system("clear||cls");
         cl = cadastrar();
         gravarCliente(cl);
         free(cl);
@@ -98,7 +102,7 @@ cliente *verificar_Cl(char* cpf){
         //printf("\t\t\npera lá patrão (ver linha 545 clientes.c)\n");
         printf("\t\tNenhum cliente encontrado...\n");
         printf("\t\tVamos cadastrá-lo agora, basta informar os dados necessários...\n");
-        sleep(6);
+        sleep(1);
         system("clear||cls");
         //fp = fopen("clientes.dat", "ab");
         // cl = cadastrar();
