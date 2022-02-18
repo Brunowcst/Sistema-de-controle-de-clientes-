@@ -79,8 +79,10 @@ void cadastro_clientes(void) {
         printf("\t\t\nEste cliente já está cadastrado no sistema...\n");
         sleep(3);
     } else {
-        printf("\t\tNenhum cliente encontrado...\n");
-        printf("\t\tVamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        printf("\n");
+        system("clear||cls");
+        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
         sleep(6);
         system("clear||cls");
         cl = cadastrar();
@@ -100,8 +102,8 @@ cliente *verificar_Cl(char* cpf){
         printf("\n"); 
         system("clear||cls");
         //printf("\t\t\npera lá patrão (ver linha 545 clientes.c)\n");
-        printf("\t\tNenhum cliente encontrado...\n");
-        printf("\t\tVamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
         sleep(1);
         system("clear||cls");
         //fp = fopen("clientes.dat", "ab");
@@ -470,7 +472,7 @@ void listar_pplano(void) {
 void listar_ordemalpha(void){
 
     FILE* fp;
-    char linha[256];
+    // char linha[256];
     cliente* novoCl;
     cliente* list;
 
@@ -481,16 +483,13 @@ void listar_ordemalpha(void){
     }
 
     list = NULL;
-    while(fgets(linha,256,fp)){
-		novoCl = (cliente*) malloc(sizeof(cliente));
-		strcpy(novoCl->nome, linha);
-        if (list == NULL) {
-		    list = novoCl;
-            novoCl->prox = NULL;
-	    }else if (strcmp(novoCl->nome,list->nome) < 0) {
-            novoCl->prox = list;
+    novoCl = (cliente*) malloc(sizeof(cliente));
+    while(fread(novoCl,sizeof(cliente),1,fp)){	
+        
+		if ((list == NULL) || strcmp(novoCl->nome, list->nome)<0 ) {
+		    novoCl->prox = list;
             list = novoCl;
-        }else {
+	    } else {
             cliente* anter = list;
             cliente* atual = list->prox;
             while ((atual != NULL) && strcmp(atual->nome,novoCl->nome) < 0) {
@@ -500,10 +499,11 @@ void listar_ordemalpha(void){
         anter->prox = novoCl;
         novoCl->prox = atual;
         }
+        novoCl = (cliente*) malloc(sizeof(cliente));
 	}
 	fclose(fp);
 
-    // Listagem de clientes ordem alfabética
+    // Exibindo os clientes
    	novoCl = list;
 	while (novoCl != NULL) {
 		exibirlista(novoCl);
