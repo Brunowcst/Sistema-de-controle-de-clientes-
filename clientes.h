@@ -41,3 +41,5 @@ void listar_ordemalpha(void);
 void exibirlista(cliente*);
 
 void telaErrorArquivoCliente(void);
+
+cliente *verificar_Cl(char*);

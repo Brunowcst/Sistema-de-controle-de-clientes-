@@ -64,26 +64,57 @@ void cadastro_clientes(void) {
     cpf_lido = (char*)malloc(12*sizeof(char));
     printf("\n");
     system("clear||cls");    
-    printf("\n = = = Precisamos verificar se o cliente já existe no sistema, para isso\n");
-    printf("\ninforme o CPF para fins de verificação: \n");
+    printf("\nPrecisamos verificar se o cliente já existe no sistema, para isso\n");
+    printf("\ninforme o CPF dele para fins de verificação: \n");
+
     do {
     printf("\n* CPF (Apenas números): ");
     scanf("%[0-9]",cpf_lido);
     getchar();
     } while(!validarCPF(cpf_lido));
 
-    pesquisa_Cl(cpf_lido);
-    // Apagar essa linha 75.
-    if(pesquisa_Cl(cpf_lido)!= NULL){
+    if(verificar_Cl(cpf_lido) != NULL){
         printf("\n"); 
         system("clear||cls");       
-        printf("\t\n= = = Este cliente já está cadastrado no sistema... = = =\n");
+        printf("\t\t\nEste cliente já está cadastrado no sistema...\n");
         sleep(3);
     } else {
         cl = cadastrar();
         gravarCliente(cl);
         free(cl);
     }
+}
+
+//  Nova função de verificar se CPF existe no sistema...
+cliente *verificar_Cl(char* cpf){
+    FILE* fp;
+    cliente* cl;
+    
+    cl = (cliente*)malloc(sizeof(cliente));
+    fp = fopen("clientes.dat", "rb");
+    if (fp == NULL){
+        printf("\n"); 
+        system("clear||cls");
+        //printf("\t\t\npera lá patrão (ver linha 545 clientes.c)\n");
+        printf("\t\tNenhum cliente encontrado...\n");
+        printf("\t\tVamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        sleep(6);
+        system("clear||cls");
+        //fp = fopen("clientes.dat", "ab");
+        // cl = cadastrar();
+        // gravarCliente(cl);
+        return NULL;
+    }
+    //free(cl);
+    
+    while (fread(cl, sizeof(cliente), 1, fp)){    
+        if((strcmp(cl->cpf, cpf) == 0)){
+            fclose(fp);
+            return cl;
+        }
+    }
+    fclose(fp);
+    return NULL;
 }
 
 cliente *cadastrar(void){
@@ -143,7 +174,7 @@ cliente *cadastrar(void){
     getchar();
     }while(!ehDigito(cl->category));
     
-    cl -> status = 1;
+    cl->status = 1;
 
     return cl;
 };
@@ -535,8 +566,6 @@ char* telaExcluir_clientes(void){
 
     return cpf;
 }
-
-
 
 void telaErrorArquivoCliente(void) {
 	system("clear||cls");  
