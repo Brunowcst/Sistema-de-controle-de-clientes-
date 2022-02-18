@@ -16,32 +16,41 @@ struct func {
     funcionario *proxFc;
 };
 
+
+//CADASTRO
 funcionario *cadastro_func(void);
-
 void gravarFuncionario(funcionario *fc);
-
-void mod_MenuFuncionarios(void);
-void modulo_funcionario(void);
 void cadastrar_func(void);
-char* telaPesquisarFunc(void);
-funcionario *pesquisa_func(char* cpf);
-void exibirFuncionario(funcionario *);
-
-
-void pesquisar_func(void);
-
-void edit_func(void);
-char* telaEdit_func(void);
 void regravarfunc(funcionario* fc);
 
 
+
+//EDIÇÃO
+void edit_func(void);
+
+
+
+//EXCLUSÃO
 void excluir_func(void);
+
+
+
+//EXIBIÇÃO E PESQUISA
+funcionario *pesquisa_func(char* cpf);
+void exibirFuncionario(funcionario *);
+void pesquisar_func(void);
+funcionario *verificar_Func(char*);
+
+
+
+//TELAS
+char* telaPesquisarFunc(void);
+char* telaEdit_func(void);
 char* telaExcluir_func(void);
-
-
-
-
 void telaErrorArquivofc(void);
+void mod_MenuFuncionarios(void);
+void modulo_funcionario(void);
+
 
 
 //LISTAGEM
@@ -51,6 +60,16 @@ void listar_todosFunc(void);
 void exibirlistaFunc(funcionario* fc);
 void listar_pcargo(void);
 void listar_ordemalphaFunc(void);
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -514,7 +514,6 @@ void listar_ordemalpha(void){
 	novoCl = list;
 	while (list != NULL) {
 		list = list->prox;
-		free(novoCl->nome);
 		free(novoCl);
 		novoCl = list;
     }

@@ -57,11 +57,66 @@ void modulo_funcionario(void) {
 
 void cadastrar_func(void) {
     funcionario* fc;
+    char* cpf_lido;
 
-    fc = cadastro_func();
-    gravarFuncionario(fc);
-    free(fc);
+    cpf_lido = (char*)malloc(12*sizeof(char));
+    printf("\n");
+    system("clear||cls");    
+    printf("\nPrecisamos verificar se o cliente já existe no sistema, para isso\n");
+    printf("\ninforme o CPF dele para fins de verificação: \n");
+
+    do {
+    printf("\n* CPF (Apenas números): ");
+    scanf("%[0-9]",cpf_lido);
+    getchar();
+    } while(!validarCPF(cpf_lido));
+
+    if(verificar_Func(cpf_lido) != NULL){
+        printf("\n"); 
+        system("clear||cls");       
+        printf("\t\t\nEste cliente já está cadastrado no sistema...\n");
+        sleep(3);
+    } else {
+        printf("\n");
+        system("clear||cls");
+        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        sleep(6);
+        system("clear||cls");
+        fc = cadastro_func();
+        gravarFuncionario(fc);
+        free(fc);
+    }
 }
+
+funcionario *verificar_Func(char* cpf){
+    FILE* fp;
+    funcionario* fc;
+    
+    fc = (funcionario*)malloc(sizeof(funcionario));
+    fp = fopen("func.dat", "rb");
+    if (fp == NULL){
+        printf("\n"); 
+        system("clear||cls");
+        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
+        sleep(1);
+        system("clear||cls");
+        return NULL;
+    }
+    
+    
+    while (fread(fc, sizeof(funcionario), 1, fp)){    
+        if((strcmp(fc->cpf, cpf) == 0)){
+            fclose(fp);
+            return fc;
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
 
 void gravarFuncionario(funcionario *fc) {
     FILE* fp;
@@ -342,6 +397,8 @@ void telaErrorArquivofc(void) {
 };
 
 
+
+
 //LISTAGEM
 
 
@@ -479,10 +536,8 @@ void listar_pcargo(void) {
 void listar_ordemalphaFunc(void) {
 
     FILE* fp;
-    //int tam;
-    char linhaFc[256];
     funcionario* novoFc;
-    funcionario* listFc;
+    funcionario* list;
 
     fp = fopen("func.dat","rb");
     if (fp == NULL){
@@ -490,43 +545,39 @@ void listar_ordemalphaFunc(void) {
         exit(1);
     }
 
-    listFc = NULL;
-    while(fgets(linhaFc,256,fp)){
-		novoFc = (funcionario*) malloc(sizeof(funcionario));
-		strcpy(novoFc->nome, linhaFc);
-      if (listFc == NULL) {
-		listFc = novoFc;
-        novoFc->proxFc = NULL;
-	  }else if (strcmp(novoFc->nome,listFc->nome) < 0) {
-        novoFc->proxFc = listFc;
-        listFc = novoFc;
-      
-      }else {
-        funcionario* anterFc = listFc;
-        funcionario* atualFc = listFc->proxFc;
-        while ((atualFc != NULL) && strcmp(atualFc->nome,novoFc->nome) < 0) {
-            anterFc = atualFc;
-            atualFc = atualFc->proxFc;
+    list = NULL;
+    novoFc = (funcionario*) malloc(sizeof(funcionario));
+    while(fread(novoFc,sizeof(funcionario),1,fp)){	
+        
+		if ((list == NULL) || strcmp(novoFc->nome, list->nome)<0 ) {
+		    novoFc->proxFc = list;
+            list = novoFc;
+	    } else {
+            funcionario* anter = list;
+            funcionario* atual = list->proxFc;
+            while ((atual != NULL) && strcmp(atual->nome,novoFc->nome) < 0) {
+                anter = atual;
+                atual = atual->proxFc;
+            }
+        anter->proxFc = novoFc;
+        novoFc->proxFc = atual;
         }
-        anterFc->proxFc = novoFc;
-        novoFc->proxFc = atualFc;
-        }
+        novoFc = (funcionario*) malloc(sizeof(funcionario));
 	}
 	fclose(fp);
 
-    // Listagem de clientes ordem alfabética
-   	novoFc = listFc;
+    // Exibindo os clientes
+   	novoFc = list;
 	while (novoFc != NULL) {
 		exibirlistaFunc(novoFc);
 		novoFc = novoFc->proxFc;	
 	}
 
     // Liberar memória
-	novoFc = listFc;
-	while (listFc != NULL) {
-		listFc = listFc->proxFc;
-		free(novoFc->nome);
+	novoFc = list;
+	while (list != NULL) {
+		list = list->proxFc;
 		free(novoFc);
-		novoFc = listFc;
+		novoFc = list;
     }
 }
