@@ -290,9 +290,9 @@ void exibirCliente(cliente* cl) {
 		printf("\n= = = CLIENTE CADASTRADO = = =\n");		
 		printf("Nome do cliente: %s\n", cl->nome);
         printf("CPF: %s\n", cl->cpf);
-		printf("Endereço eletrônico: %s\n", cl->email);
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
+        printf("Endereço eletrônico: %s\n", cl->email);
 		printf("Status: ");
         if (cl->status == 1){
             printf("Ativo\n");
@@ -490,7 +490,7 @@ void exibirlista(cliente* cl) {
 	if (cl == NULL) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
-		printf("\n= = = CLIENTE CADASTRADO = = =\n");		
+		// printf("\n= = = CLIENTE CADASTRADO = = =\n");		
 		printf("Nome do cliente: %s\n", cl->nome);
         printf("CPF: %s\n", cl->cpf);
 		printf("Endereço eletrônico: %s\n", cl->email);
@@ -498,7 +498,7 @@ void exibirlista(cliente* cl) {
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: ");
         if (cl->status != 1) {
-            printf("Desativado");
+            printf("Desativado\n");
         }
         printf("Categoria do cliente: ");
         if (cl->category =='1'){
