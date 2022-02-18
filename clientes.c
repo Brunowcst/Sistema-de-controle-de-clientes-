@@ -59,11 +59,33 @@ void modulo_clientes(void){
 
 void cadastro_clientes(void) {
     cliente* cl;
+    char* cpf_lido;
 
-    cl = cadastrar();
-    gravarCliente(cl);
-    free(cl);
+    cpf_lido = (char*)malloc(12*sizeof(char));
+    printf("\n");
+    system("clear||cls");    
+    printf("\n = = = Precisamos verificar se o cliente já existe no sistema, para isso\n");
+    printf("\ninforme o CPF para fins de verificação: \n");
+    do {
+    printf("\n* CPF (Apenas números): ");
+    scanf("%[0-9]",cpf_lido);
+    getchar();
+    } while(!validarCPF(cpf_lido));
+
+    pesquisa_Cl(cpf_lido);
+    // Apagar essa linha 75.
+    if(pesquisa_Cl(cpf_lido)!= NULL){
+        printf("\n"); 
+        system("clear||cls");       
+        printf("\t\n= = = Este cliente já está cadastrado no sistema... = = =\n");
+        sleep(3);
+    } else {
+        cl = cadastrar();
+        gravarCliente(cl);
+        free(cl);
+    }
 }
+
 cliente *cadastrar(void){
     
     cliente* cl;
@@ -262,7 +284,7 @@ char* telaPesquisarCliente(void) {
 
 void exibirCliente(cliente* cl) {
 
-	if (cl == NULL) {
+	if (cl == NULL || (cl->status)!= 1) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
 		printf("\n= = = CLIENTE CADASTRADO = = =\n");		
@@ -272,21 +294,20 @@ void exibirCliente(cliente* cl) {
 		printf("Data de Nasc: %d/%d/%d\n", cl->dia, cl->mes, cl->ano);
 		printf("Celular: %s\n", cl->cell);
 		printf("Status: ");
-        if (cl->status == '1'){
+        if (cl->status == 1){
             printf("Ativo\n");
         }else {
             printf("Inativo\n");
         }
+        //ver esse if
         printf("Categoria do cliente: ");
         if (cl->category=='1'){
             printf("Comum.\n");
-        }else{ printf("Premiun.\n");}
+        }else{ printf("Premium.\n");}
 	}
 	printf("\n\t\t\t>>> Tecle ENTER para continuar...\n\n");
 	getchar();
 }
-
-
 
 
 void excluir_clientes(void) {
@@ -414,7 +435,6 @@ void listar_pplano(void) {
 void listar_ordemalpha(void){
 
     FILE* fp;
-    //int tam;
     char linha[256];
     cliente* novoCl;
     cliente* list;
