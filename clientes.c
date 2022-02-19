@@ -101,18 +101,12 @@ cliente *verificar_Cl(char* cpf){
     if (fp == NULL){
         printf("\n"); 
         system("clear||cls");
-        //printf("\t\t\npera lá patrão (ver linha 545 clientes.c)\n");
         printf("Nenhum cliente encontrado com esse CPF...\n");
         printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
         sleep(1);
         system("clear||cls");
-        //fp = fopen("clientes.dat", "ab");
-        // cl = cadastrar();
-        // gravarCliente(cl);
         return NULL;
     }
-    //free(cl);
-    
     while (fread(cl, sizeof(cliente), 1, fp)){    
         if((strcmp(cl->cpf, cpf) == 0)){
             fclose(fp);
@@ -414,8 +408,8 @@ void listar_todos(void){
 
     fp = fopen("clientes.dat","rb");
     if (fp == NULL){
-        printf("Erro na abertura do arquivo\n!");
-        exit(1);
+        telaErrorArquivoCliente();
+        return;
         }
 
     printf("\n= = = Relatório de todos os clientes = = =\n");
@@ -436,8 +430,8 @@ void listar_pplano(void) {
 
     fp = fopen("clientes.dat","rb");
     if (fp == NULL){
-        printf("\t\tErro na abertura do arquivo!\n");
-        exit(1);
+        telaErrorArquivoCliente();
+        return;
     }
     do {
         system("clear||cls");
@@ -472,14 +466,13 @@ void listar_pplano(void) {
 void listar_ordemalpha(void){
 
     FILE* fp;
-    // char linha[256];
     cliente* novoCl;
     cliente* list;
 
     fp = fopen("clientes.dat","rb");
     if (fp == NULL){
-        printf("\t\t>>> Erro na abertura do arquivo!\n");
-        exit(1);
+        telaErrorArquivoCliente();
+        return;
     }
 
     list = NULL;
@@ -524,7 +517,6 @@ void exibirlista(cliente* cl) {
 	if (cl == NULL) {
 		printf("\n= = = Cliente não encontrado = = =\n");
 	} else {
-		// printf("\n= = = CLIENTE CADASTRADO = = =\n");		
 		printf("Nome do cliente: %s\n", cl->nome);
         printf("CPF: %s\n", cl->cpf);
 		printf("Endereço eletrônico: %s\n", cl->email);
@@ -580,11 +572,9 @@ void telaErrorArquivoCliente(void) {
 	printf("|             = = =  Não foi possível acessar o arquivo = = =                |\n");
 	printf("|             = = = = com informações sobre os clientes = = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
-	printf("|             = =  Pedimos desculpas pelos inconvenientes = =                |\n");
-	printf("|             = = =  mas este programa será finalizado! = = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
 	printf("|____________________________________________________________________________|\n");
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
-	exit(1);
-};
+	return;
+}

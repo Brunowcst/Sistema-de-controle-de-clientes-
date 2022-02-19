@@ -339,8 +339,8 @@ void listar_planos(void) {
 
     fp = fopen("planos.dat","rb");
     if (fp == NULL){
-        printf("\t\tErro na abertura do arquivo!\n");
-        exit(1);
+        telaErrorArquivofin();
+        return;
     }
     do {
         system("clear||cls");
@@ -382,8 +382,8 @@ void listar_todosplanos(void){
 
     fp = fopen("planos.dat","rb");
     if (fp == NULL){
-        printf("Erro na abertura do arquivo\n!");
-        exit(1);
+        telaErrorArquivofin();
+        return;
         }
 
     printf("\t\t\n= = = Relatório de todos os planos = = =\n");
@@ -405,11 +405,9 @@ void telaErrorArquivofin(void) {
 	printf("|             = = =  Não foi possível acessar o arquivo = = =                |\n");
 	printf("|             = = = = com informações sobre os Planos   = = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
-	printf("|             = =  Pedimos desculpas pelos inconvenientes = =                |\n");
-	printf("|             = = =  mas este programa será finalizado! = = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
 	printf("|____________________________________________________________________________|\n");
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
-	exit(1);
+	return;
 };

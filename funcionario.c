@@ -62,7 +62,7 @@ void cadastrar_func(void) {
     cpf_lido = (char*)malloc(12*sizeof(char));
     printf("\n");
     system("clear||cls");    
-    printf("\nPrecisamos verificar se o cliente já existe no sistema, para isso\n");
+    printf("\nPrecisamos verificar se o funcionário já existe no sistema, para isso\n");
     printf("\ninforme o CPF dele para fins de verificação: \n");
 
     do {
@@ -74,12 +74,12 @@ void cadastrar_func(void) {
     if(verificar_Func(cpf_lido) != NULL){
         printf("\n"); 
         system("clear||cls");       
-        printf("\t\t\nEste cliente já está cadastrado no sistema...\n");
+        printf("\t\t\nEste funcionário já está cadastrado no sistema...\n");
         sleep(3);
     } else {
         printf("\n");
         system("clear||cls");
-        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Nenhum funcionário encontrado com esse CPF...\n");
         printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
         sleep(6);
         system("clear||cls");
@@ -98,7 +98,7 @@ funcionario *verificar_Func(char* cpf){
     if (fp == NULL){
         printf("\n"); 
         system("clear||cls");
-        printf("Nenhum cliente encontrado com esse CPF...\n");
+        printf("Nenhum funcionário encontrado com esse CPF...\n");
         printf("Vamos cadastrá-lo agora, basta informar os dados necessários...\n");
         sleep(1);
         system("clear||cls");
@@ -387,13 +387,11 @@ void telaErrorArquivofc(void) {
 	printf("|             = = =  Não foi possível acessar o arquivo = = =                |\n");
 	printf("|             = = = com informações sobre os funcionarios = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
-	printf("|             = =  Pedimos desculpas pelos inconvenientes = =                |\n");
-	printf("|             = = =  mas este programa será finalizado! = = =                |\n");
 	printf("|             = = = = = = = = = = = = = = = = = = = = = = = =                |\n");
 	printf("|____________________________________________________________________________|\n");
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
-	exit(1);
+	return;
 };
 
 
@@ -451,8 +449,8 @@ void listar_todosFunc(void){
 
     fp = fopen("func.dat","rb");
     if (fp == NULL){
-        printf("Erro na abertura do arquivo\n!");
-        exit(1);
+        telaErrorArquivofc();
+        return;
         }
 
     printf("\n= = = Relatório de todos os funcionários = = =\n");
@@ -498,8 +496,8 @@ void listar_pcargo(void) {
 
     fp = fopen("func.dat","rb");
     if (fp == NULL){
-        printf("\t\tErro na abertura do arquivo!\n");
-        exit(1);
+        telaErrorArquivofc();
+        return;
     }
     do {
         system("clear||cls");
@@ -541,8 +539,8 @@ void listar_ordemalphaFunc(void) {
 
     fp = fopen("func.dat","rb");
     if (fp == NULL){
-        printf("\t\t>>> Erro na abertura do arquivo!\n");
-        exit(1);
+        telaErrorArquivofc();
+        return;
     }
 
     list = NULL;
