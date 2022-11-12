@@ -201,12 +201,74 @@ void edit_clientes(void) {
     if (cl == NULL){
         printf("= = = Cliente não encontrado... = = =\n");
     } else {
-        cl = cadastrar();
+        cl = editar_clientes(cpf);
         regravarcliente(cl);
         free(cl);
     }
     free(cpf);
 }
+
+cliente *editar_clientes(char* cpf){
+    
+    cliente* cl;
+
+    cl = (cliente*) malloc(sizeof(cliente));
+    system("clear||cls");
+    printf("\n");
+    printf(" _______________________________________________________________________ \n");
+    printf("|                                                                       |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|          = = = = = = = = EDITAR CLIENTES     = = = = = =              |\n");
+    printf("|          = = = = = = = = = = = = = = = = = = = = = = = =              |\n");
+    printf("|                                                                       |\n");
+    
+    do {
+    printf("|           * Nome Completo:                                            |\n");
+    scanf("%50[^\n]", cl->nome);
+    getchar();
+    } while (!validarNome(cl->nome));
+    
+    do{
+    printf("|           * Data sua data de Nascimento:                              |\n");
+    printf("| Informe o dia:                                                        |\n");
+    scanf("%d", &cl->dia); 
+    printf("| Informe o mês:                                                        |\n");
+    scanf("%d", &cl->mes);
+    printf("| Informe o ano:                                                        |\n");
+    scanf("%d", &cl->ano);
+    getchar();
+    } while(!validaData(cl->dia, cl->mes, cl->ano));
+
+    do{
+    printf("|           * Celular ((DDD)número):                                    |\n");
+    scanf("%11[^\n]", cl->cell);
+    getchar();
+    } while (!validacell(cl->cell));
+
+    do{
+    printf("|           * E-mail:                                                   |\n");
+    scanf("%50[^\n]", cl->email);
+    getchar();
+    } while (!validEmail(cl->email));
+
+    do {
+    printf("|           * Informe o plano desejado:                                 |\n");
+    printf("|               1. Cliente comum.                                       |\n");
+    printf("|               2. Cliente Premium.                                     |\n");
+    scanf("%c", &cl->category);
+    getchar();
+    }while(!ehDigito(cl->category));
+    strcpy(cpf, cl -> cpf); 
+
+    /*Eu alterei aqui (incluindo strcopy), para editar os dados dos clientes sem precisar 
+    informar novamente o cpf, visto que este é um campo não editável.
+    */
+    //cl->cpf = cpf;
+    cl->status = 1;
+
+    return cl;
+}
+//Editar sem informar cpf novamente....
 
 void regravarcliente(cliente* cl){
     int ok;

@@ -29,6 +29,7 @@ void gravarCliente(cliente*);
 void edit_clientes(void);
 char* telaEdit_clientes(void);
 void regravarcliente(cliente*);
+cliente *editar_clientes(char*);
 
 void excluir_clientes(void);
 char* telaExcluir_clientes(void);
